@@ -4,11 +4,14 @@
   "description": "",
   "main": "trial.js",
   "scripts": {
-   "start": "node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
 }

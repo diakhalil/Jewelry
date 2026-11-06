@@ -17,6 +17,9 @@ coverage/
 .next/
 .nuxt/
 
+
+BackEnd\.env
+
 # Runtime files and package-manager logs
 *.log
 npm-debug.log*
