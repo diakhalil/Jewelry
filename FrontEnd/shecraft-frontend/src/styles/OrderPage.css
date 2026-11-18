@@ -3,9 +3,9 @@
 .order-page {
   min-height: 100vh;
   padding: 70px 80px 80px; 
-  background: radial-gradient(circle at top, #f9f5ff 0%, #ffffff 55%, #fbe9ff 100%);
+  background: radial-gradient(circle at top, #f9f5ff 0%, var(--sc-bg) 55%, #fbe9ff 100%);
   color: #3a2b4d;
-  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--sc-font-body);
 }
 
 /* ---------- HEADER TEXT ---------- */
@@ -17,7 +17,7 @@
 }
 
 .order-header h1 {
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-family: var(--sc-font-display);
   font-size: 2.2rem;
   color: #3a2b4d;          /* deep lilac-violet, not yellow */
   margin-bottom: 8px;
@@ -27,7 +27,7 @@
 
 .order-header p {
   font-size: 0.98rem;
-  color: #7a6b85;          /* soft mauve */
+  color: var(--sc-text-muted);          /* soft mauve */
 }
 
 /* ---------- GRID OF CATEGORY CARDS ---------- */
@@ -43,7 +43,7 @@
 /* ---------- SINGLE CARD ---------- */
 
 .order-card {
-  background-color: #ffffff;
+  background-color: var(--sc-bg);
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid #e4ddf7;
@@ -56,7 +56,7 @@
 .order-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 26px rgba(148, 119, 202, 0.35);
-  border-color: #a488d4;
+  border-color: var(--sc-purple-lavender);
 }
 
 /* IMAGE AREA */
@@ -85,7 +85,7 @@
 }
 
 .order-card-footer h2 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 1.3rem;
   color: #3a2b4d;
   letter-spacing: 0.14em;

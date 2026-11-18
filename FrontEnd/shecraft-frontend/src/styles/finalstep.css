@@ -4,10 +4,10 @@
   max-width: 900px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #ffffff;
+  background-color: var(--sc-bg);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--sc-font-body);
   color: #333;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .final-step select:focus {
-  border-color: #007bff;
+  border-color: var(--sc-purple);
   outline: none;
 }
 
@@ -83,7 +83,7 @@
 
 /* ================== Orders List ================== */
 .final-step ul.orders li {
-  background-color: #eef6ff;
+  background-color: var(--sc-bg-soft);
   padding: 12px 15px;
   margin-bottom: 10px;
   border-radius: 8px;
@@ -91,21 +91,21 @@
 }
 
 /* ================== Button ================== */
-.complete-btn {
+.final-step .complete-btn {
   width: 100%;
   padding: 14px 0;
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
-  background-color: #007bff;
+  color: var(--sc-bg);
+  background-color: var(--sc-purple);
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.complete-btn:hover {
-  background-color: #0056b3;
+.final-step .complete-btn:hover {
+  background-color: var(--sc-purple-dark);
   transform: translateY(-2px);
 }
 
@@ -127,7 +127,7 @@
     font-size: 14px;
   }
 
-  .complete-btn {
+  .final-step .complete-btn {
     font-size: 16px;
   }
 }

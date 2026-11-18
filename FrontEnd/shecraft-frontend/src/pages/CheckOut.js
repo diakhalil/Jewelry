@@ -124,7 +124,7 @@ export default function CheckoutPage() {
           <p><strong>Designer:</strong> {designer || "N/A"}</p>
 
           <div className="checkout-actions">
-            <button className="primary">Confirm and Pay</button>
+            <button className="sc-button primary">Confirm and Pay</button>
             <button className="secondary" onClick={handleEditDesign}>
               Edit Design
             </button>

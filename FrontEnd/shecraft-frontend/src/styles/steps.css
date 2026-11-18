@@ -37,7 +37,7 @@
 
 .step-box.active .step-number {
   background-color: #2d0258;
-  color: white;
+  color: var(--sc-bg);
 }
 
 .step-box:not(:last-child)::after {

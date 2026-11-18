@@ -2,10 +2,10 @@
    PAGE WRAPPER
 ================================ */
 .sc-page {
-  background: linear-gradient(180deg, #f6effa 0%, #ffffff 60%);
+  background: linear-gradient(180deg, #f6effa 0%, var(--sc-bg) 60%);
   min-height: 100vh;
   padding: 48px 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--sc-font-body);
 }
 
 .sc-container {
@@ -35,7 +35,7 @@
    LEFT — LIVE PREVIEW
 ================================ */
 .sc-preview-card {
-  background: #ffffff;
+  background: var(--sc-bg);
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 12px 40px rgba(120, 60, 160, 0.12);
@@ -97,7 +97,7 @@
   top: -6px;
   right: -6px;
   background: #6b3fa0;
-  color: white;
+  color: var(--sc-bg);
   border: none;
   width: 20px;
   height: 20px;
@@ -109,7 +109,7 @@
    RIGHT — FORM
 ================================ */
 .sc-form {
-  background: #ffffff;
+  background: var(--sc-bg);
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 12px 40px rgba(120, 60, 160, 0.12);
@@ -144,7 +144,7 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease;
-  background: #fff;
+  background: var(--sc-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,7 +186,7 @@
   padding: 10px 16px;
   border-radius: 999px;
   border: 2px solid #ddd;
-  background: #fff;
+  background: var(--sc-bg);
   cursor: pointer;
   transition: 0.25s;
 }
@@ -246,7 +246,7 @@
   padding: 14px;
   border-radius: 999px;
   background: #6b3fa0;
-  color: #fff;
+  color: var(--sc-bg);
   font-size: 16px;
   border: none;
   cursor: pointer;

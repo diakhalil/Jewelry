@@ -1,6 +1,6 @@
 .designer-dashboard {
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: var(--sc-font-body);
 }
 
 .designer-dashboard h1 {
@@ -12,25 +12,25 @@
   overflow-x: auto;
 }
 
-table {
+.designer-dashboard table {
   width: 100%;
   border-collapse: collapse;
   margin: 0 auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+.designer-dashboard :is(th, td) {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: center;
 }
 
-th {
+.designer-dashboard th {
   background-color: #f4f4f4;
   font-weight: bold;
 }
 
-tr:nth-child(even) {
+.designer-dashboard tr:nth-child(even) {
   background-color: #fafafa;
 }
 
@@ -44,15 +44,15 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 
-.complete-btn {
+.designer-dashboard .complete-btn {
   padding: 5px 10px;
   background-color: #4caf50;
-  color: white;
+  color: var(--sc-bg);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.complete-btn:hover {
+.designer-dashboard .complete-btn:hover {
   background-color: #45a049;
 }

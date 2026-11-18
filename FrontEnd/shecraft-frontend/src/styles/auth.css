@@ -17,11 +17,11 @@
   margin: 80px auto 40px auto;
   border-radius: 20px;
   text-align: center;
-  border: 1px solid #ffd90046;
+  border: 1px solid var(--sc-lavender);
 }
 
 .auth-container h1 {
-  color:#ffd9005e;
+  color:var(--sc-bg-soft);
   margin-bottom: 20px;
   font-size: 28px;
 }
@@ -31,14 +31,14 @@
   padding:12px;
   margin:10px 0;
   border-radius:25px;
-  border:1px solid #796e2b;
+  border:1px solid var(--sc-lavender);
   background: rgba(255,255,255,0.1);
-  color:#655706;
+  color:var(--sc-bg);
 }
 
 .auth-container input:focus {
   outline:none;
-  border:2px solid #87740b56;
+  border:2px solid var(--sc-lavender);
 }
 
 .auth-container button {
@@ -47,7 +47,7 @@
   border-radius:25px;
   border:none;
   background:#222;
-  color:#6f60080a;
+  color:var(--sc-bg);
   font-size:17px;
   cursor:pointer;
   transition:0.3s ease;

@@ -2,9 +2,9 @@
 
 .ear-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f4f9 0%, #ece7ef 50%, #e8dff0 100%);
+  background: linear-gradient(135deg, var(--sc-lavender-pale) 0%, #ece7ef 50%, #e8dff0 100%);
   padding: 3rem 2rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
 }
 
 /* ========== HERO / INITIAL TYPE SELECTION ========== */
@@ -17,21 +17,21 @@
 .ear-title {
   font-size: 3.5rem;
   font-weight: 600;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
 }
 
 .ear-subtitle {
   font-size: 1.3rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-weight: 400;
   letter-spacing: 0.05em;
 }
 
 .ear-typeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   gap: 2.5rem;
   max-width: 900px;
   margin: 0 auto;
@@ -39,7 +39,7 @@
 
 .ear-typeCard {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 20px;
   padding: 2rem;
   cursor: pointer;
@@ -50,7 +50,7 @@
 .ear-typeCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(155, 89, 182, 0.2);
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
 }
 
 .ear-typeImg {
@@ -59,7 +59,7 @@
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  background: #f8f4f9;
+  background: var(--sc-lavender-pale);
 }
 
 .ear-typeImg img {
@@ -70,14 +70,14 @@
 
 .ear-typeCard h3 {
   font-size: 2rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .ear-typeCard p {
   font-size: 1.1rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-weight: 400;
 }
 
@@ -95,14 +95,14 @@
 
 .ear-header h2 {
   font-size: 2.8rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .ear-headerSub {
   font-size: 1.15rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-weight: 400;
 }
 
@@ -125,7 +125,7 @@
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(155, 89, 182, 0.15);
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
 }
 
 .ear-previewTop {
@@ -136,8 +136,8 @@
 }
 
 .ear-badge {
-  background: linear-gradient(135deg, #9B59B6, #D2B4DE);
-  color: white;
+  background: linear-gradient(135deg, var(--sc-purple-orchid), var(--sc-lavender));
+  color: var(--sc-bg);
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -147,8 +147,8 @@
 }
 
 .ear-chip {
-  background: #f8f4f9;
-  color: #4A235A;
+  background: var(--sc-lavender-pale);
+  color: var(--sc-purple-deep);
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -168,7 +168,7 @@
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #f8f4f9;
+  background: var(--sc-lavender-pale);
   margin-bottom: 2rem;
 }
 
@@ -182,12 +182,12 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: #f8f4f9;
+  background: var(--sc-lavender-pale);
   height: 180px;
 }
 
 .ear-imageWrapSoft {
-  background: linear-gradient(135deg, #f8f4f9, #EBDEF0);
+  background: linear-gradient(135deg, var(--sc-lavender-pale), var(--sc-border-lavender));
 }
 
 .ear-mainImg {
@@ -201,7 +201,7 @@
   top: 10px;
   left: 10px;
   background: rgba(74, 35, 90, 0.85);
-  color: white;
+  color: var(--sc-bg);
   padding: 0.3rem 0.8rem;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -239,7 +239,7 @@
 
 .ear-colorBadgeText {
   font-size: 0.85rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
 }
 
@@ -254,18 +254,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0;
-  border-bottom: 1px solid #EBDEF0;
+  border-bottom: 1px solid var(--sc-border-lavender);
 }
 
 .ear-row span {
   font-size: 0.95rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-weight: 500;
 }
 
 .ear-row strong {
   font-size: 1rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
 }
 
@@ -276,7 +276,7 @@
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(155, 89, 182, 0.15);
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
 }
 
 .ear-section {
@@ -286,7 +286,7 @@
 .ear-label {
   display: block;
   font-size: 1.3rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
@@ -294,7 +294,7 @@
 
 .ear-help {
   font-size: 0.95rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   margin-top: 0.5rem;
   font-style: italic;
 }
@@ -309,39 +309,39 @@
 
 .ear-monthBtn {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 0.8rem 0.5rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   cursor: pointer;
   transition: all 0.25s ease;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
 }
 
 .ear-monthBtn:hover {
-  background: #f8f4f9;
-  border-color: #D2B4DE;
+  background: var(--sc-lavender-pale);
+  border-color: var(--sc-lavender);
   transform: translateY(-2px);
 }
 
 .ear-monthBtn.isActive {
-  background: linear-gradient(135deg, #9B59B6, #D2B4DE);
-  border-color: #9B59B6;
-  color: white;
+  background: linear-gradient(135deg, var(--sc-purple-orchid), var(--sc-lavender));
+  border-color: var(--sc-purple-orchid);
+  color: var(--sc-bg);
   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
 }
 
 /* ========== COLOR GRID ========== */
 
 .ear-lockCard {
-  background: #f8f4f9;
-  border: 2px dashed #D2B4DE;
+  background: var(--sc-lavender-pale);
+  border: 2px dashed var(--sc-lavender);
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -354,7 +354,7 @@
 
 .ear-colorBtn {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
   cursor: pointer;
@@ -366,14 +366,14 @@
 }
 
 .ear-colorBtn:hover {
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(155, 89, 182, 0.2);
 }
 
 .ear-colorBtn.isActive {
-  border-color: #9B59B6;
-  background: #f8f4f9;
+  border-color: var(--sc-purple-orchid);
+  background: var(--sc-lavender-pale);
   box-shadow: 0 6px 16px rgba(155, 89, 182, 0.25);
 }
 
@@ -387,7 +387,7 @@
 
 .ear-colorText {
   font-size: 0.95rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
   text-align: center;
 }
@@ -402,7 +402,7 @@
 
 .ear-cutCard {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
   cursor: pointer;
@@ -414,14 +414,14 @@
 }
 
 .ear-cutCard:hover {
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(155, 89, 182, 0.2);
 }
 
 .ear-cutCard.isActive {
-  border-color: #9B59B6;
-  background: #f8f4f9;
+  border-color: var(--sc-purple-orchid);
+  background: var(--sc-lavender-pale);
   box-shadow: 0 6px 16px rgba(155, 89, 182, 0.25);
 }
 
@@ -434,7 +434,7 @@
 
 .ear-cutName {
   font-size: 0.95rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
 }
 
@@ -448,7 +448,7 @@
 
 .ear-metalBtn {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 0.8rem 1.5rem;
   cursor: pointer;
@@ -461,14 +461,14 @@
 }
 
 .ear-metalBtn:hover {
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
 }
 
 .ear-metalBtn.isActive {
-  border-color: #9B59B6;
-  background: #f8f4f9;
+  border-color: var(--sc-purple-orchid);
+  background: var(--sc-lavender-pale);
   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.25);
 }
 
@@ -482,9 +482,9 @@
 
 .ear-metalName {
   font-size: 1rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
 }
 
 /* ========== BACKING GRID ========== */
@@ -497,28 +497,28 @@
 
 .ear-backingBtn {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.25s ease;
   font-size: 0.95rem;
-  color: #9B59B6;
+  color: var(--sc-purple-orchid);
   font-weight: 600;
   text-align: center;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
 }
 
 .ear-backingBtn:hover {
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
   transform: translateY(-2px);
-  background: #f8f4f9;
+  background: var(--sc-lavender-pale);
 }
 
 .ear-backingBtn.isActive {
-  background: linear-gradient(135deg, #9B59B6, #D2B4DE);
-  border-color: #9B59B6;
-  color: white;
+  background: linear-gradient(135deg, var(--sc-purple-orchid), var(--sc-lavender));
+  border-color: var(--sc-purple-orchid);
+  color: var(--sc-bg);
   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
 }
 
@@ -532,7 +532,7 @@
 
 .ear-styleCard {
   background: white;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1.2rem;
   cursor: pointer;
@@ -544,14 +544,14 @@
 }
 
 .ear-styleCard:hover {
-  border-color: #D2B4DE;
+  border-color: var(--sc-lavender);
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(155, 89, 182, 0.2);
 }
 
 .ear-styleCard.isActive {
-  border-color: #9B59B6;
-  background: #f8f4f9;
+  border-color: var(--sc-purple-orchid);
+  background: var(--sc-lavender-pale);
   box-shadow: 0 8px 20px rgba(155, 89, 182, 0.3);
 }
 
@@ -560,12 +560,12 @@
   height: 160px;
   object-fit: cover;
   border-radius: 8px;
-  background: #f8f4f9;
+  background: var(--sc-lavender-pale);
 }
 
 .ear-styleName {
   font-size: 1rem;
-  color: #4A235A;
+  color: var(--sc-purple-deep);
   font-weight: 600;
   text-align: center;
 }
@@ -575,23 +575,23 @@
 .ear-textInput {
   width: 100%;
   padding: 1rem 1.5rem;
-  border: 2px solid #EBDEF0;
+  border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   font-size: 1rem;
-  color: #4A235A;
-  font-family: "Cormorant Garamond", serif;
+  color: var(--sc-purple-deep);
+  font-family: var(--sc-font-display);
   background: white;
   transition: all 0.25s ease;
 }
 
 .ear-textInput:focus {
   outline: none;
-  border-color: #9B59B6;
+  border-color: var(--sc-purple-orchid);
   box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
 }
 
 .ear-textInput::placeholder {
-  color: #D2B4DE;
+  color: var(--sc-lavender);
 }
 
 /* ========== NEXT BUTTON ========== */
@@ -599,15 +599,15 @@
 .ear-next {
   width: 100%;
   padding: 1.2rem;
-  background: linear-gradient(135deg, #9B59B6, #D2B4DE);
-  color: white;
+  background: linear-gradient(135deg, var(--sc-purple-orchid), var(--sc-lavender));
+  color: var(--sc-bg);
   border: none;
   border-radius: 12px;
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-top: 1rem;
@@ -619,7 +619,7 @@
 }
 
 .ear-next:disabled {
-  background: #D2B4DE;
+  background: var(--sc-lavender);
   cursor: not-allowed;
   opacity: 0.6;
 }

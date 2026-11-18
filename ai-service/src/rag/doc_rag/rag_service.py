@@ -419,9 +419,10 @@ class RagService:
         *,
         max_tokens: int = 2048,
         public_base_url: str = "http://host.docker.internal:8001",
+        jewelry: bool = False,
     ) -> dict[str, Any]:
-        mode = self.classify_intent(query)
-        logger.info("Intent: %s | query=%r", mode, query[:80])
+        mode = "text" if jewelry else self.classify_intent(query)
+        logger.info("Intent: %s", mode)
 
         if mode == "visual":
             image_contexts = self.retrieve_images(query)
@@ -435,6 +436,7 @@ class RagService:
             text_contexts,
             image_contexts=image_contexts or None,
             max_tokens=max_tokens,
+            jewelry=jewelry,
         )
         base = public_base_url.rstrip("/")
         cards = self.build_display_cards(text_contexts, image_contexts, base)

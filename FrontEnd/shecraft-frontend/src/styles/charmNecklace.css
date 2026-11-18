@@ -1,19 +1,8 @@
 /* ---------- COLOR PALETTE ---------- */
-:root {
-  --sc-bg: #ffffff;
-  --sc-bg-soft: #f6e9ff;
-  --sc-bg-blush: #fdeef7;
-  --sc-text-main: #5a3d7a;
-  --sc-text-muted: #7a6b85;
-  --sc-accent: #bfadd7;
-  --sc-border: #efdef8;
-  --sc-shadow: 0 12px 30px rgba(90, 61, 122, 0.16);
-}
-
 .sc-page {
   background: var(--sc-bg);
   color: var(--sc-text-main);
-  font-family: "Nunito", sans-serif;
+  font-family: var(--sc-font-body);
 }
 
 .sc-container {
@@ -22,13 +11,13 @@
   padding: 32px 0 50px;
 }
 
-.sc-header {
+.sc-page .sc-header {
   text-align: center;
   padding: 18px 0 26px;
 }
 
 .sc-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 2.4rem;
   letter-spacing: 0.06em;
   margin: 0 0 6px;
@@ -48,7 +37,7 @@
 }
 
 .sc-preview-card {
-  background: linear-gradient(180deg, var(--sc-bg-soft), #fff);
+  background: linear-gradient(180deg, var(--sc-bg-soft), var(--sc-bg));
   border: 1px solid var(--sc-border);
   border-radius: 18px;
   box-shadow: var(--sc-shadow);
@@ -108,7 +97,7 @@
 }
 
 .sc-selected-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
@@ -127,7 +116,7 @@
 .sc-selected-item {
   position: relative;
   border: 1px solid var(--sc-border);
-  background: #fff;
+  background: var(--sc-bg);
   border-radius: 14px;
   padding: 10px;
 }
@@ -177,7 +166,7 @@
 }
 
 .sc-letter-text {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 1.15rem;
   letter-spacing: 0.14em;
 }
@@ -189,7 +178,7 @@
 }
 
 .sc-section {
-  background: #fff;
+  background: var(--sc-bg);
   border: 1px solid var(--sc-border);
   border-radius: 16px;
   padding: 14px 14px;
@@ -204,7 +193,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 1.2rem;
 }
 
@@ -219,7 +208,7 @@
 }
 
 .sc-panel {
-  background: #fff;
+  background: var(--sc-bg);
   border: 1px solid var(--sc-border);
   border-radius: 18px;
   box-shadow: var(--sc-shadow);
@@ -237,7 +226,7 @@
 }
 
 .sc-panel-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   font-size: 1.45rem;
   margin: 0 0 12px;
 }
@@ -252,7 +241,7 @@
   border: 1px solid var(--sc-border);
   border-radius: 16px;
   padding: 10px;
-  background: linear-gradient(180deg, var(--sc-bg-soft), #fff);
+  background: linear-gradient(180deg, var(--sc-bg-soft), var(--sc-bg));
   cursor: pointer;
 }
 
@@ -320,7 +309,7 @@
   padding: 10px 12px;
   border-radius: 999px;
   border: 1px solid var(--sc-border);
-  background: #fff;
+  background: var(--sc-bg);
   cursor: pointer;
   color: var(--sc-text-main);
   letter-spacing: 0.07em;
@@ -340,7 +329,7 @@
 .sc-charm {
   border: 1px solid var(--sc-border);
   border-radius: 16px;
-  background: #fff;
+  background: var(--sc-bg);
   padding: 10px;
   cursor: pointer;
   transition: transform 140ms ease;
@@ -398,7 +387,7 @@
   border: none;
   border-radius: 999px;
   background: var(--sc-accent);
-  color: #fff;
+  color: var(--sc-bg);
   cursor: pointer;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -408,7 +397,7 @@
 
 .sc-confirm:hover,
 .sc-next-btn:hover {
-  background: #9d8cb7;
+  background: var(--sc-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -459,7 +448,7 @@
   object-fit: contain;       /* NEVER crop */
   display: block;
   border-radius: 14px;
-  background: #fff;
+  background: var(--sc-bg);
   border: 1px solid rgba(0,0,0,.06);
 }
 
@@ -470,7 +459,7 @@
   object-fit: contain;
   display: block;
   border-radius: 14px;
-  background: #fff;
+  background: var(--sc-bg);
   border: 1px solid rgba(0,0,0,.06);
   margin-bottom: 8px;
 }
@@ -484,4 +473,37 @@
   margin: 14px auto 0;
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,.06);
+}
+
+.nk-earring-charm .nk-customizer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 2rem);
+}
+
+.nk-earring-charm :is(.nk-preview, .nk-controls) {
+  min-width: 0;
+}
+
+.nk-earring-charm .nk-styleRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 6.5rem), 1fr));
+  gap: var(--sc-space-2);
+}
+
+.nk-earring-charm .nk-styleRow img {
+  display: block;
+  width: 100%;
+  height: 5rem;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .nk-earring-charm .nk-customizer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nk-earring-charm .nk-panel {
+    width: min(100%, 430px);
+  }
 }

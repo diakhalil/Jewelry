@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 /* =======================
@@ -42,13 +42,12 @@ import EditAccountPage from "./pages/EditAccountPage";
 import CartPage from "./pages/CartPage";
 import DesignerDashboard from "./pages/DesignerDashboard";
 import AccountOrdersPage from "./pages/AccountOrdersPage";
+import SheCraftChat from "./components/SheCraftChat";
 
 
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState("customer"); // "customer" | "designer"
 
   const openLogin = () => setShowLogin(true);
   const closeLogin = () => setShowLogin(false);
@@ -57,27 +56,10 @@ function App() {
     <Router>
       <div className="page-container">
         {/* ================= GLOBAL HEADER ================= */}
-        <Header openLogin={openLogin} isLoggedIn={isLoggedIn} />
+        <Header openLogin={openLogin} />
 
         {/* ================= LOGIN POPUP ================= */}
-        {showLogin && (
-          <div
-            className="login-modal-overlay"
-            onClick={closeLogin}
-            role="presentation"
-          >
-            <div
-              className="login-modal"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <LoginPage
-                closePopup={closeLogin}
-                setIsLoggedIn={setIsLoggedIn}
-                setUserRole={setUserRole}
-              />
-            </div>
-          </div>
-        )}
+        {showLogin && <LoginPage closePopup={closeLogin} />}
 
         {/* ================= MAIN ROUTES ================= */}
         <main className="main-content">
@@ -91,6 +73,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
 
             {/* ACCOUNT */}
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/account/edit" element={<EditAccountPage />} />
             <Route path="/designer/dashboard" element={<DesignerDashboard />} />
@@ -100,15 +83,7 @@ function App() {
 
 
             {/* CART */}
-            <Route
-              path="/cart"
-              element={
-                <CartPage
-                  isLoggedIn={isLoggedIn}
-                  userRole={userRole}
-                />
-              }
-            />
+            <Route path="/cart" element={<CartPage />} />
 
             {/* SHOPPING */}
             <Route path="/orderpage" element={<OrderPage />} />
@@ -167,6 +142,7 @@ function App() {
 
         {/* ================= FOOTER ================= */}
         <Footer />
+        <SheCraftChat />
       </div>
     </Router>
   );

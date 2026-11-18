@@ -1,206 +1,162 @@
-
-import React, { useState, useEffect } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
 import { api } from "../api/client";
-import useAuth from "../context/AuthContext"; 
+import useAuth from "../context/AuthContext";
+import "../styles/login.css";
 
 export default function LoginPage({ closePopup }) {
   const navigate = useNavigate();
-  const { login } = useAuth(); 
-
+  const { login } = useAuth();
+  const dialogRef = useRef(null);
+  const titleId = useId();
   const [activeTab, setActiveTab] = useState("login");
   const [role, setRole] = useState("customer");
-  const [branch, setBranch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const signingUp = activeTab === "signup";
+  const designer = role === "designer";
 
- 
   useEffect(() => {
-    const handler = (e) => {
-      if (e.key === "Escape") closePopup?.();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [closePopup]);
+    const dialog = dialogRef.current;
+    if (!dialog.open) dialog.showModal();
+  }, []);
 
- 
-  useEffect(() => {
-    setBranch("");
-  }, [role, activeTab]);
+  function dismiss() {
+    if (closePopup) closePopup();
+    else navigate("/", { replace: true });
+  }
 
-  async function handleSubmit(e, type) {
-    e.preventDefault();
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (loading) return;
+    const fields = new FormData(event.currentTarget);
+    const email = fields.get("email").trim();
+    const password = fields.get("password");
+    const name = fields.get("name")?.trim();
+    const branch = fields.get("branch")?.trim();
+
+    if (signingUp && (!name || (designer && !branch))) {
+      setErrorMessage(!name ? "Enter your name." : "Enter your branch.");
+      return;
+    }
+
     setErrorMessage("");
     setLoading(true);
 
-    const form = e.target;
-    const name = form.elements.name?.value.trim();
-    const email = form.elements.email?.value.trim();
-    const password = form.elements.password?.value.trim();
-
-    if (!email || !password) {
-      setErrorMessage("Please fill in all fields.");
-      setLoading(false);
-      return;
-    }
-
-    if (type === "signup" && !name) {
-      setErrorMessage("Please enter your name.");
-      setLoading(false);
-      return;
-    }
-
-    if (type === "signup" && role === "designer" && !branch.trim()) {
-      setErrorMessage("Please enter your branch.");
-      setLoading(false);
-      return;
-    }
-
     try {
       let data;
-
-      if (type === "login") {
+      if (!signingUp) {
         data = await api.login({ role, email, password });
+      } else if (designer) {
+        data = await api.signupDesigner({ name, branch, email, password });
       } else {
-        data =
-          role === "customer"
-            ? await api.signupCustomer({ name, email, password })
-            : await api.signupDesigner({ name, email, password, branch });
+        data = await api.signupCustomer({ name, email, password });
       }
 
-      
-      login({
-        role,
-        user: data.user,
-      });
-      if (role === "designer") {
-  localStorage.setItem("designerID", data.user.designerID || data.user.id);
-}
-      
+      if (!data.token || data.user?.role !== role || !data.user.id) {
+        throw new Error("SheCraft could not confirm your account. Please try again.");
+      }
+
+      login({ role, user: data.user });
       closePopup?.();
-
-      
-      navigate(role === "designer" ? "/designer/dashboard" : "/orderpage");
-
-    } catch (err) {
-      setErrorMessage(err.message || "Authentication failed");
+      navigate(designer ? "/designer/dashboard" : "/orderpage", { replace: !closePopup });
+    } catch (error) {
+      setErrorMessage(error instanceof TypeError
+        ? "Could not reach SheCraft. Please try again."
+        : error.message || "Authentication failed. Please try again.");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="login-overlay">
-      <div className="login-modal">
-        <span className="close-icon" onClick={closePopup}>
-          ×
-        </span>
-
-        <div className="tab-header">
+    <dialog
+      className="sc-login"
+      ref={dialogRef}
+      aria-labelledby={titleId}
+      onClose={dismiss}
+      onCancel={(event) => { if (loading) event.preventDefault(); }}
+      onClick={(event) => {
+        if (!loading && event.target === event.currentTarget) event.currentTarget.close();
+      }}
+    >
+      <div className="sc-login-content">
+        <header className="sc-login-heading">
+          <h1 id={titleId}>{signingUp ? "Create your account" : "Welcome to SheCraft"}</h1>
           <button
-            className={`tab ${activeTab === "login" ? "active" : ""}`}
-            onClick={() => setActiveTab("login")}
             type="button"
+            className="sc-login-close"
+            aria-label="Close login"
+            disabled={loading}
+            onClick={() => dialogRef.current.close()}
           >
-            Login
+            <X size={20} aria-hidden="true" />
           </button>
+        </header>
 
-          <button
-            className={`tab ${activeTab === "signup" ? "active" : ""}`}
-            onClick={() => setActiveTab("signup")}
-            type="button"
-          >
-            Sign Up
-          </button>
+        <div className="sc-login-tabs" role="group" aria-label="Account access">
+          {[["login", "Log in"], ["signup", "Sign up"]].map(([tab, label]) => (
+            <button
+              key={tab}
+              type="button"
+              aria-pressed={activeTab === tab}
+              disabled={loading}
+              onClick={() => { setActiveTab(tab); setErrorMessage(""); }}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
-        <div className="login-layout">
-          <div className="role-column">
-            <h3 className="role-title">Continue as</h3>
-
-            <button
-              type="button"
-              className={`role-pill ${role === "customer" ? "active" : ""}`}
-              onClick={() => setRole("customer")}
-            >
-              Customer
-            </button>
-
-            <button
-              type="button"
-              className={`role-pill ${role === "designer" ? "active" : ""}`}
-              onClick={() => setRole("designer")}
-            >
-              Designer
-            </button>
-          </div>
-
-          <div className="form-column">
-            {activeTab === "login" && (
-              <form onSubmit={(e) => handleSubmit(e, "login")}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="form-input"
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="form-input"
-                />
-                <button className="primary-btn" disabled={loading}>
-                  Login
-                </button>
-              </form>
-            )}
-
-            {activeTab === "signup" && (
-              <form onSubmit={(e) => handleSubmit(e, "signup")}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className="form-input"
-                />
-
-                {role === "designer" && (
+        <form key={activeTab} onSubmit={handleSubmit} className="sc-login-form">
+          <fieldset className="sc-login-roles" disabled={loading}>
+            <legend>Account type</legend>
+            <div>
+              {[["customer", "Customer"], ["designer", "Designer"]].map(([value, label]) => (
+                <label key={value}>
                   <input
-                    type="text"
-                    name="branch"
-                    placeholder="Branch"
-                    className="form-input"
-                    value={branch}
-                    onChange={(e) => setBranch(e.target.value)}
+                    type="radio"
+                    name="role"
+                    value={value}
+                    checked={role === value}
+                    onChange={() => { setRole(value); setErrorMessage(""); }}
                   />
-                )}
+                  <span>{label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="form-input"
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="form-input"
-                />
-                <button className="primary-btn" disabled={loading}>
-                  Sign Up
-                </button>
-              </form>
+          <fieldset className="sc-login-fields" disabled={loading}>
+            {signingUp && (
+              <label>
+                Full name
+                <input type="text" name="name" autoComplete="name" required />
+              </label>
             )}
+            {signingUp && designer && (
+              <label>
+                Branch
+                <input type="text" name="branch" required />
+              </label>
+            )}
+            <label>
+              Email
+              <input type="email" name="email" autoComplete={signingUp ? "email" : "username"} required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" autoComplete={signingUp ? "new-password" : "current-password"} required />
+            </label>
+          </fieldset>
 
-            {errorMessage && (
-              <p className="error-message">{errorMessage}</p>
-            )}
-          </div>
-        </div>
+          {errorMessage && <p className="sc-login-error" role="alert">{errorMessage}</p>}
+          <button className="sc-button sc-login-submit" type="submit" disabled={loading}>
+            {loading ? (signingUp ? "Creating account…" : "Logging in…") : (signingUp ? "Create account" : "Log in")}
+          </button>
+        </form>
       </div>
-    </div>
+    </dialog>
   );
 }

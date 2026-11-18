@@ -1,26 +1,30 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-
-  // Load from localStorage on refresh
-  useEffect(() => {
-    const stored = localStorage.getItem("shecraft_user");
-    if (stored) {
-      setUser(JSON.parse(stored));
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("shecraft_user"));
+    } catch {
+      return null;
     }
-  }, []);
+  });
 
   function login(authData) {
     localStorage.setItem("shecraft_user", JSON.stringify(authData));
+    if (authData.role === "designer") {
+      localStorage.setItem("designerID", authData.user.designerID || authData.user.id);
+    } else {
+      localStorage.removeItem("designerID");
+    }
     setUser(authData);
   }
 
   function logout() {
     localStorage.removeItem("shecraft_user");
     localStorage.removeItem("authToken");
+    localStorage.removeItem("designerID");
     setUser(null);
   }
 

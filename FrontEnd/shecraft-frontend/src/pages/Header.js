@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/header.css";
 
 import logoImg from "../assets/logo.png";
@@ -23,14 +23,9 @@ const Header = ({ openLogin }) => {
     <header className="sc-header">
       <div className="sc-left">
         {/* LOGO */}
-        <button
-          type="button"
-          className="logo-button"
-          onClick={() => navigate("/")}
-          aria-label="SheCraft Home"
-        >
+        <Link to="/" className="logo-button" aria-label="SheCraft Home">
           <img src={logoImg} alt="SheCraft logo" className="logo-img" />
-        </button>
+        </Link>
 
         {/* CART */}
         <button
@@ -70,26 +65,14 @@ const Header = ({ openLogin }) => {
       </div>
 
       {/* NAV LINKS */}
-      <nav className="sc-nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About Us</Link>
+      <nav className="sc-nav-links" aria-label="Main navigation">
+        <NavLink to="/" end>Home</NavLink>
+        <NavLink to="/about">About Us</NavLink>
 
         {!isLoggedIn ? (
-          <span
-            className="login-header-link"
-            onClick={openLogin}
-            style={{ cursor: "pointer" }}
-          >
-            Login
-          </span>
+          <button type="button" className="sc-header-login" aria-haspopup="dialog" onClick={openLogin}>Log in</button>
         ) : (
-          <span
-            className="login-header-link"
-            onClick={() => navigate("/account")}
-            style={{ cursor: "pointer" }}
-          >
-            My Account
-          </span>
+          <NavLink to="/account">My Account</NavLink>
         )}
       </nav>
     </header>

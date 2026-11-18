@@ -161,6 +161,20 @@ http://localhost:3000
 
 ✅ Use .env.example
 
+## Ask SheCraft
+
+Open the **Ask SheCraft** launcher in the React storefront. The widget sends one question per turn to Express at `POST /api/chat`. Express forwards it to the Python retrieval service at `POST /v1/ask` and returns the answer and text references. Chat history stays in the open storefront session. Each question is retrieved independently.
+
+The Express proxy uses `http://127.0.0.1:8001` by default. To use another prepared instance of the RAG service, set `RAG_API_URL` in `BackEnd/.env` and restart Express. Keep the Gemini key in the Python service environment.
+
+Starting the existing RAG service also requires its Python runtime dependencies, processed jewelry documents and embeddings, local models, and the configured Qdrant collection. With those in place, run this from the repository root.
+
+```powershell
+python -m uvicorn doc_rag.api:app --app-dir ai-service/src/rag --host 127.0.0.1 --port 8001
+```
+
+Check `http://127.0.0.1:8001/health` before asking a question. When retrieval is unavailable, the widget shows a retry action.
+
 ## API Routes🔗
 Base URL:
 ## 🔗 API Routes

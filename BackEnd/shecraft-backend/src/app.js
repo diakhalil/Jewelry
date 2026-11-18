@@ -13,6 +13,7 @@ const designerRoutes = require("./routes/designerRoutes");
 const charmRoutes = require("./routes/charmRoutes");
 const materialRoutes = require("./routes/materialRoutes");
 const stoneRoutes = require("./routes/stoneRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const { requestLogger } = require("./middleware");
 const pool = require("./config/db");
 
@@ -47,6 +48,7 @@ app.use("/api/designers", designerRoutes);
 app.use("/api/charms", charmRoutes);
 app.use("/api/materials", materialRoutes);
 app.use("/api/stones", stoneRoutes);
+app.use("/api/chat", chatRoutes);
 app.use("/api/accessory-instance", require("./routes/accessoryInstanceRoutes"));
 
 // ---------- HEALTH ----------

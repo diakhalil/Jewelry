@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+import logging
 import time
 import uuid
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 
 from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel, Field
@@ -22,16 +23,7 @@ PUBLIC_BASE_URL = os.getenv(
 )
 
 
-import sys
-
-REPO_ROOT = Path(__file__).resolve().parents[4]
-SHARED = REPO_ROOT / "logs" / "shared"
-if str(SHARED) not in sys.path:
-    sys.path.insert(0, str(SHARED))
-
-from logging_setup import setup_logging
-
-logger = setup_logging("gatherly.rag", also_console=True)
+logger = logging.getLogger("gatherly.rag")
 
 
 generation = importlib.import_module("doc_rag.11_generation")
@@ -58,6 +50,7 @@ class ChatCompletionRequest(BaseModel):
 class AskRequest(BaseModel):
     question: str
     max_tokens: Optional[int] = 2048
+    experience: Literal["shecraft"] | None = None
 
 class AskOpsRequest(BaseModel):
     question: str
@@ -121,6 +114,7 @@ def ask(body: AskRequest) -> dict[str, Any]:
         question,
         max_tokens=body.max_tokens or 2048,
         public_base_url=PUBLIC_BASE_URL,
+        jewelry=body.experience == "shecraft",
     )
     text_sources = []
     for s in (result.get("sources") or [])[:8]:

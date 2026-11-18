@@ -2,28 +2,12 @@
    Necklace — Pandora-style luxury (CLEAN)
    =============================== */
 
-:root{
-  --bg:#f6f4f7;
-  --text:#2d1336;
-  --muted:#6f5a76;
-
-  --card:#ffffff;
-  --soft:#fbfafc;
-  --border:#e6ddea;
-
-  --purple:#6b1b7c;
-  --purpleDark:#4f0a57;
-
-  --shadow: 0 10px 30px rgba(18,8,22,.10);
-  --shadow2: 0 12px 24px rgba(107,27,124,.14);
-}
-
 /* -------- PAGE -------- */
 .nk-page{
   min-height:100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family:"Poppins",sans-serif;
+  background: var(--sc-bg-neutral);
+  color: var(--sc-text-deep);
+  font-family: var(--sc-font-body);
   padding:22px;
   overflow: visible;
 }
@@ -46,7 +30,7 @@
 
 .nk-subtitle{
   margin: 8px 0 0;
-  color: var(--muted);
+  color: var(--sc-text-subtle);
   font-weight:600;
 }
 
@@ -65,9 +49,9 @@
 }
 
 .nk-previewCard{
-  background: var(--card);
+  background: var(--sc-bg);
   border-radius: 22px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--sc-shadow-card);
   border: 1px solid rgba(0,0,0,.04);
   padding: 18px;
 }
@@ -82,7 +66,7 @@
 .nk-badge{
   font-weight: 900;
   font-size: 12px;
-  color: var(--purpleDark);
+  color: var(--sc-purple-dark);
   background: rgba(79,10,87,.08);
   padding: 6px 10px;
   border-radius: 999px;
@@ -91,9 +75,9 @@
 .nk-chip{
   font-weight: 800;
   font-size: 12px;
-  color: var(--text);
-  background: var(--soft);
-  border: 1px solid var(--border);
+  color: var(--sc-text-deep);
+  background: var(--sc-bg-inset);
+  border: 1px solid var(--sc-border-neutral);
   padding: 6px 10px;
   border-radius: 999px;
 }
@@ -124,7 +108,7 @@
 .nk-nameText{
   font-weight: 900;
   font-size: 22px;
-  color: var(--purpleDark);
+  color: var(--sc-purple-dark);
   letter-spacing:.3px;
 }
 
@@ -143,7 +127,7 @@
 }
 
 .nk-metaRow span{
-  color: var(--muted);
+  color: var(--sc-text-subtle);
   font-weight: 700;
   font-size: 13px;
 }
@@ -156,9 +140,9 @@
 .nk-controls{
   flex: 0.9;
   min-width: 360px;
-  background: var(--card);
+  background: var(--sc-bg);
   border-radius: 22px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--sc-shadow-card);
   padding: 18px;
   display:flex;
   flex-direction:column;
@@ -181,21 +165,21 @@
   width:100%;
   padding: 11px 12px;
   border-radius: 14px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--sc-border-neutral);
   font-size: 14px;
   outline:none;
   transition: box-shadow .15s, border-color .15s;
-  background:#fff;
+  background:var(--sc-bg);
 }
 
 .nk-input:focus{
-  border-color: var(--purple);
+  border-color: var(--sc-purple);
   box-shadow: 0 0 0 3px rgba(107,27,124,.12);
 }
 
 .nk-help{
   margin: 0;
-  color: var(--muted);
+  color: var(--sc-text-subtle);
   font-size: 12.5px;
   font-weight: 650;
 }
@@ -209,8 +193,8 @@
 }
 
 .nk-metalBtn{
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 14px;
   padding: 10px 12px;
   display:flex;
@@ -226,8 +210,8 @@
 }
 
 .nk-metalBtn.isActive{
-  border-color: var(--purple);
-  box-shadow: var(--shadow2);
+  border-color: var(--sc-purple);
+  box-shadow: var(--sc-shadow-action);
 }
 
 .nk-metalDot{
@@ -245,8 +229,8 @@
 /* open-panel rows */
 .nk-rowBtn{
   width:100%;
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 16px;
   padding: 12px 12px;
   cursor:pointer;
@@ -263,8 +247,8 @@
 }
 
 .nk-rowBtn.open{
-  border-color: var(--purple);
-  box-shadow: var(--shadow2);
+  border-color: var(--sc-purple);
+  box-shadow: var(--sc-shadow-action);
 }
 
 .nk-rowLeft{
@@ -282,15 +266,15 @@
 .nk-rowValue{
   font-weight: 750;
   font-size: 12.5px;
-  color: var(--muted);
+  color: var(--sc-text-subtle);
 }
 
 /* chevron */
 .nk-chevron{
   width: 10px;
   height: 10px;
-  border-right: 2px solid var(--purpleDark);
-  border-bottom: 2px solid var(--purpleDark);
+  border-right: 2px solid var(--sc-purple-dark);
+  border-bottom: 2px solid var(--sc-purple-dark);
   transform: rotate(-45deg);
   margin-left: 10px;
 }
@@ -299,8 +283,8 @@
 .nk-next{
   margin-top: 6px;
   width: 100%;
-  background: var(--purple);
-  color: #fff;
+  background: var(--sc-purple);
+  color: var(--sc-bg);
   border: none;
   border-radius: 16px;
   padding: 14px;
@@ -323,7 +307,7 @@
   right: -460px;
   width: 430px;
   height: 100dvh;                 /* better on mobile than 100vh */
-  background: #fff;
+  background: var(--sc-bg);
   box-shadow: -8px 0 30px rgba(0,0,0,.12);
   z-index: 100;
 
@@ -365,19 +349,19 @@
 
 .nk-panelSub{
   margin: 6px 0 0;
-  color: var(--muted);
+  color: var(--sc-text-subtle);
   font-weight: 650;
   font-size: 13px;
 }
 
 .nk-close{
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 12px;
   padding: 8px 10px;
   cursor:pointer;
   font-weight: 900;
-  color: var(--purpleDark);
+  color: var(--sc-purple-dark);
 }
 
 .nk-panelSectionTitle{
@@ -394,8 +378,8 @@
 }
 
 .nk-cardPick{
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 16px;
   padding: 10px;
   cursor:pointer;
@@ -409,8 +393,8 @@
 }
 
 .nk-cardPick.isActive{
-  border-color: var(--purple);
-  box-shadow: var(--shadow2);
+  border-color: var(--sc-purple);
+  box-shadow: var(--sc-shadow-action);
 }
 
 .nk-cardImg{
@@ -418,7 +402,7 @@
   height: 120px;
   object-fit: cover;
   border-radius: 14px;
-  background:#fff;
+  background:var(--sc-bg);
   border: 1px solid rgba(0,0,0,.06);
 }
 
@@ -436,7 +420,7 @@
 
 .nk-cardText span{
   font-size: 12px;
-  color: var(--muted);
+  color: var(--sc-text-subtle);
   font-weight: 650;
 }
 
@@ -448,8 +432,8 @@
 }
 
 .nk-chainCard{
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 16px;
   padding: 10px;
   cursor:pointer;
@@ -463,15 +447,15 @@
 }
 
 .nk-chainCard.isActive{
-  border-color: var(--purple);
-  box-shadow: var(--shadow2);
+  border-color: var(--sc-purple);
+  box-shadow: var(--sc-shadow-action);
 }
 
 .nk-chainImg{
   width:100%;
   height: 110px;
   object-fit: contain;
-  background:#fff;
+  background:var(--sc-bg);
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,.06);
   margin-bottom: 8px;
@@ -491,13 +475,13 @@
 }
 
 .nk-lengthBtn{
-  border: 1px solid var(--border);
-  background: var(--soft);
+  border: 1px solid var(--sc-border-neutral);
+  background: var(--sc-bg-inset);
   border-radius: 14px;
   padding: 10px 12px;
   font-weight: 950;
   cursor:pointer;
-  color: var(--purpleDark);
+  color: var(--sc-purple-dark);
   transition: transform .12s, box-shadow .12s, border-color .12s;
 }
 
@@ -507,9 +491,9 @@
 }
 
 .nk-lengthBtn.isActive{
-  background: var(--purpleDark);
-  color:#fff;
-  border-color: var(--purpleDark);
+  background: var(--sc-purple-dark);
+  color:var(--sc-bg);
+  border-color: var(--sc-purple-dark);
   box-shadow: 0 12px 22px rgba(79,10,87,.16);
 }
 
@@ -525,7 +509,7 @@
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,.08);
   box-shadow: 0 10px 22px rgba(18,8,22,.08);
-  background:#fff;
+  background:var(--sc-bg);
 }
 
 /* confirm — sticky inside panel */
@@ -533,8 +517,8 @@
   position: sticky;
   bottom: 14px;
   width:100%;
-  background: var(--purple);
-  color:#fff;
+  background: var(--sc-purple);
+  color:var(--sc-bg);
   border:none;
   border-radius: 16px;
   padding: 14px;
@@ -573,7 +557,7 @@
   right: -460px;
   width: 430px;
   height: 100vh;
-  background: #fff;
+  background: var(--sc-bg);
   box-shadow: -8px 0 30px rgba(0,0,0,.12);
   z-index: 100;
 
@@ -600,7 +584,7 @@
 .nk-panelFooter{
   padding: 14px 18px;
   border-top: 1px solid rgba(0,0,0,.08);
-  background: #fff;
+  background: var(--sc-bg);
 }
 
 /* button should NOT be sticky anymore */
@@ -611,8 +595,8 @@
   padding: 14px;
   font-weight: 950;
   cursor: pointer;
-  background: #6b1b7c;
-  color: #fff;
+  background: var(--sc-purple);
+  color: var(--sc-bg);
   box-shadow: 0 14px 30px rgba(107,27,124,.22);
 }
 /* ---------- STEPS ---------- */
@@ -642,7 +626,7 @@
   height:36px;
   border-radius:999px;
   background:#e9e6ee !important;
-  color:#2d1336 !important;
+  color:var(--sc-text-deep) !important;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -652,9 +636,9 @@
 }
 
 .step-box.active .step-number{
-  background:#6b1b7c !important;
-  color:#fff !important;
-  border-color:#4f0a57 !important;
+  background:var(--sc-purple) !important;
+  color:var(--sc-bg) !important;
+  border-color:var(--sc-purple-dark) !important;
   box-shadow:0 10px 22px rgba(107,27,124,.22);
 }
 

@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/necklaceselections.css";
-import Footer from "./Footer";
 
 import nameNecklaceImg from "../assets/necklace/name.png";
 import charmNecklaceImg from "../assets/necklace/charms.png";
@@ -32,23 +31,6 @@ const necklaces = [
 ];
 
 export default function NecklaceSelection() {
-  const navigate = useNavigate();
-
-const handleSelectNecklace = (necklaceType) => {
-  if (necklaceType === "charm") {
-    navigate("/necklaces/charm");
-    return;
-  }
-
-  if (necklaceType === "birthstone") {
-    navigate("/necklaces/birthstone");
-    return;
-  }
-
-
-  navigate("/necklacespage", { state: { necklaceType } });
-};
-
 return (
   <div className="page-wrapper">
     <div className="necklace-selection-page">
@@ -59,16 +41,17 @@ return (
 
       <div className="necklaces-grid">
         {necklaces.map((necklace) => (
-          <div
+          <Link
             key={necklace.id}
             className={`necklace-card ${necklace.theme}`}
-            onClick={() => handleSelectNecklace(necklace.type)}
+            to={necklace.type === "name" ? "/necklacespage" : `/necklaces/${necklace.type}`}
+            state={necklace.type === "name" ? { necklaceType: necklace.type } : undefined}
           >
             <div className="necklace-image-container">
-              <img src={necklace.image} alt={necklace.label} />
+              <img src={necklace.image} alt="" />
             </div>
             <p className="necklace-label">{necklace.label}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

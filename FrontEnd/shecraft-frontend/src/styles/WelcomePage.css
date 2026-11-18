@@ -1,14 +1,4 @@
 /* ---------- COLOR PALETTE ---------- */
-:root {
-  --sc-bg: #ffffff;
-  --sc-bg-soft: #f6e9ff;        /* soft lilac background */
-  --sc-bg-blush: #fdeef7;       /* blush pink */
-  --sc-text-main: #5a3d7a;      /* deep elegant violet */
-  --sc-text-muted: #7a6b85;     /* mauve-gray subtle text */
-  --sc-accent: #bfadd7;         /* lilac accent */
-  --sc-border: #efdef8;         /* soft lilac border */
-}
-
 /* ---------- PAGE STRUCTURE ---------- */
 
 .page-container {
@@ -28,7 +18,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  font-family: "Nunito", sans-serif;
+  font-family: var(--sc-font-body);
   color: var(--sc-text-main);
 }
 
@@ -36,49 +26,21 @@
 .welcome-page h1,
 .welcome-page h2,
 .welcome-page h3 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   color: var(--sc-text-main);
-}
-
-
-/* ---------- QUOTE SECTION (SOFT PINK-LILAC) ---------- */
-
-
-  .quote-section {
-  text-align: center;
-  padding: 45px 20px 30px;
-  background-color: #ffffff !important;
-  border-bottom: 1px solid #f1dff9;  /* soft lilac border */
-
-
-}
-
-.quote-text {
-  font-size: 1.6rem;
-  font-style: italic;
-  color: var(--sc-text-main);
-  opacity: 0.85;
-  margin-bottom: 8px;
-}
-
-.quote-sub {
-  font-size: 0.95rem;
-  color: var(--sc-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
 }
 
 
 /* ---------- HERO SECTION ---------- */
 
 .hero {
-  height: 75vh;
+  min-height: clamp(20rem, 58vh, 38rem);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding-left: 70px;
+  padding-inline: var(--sc-gutter);
   position: relative;
 }
 
@@ -100,10 +62,10 @@
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   letter-spacing: 0.1em;
   margin-bottom: 6px;
-  color: #630960 !important;   /* deep elegant violet */
+  color: var(--sc-purple-ink) !important;   /* deep elegant violet */
 }
 
 
@@ -112,7 +74,7 @@
   font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color:  #630960 !important
+  color:  var(--sc-purple-ink) !important
   
 }
 
@@ -120,16 +82,19 @@
 /* ---------- COLLECTIONS SECTION ---------- */
 
 .collections-section {
-  padding: 55px 60px 80px;
+  box-sizing: border-box;
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 4rem) var(--sc-gutter);
   background-color: var(--sc-bg);
 }
 
-.section-title {
+.collections-section .section-title {
   font-size: 2.2rem;
   margin-bottom: 6px;
 }
 
-.section-subtitle {
+.collections-section .section-subtitle {
   font-size: 1rem;
   color: var(--sc-text-muted);
   margin-bottom: 40px;
@@ -139,8 +104,8 @@
 .collection-row {
   display: flex;
   align-items: center;
-  gap: 45px;
-  margin-bottom: 55px;
+  gap: clamp(1rem, 4vw, 2.75rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .collection-row.reverse {
@@ -150,7 +115,10 @@
 /* IMAGE */
 .collection-image-wrapper {
   flex: 1;
-  border-radius: 18px;
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--sc-radius-card);
+  box-shadow: var(--sc-shadow-card);
   overflow: hidden;
   cursor: pointer;
 
@@ -164,8 +132,9 @@
 }
 
 .collection-image {
+  display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -191,21 +160,13 @@
 
 /* CTA BUTTON */
 .collection-cta {
-  padding: 0.75rem 2rem;
-  border-radius: 40px;
-  border: none;
+  padding-inline: var(--sc-space-5);
   background-color: var(--sc-accent);
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  color: var(--sc-purple-dark);
 }
 
-.collection-cta:hover {
-  background-color: #9d8cb7;
-  transform: translateY(-2px);
+.collection-cta:hover:not(:disabled) {
+  background-color: var(--sc-bg-soft);
 }
 
 
@@ -219,39 +180,15 @@
   }
 
   .hero {
-    padding-left: 20px;
     justify-content: center;
     text-align: center;
   }
-}
-/* blur main content when modal open */
-.main-content.blurred {
-  filter: blur(6px);
-  transition: filter 180ms ease;
-  pointer-events: none; /* prevent interacting with blurred content */
-  user-select: none;
-}
 
-/* Overlay that dims the page */
-.login-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1200;
-  backdrop-filter: blur(2px); /* slight blur on overlay layer (optional) */
-}
+  .collection-row {
+    align-items: stretch;
+  }
 
-/* Modal box wrapper */
-.login-modal {
-  width: 420px;
-  max-width: calc(100% - 32px);
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-  padding: 18px;
-  position: relative;
-  z-index: 1210;
+  .collection-info {
+    padding: 0;
+  }
 }

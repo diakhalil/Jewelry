@@ -259,8 +259,8 @@ export default function BirthstoneEarring() {
                 <span className="nk-chip">{metalObj?.name}</span>
               </div>
 
-              <img src={EarringPreviewImg} className="nk-mainImg" />
-              <img src={GemColorPreviewImg} className="nk-mainImg" />
+              <img src={EarringPreviewImg} className="nk-mainImg" alt="Earring preview" />
+              <img src={GemColorPreviewImg} className="nk-mainImg" alt="Gem color reference" />
 
               <div className="nk-previewMeta">
                 <div className="nk-metaRow">
@@ -338,7 +338,7 @@ export default function BirthstoneEarring() {
                     }`}
                     onClick={() => setSelectedCut(c.key)}
                   >
-                    <img src={c.img} className="nk-cardImg" />
+                    <img src={c.img} className="nk-cardImg" alt="" />
                     {c.key}
                   </button>
                 ))}
