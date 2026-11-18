@@ -1,0 +1,6448 @@
+{
+  "schema_version": 1,
+  "evaluation_type": "provisional_notebook_technique_comparison",
+  "status": "draft",
+  "retrieval_method": "dense_cosine",
+  "relevance": "expected PDF and page",
+  "evaluation_case_file": "data\\rag\\experiments\\chunking_evaluation\\document_chunking_cases.json",
+  "strategy_configs": {
+    "fixed_size": {
+      "chunk_size": 800,
+      "overlap": 100
+    },
+    "recursive": {
+      "chunk_size": 800,
+      "overlap": 100
+    },
+    "structure_aware": {
+      "chunk_size": 800,
+      "overlap": 100
+    }
+  },
+  "retrieval_metrics": [
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "recall_at_1": 0.9231,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.953
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "recall_at_1": 0.8718,
+      "recall_at_3": 1.0,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9316
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "recall_at_1": 0.8974,
+      "recall_at_3": 0.9744,
+      "recall_at_5": 1.0,
+      "mrr_at_5": 0.9423
+    }
+  ],
+  "chunk_statistics": [
+    {
+      "strategy": "fixed_size",
+      "chunks": 301,
+      "documents": 39,
+      "pages": 175,
+      "min_chars": 11,
+      "median_chars": 675,
+      "mean_chars": 570.4,
+      "p90_chars": 800,
+      "max_chars": 800,
+      "short_chunks_lt_100": 2,
+      "short_chunk_percent": 0.7
+    },
+    {
+      "strategy": "recursive",
+      "chunks": 300,
+      "documents": 39,
+      "pages": 175,
+      "min_chars": 11,
+      "median_chars": 679,
+      "mean_chars": 560.6,
+      "p90_chars": 792,
+      "max_chars": 799,
+      "short_chunks_lt_100": 3,
+      "short_chunk_percent": 1.0
+    },
+    {
+      "strategy": "sentence",
+      "chunks": 1763,
+      "documents": 39,
+      "pages": 175,
+      "min_chars": 3,
+      "median_chars": 98,
+      "mean_chars": 114.5,
+      "p90_chars": 216,
+      "max_chars": 364,
+      "short_chunks_lt_100": 896,
+      "short_chunk_percent": 50.8
+    },
+    {
+      "strategy": "structure_aware",
+      "chunks": 318,
+      "documents": 39,
+      "pages": 175,
+      "min_chars": 11,
+      "median_chars": 517,
+      "mean_chars": 503.3,
+      "p90_chars": 775,
+      "max_chars": 800,
+      "short_chunks_lt_100": 13,
+      "short_chunk_percent": 4.1
+    }
+  ],
+  "case_results": [
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_alexandrite",
+      "query": "How does alexandrite change color under different lighting, and what causes the effect?",
+      "expected_file": "alexandrite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "alexandrite-095e0f1e026e-p0001-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 1,
+          "score": 0.893839,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "alexandrite-095e0f1e026e-p0003-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 3,
+          "score": 0.883133,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "alexandrite-095e0f1e026e-p0002-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 2,
+          "score": 0.875472,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.843319,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.834387,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amber",
+      "query": "What is amber, and what kinds of inclusions can it contain?",
+      "expected_file": "amber.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amber-92dd03ce909f-p0002-c001",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.900722,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amber-92dd03ce909f-p0002-c000",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.89165,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "amber-92dd03ce909f-p0001-c001",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.865044,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amber-92dd03ce909f-p0001-c000",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.852064,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "morganite-cafed19143bb-p0002-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 2,
+          "score": 0.819562,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amethyst",
+      "query": "What is amethyst, what is its color, and how hard is it?",
+      "expected_file": "amethyst.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amethyst-ba5f789dcee4-p0001-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 1,
+          "score": 0.880058,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c001",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.868671,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.854033,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.852568,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.852195,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ametrine",
+      "query": "What makes ametrine different from amethyst or citrine?",
+      "expected_file": "ametrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.873691,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "citrine-f972ac73db69-p0002-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.860034,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.859847,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.847227,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0002-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 2,
+          "score": 0.842874,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_aquamarine",
+      "query": "What gives aquamarine its name and characteristic color?",
+      "expected_file": "aquamarine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.879215,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.861179,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.859708,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.852715,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c002",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.838374,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_citrine",
+      "query": "What colors can citrine have, and what causes its yellow to orange color?",
+      "expected_file": "citrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "citrine-f972ac73db69-p0001-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.896988,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "citrine-f972ac73db69-p0001-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.884329,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "citrine-f972ac73db69-p0002-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.870615,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "citrine-f972ac73db69-p0002-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.855652,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.850543,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_diamond",
+      "query": "What are the 4Cs used to describe diamond quality?",
+      "expected_file": "diamond.pdf",
+      "expected_pages": [
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0008-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 8,
+          "score": 0.886528,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c000",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.861218,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.855994,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0005-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 5,
+          "score": 0.854953,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c001",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.841237,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_emerald",
+      "query": "What mineral family is emerald in, and what colors does it have?",
+      "expected_file": "emerald.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "emerald-4a4cab3f6a79-p0001-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 1,
+          "score": 0.893775,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c001",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.866857,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.86475,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.857358,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "emerald-4a4cab3f6a79-p0001-c001",
+          "file_name": "emerald.pdf",
+          "page_number": 1,
+          "score": 0.857063,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_fancy_color_diamond",
+      "query": "How rare are fancy color diamonds, and what can cause diamond color?",
+      "expected_file": "fancy_color_diamond.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.897027,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c001",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.896709,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0002-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 2,
+          "score": 0.879838,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.864922,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c001",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.862247,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_garnet",
+      "query": "Are garnets only red, or can the garnet group include other colors?",
+      "expected_file": "garnet.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "garnet-868e8955b354-p0001-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.885804,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "garnet-868e8955b354-p0002-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.865274,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "garnet-868e8955b354-p0002-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.850625,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "garnet-868e8955b354-p0001-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.835078,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "garnet-868e8955b354-p0001-c002",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.831538,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_iolite",
+      "query": "What is iolite known for, including its color or historical use?",
+      "expected_file": "iolite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.891355,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c001",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.86289,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0003-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 3,
+          "score": 0.845694,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.844941,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c002",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.833023,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_jade",
+      "query": "What minerals can the name jade refer to?",
+      "expected_file": "jade.pdf",
+      "expected_pages": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jade-beabd4996ee6-p0001-c000",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.881687,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jade-beabd4996ee6-p0002-c000",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.872832,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jade-beabd4996ee6-p0003-c000",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.850375,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jade-beabd4996ee6-p0001-c001",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.842259,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0003-c001",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.838878,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_kunzite",
+      "query": "What colors can kunzite range between?",
+      "expected_file": "kunzite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.88668,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.872712,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "kunzite-974da8997bd7-p0003-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 3,
+          "score": 0.869701,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c001",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.833767,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.816689,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_lapis_lazuli",
+      "query": "What minerals make up lapis lazuli?",
+      "expected_file": "lapis_lazuli.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.903251,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0003-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 3,
+          "score": 0.885682,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c001",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.883119,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0002-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 2,
+          "score": 0.840649,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.82047,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_moonstone",
+      "query": "What causes the glowing effect seen in moonstone?",
+      "expected_file": "moonstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.883534,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.843561,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.841704,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.840336,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.83417,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_morganite",
+      "query": "What color is morganite, and what mineral family does it belong to?",
+      "expected_file": "morganite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "morganite-cafed19143bb-p0001-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.895243,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "morganite-cafed19143bb-p0001-c001",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.883094,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "morganite-cafed19143bb-p0003-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 3,
+          "score": 0.87496,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "morganite-cafed19143bb-p0002-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 2,
+          "score": 0.866114,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c002",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.862573,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_opal",
+      "query": "What is distinctive about the play of color in opal?",
+      "expected_file": "opal.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "opal-63e455bb359c-p0001-c000",
+          "file_name": "opal.pdf",
+          "page_number": 1,
+          "score": 0.86251,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "opal-63e455bb359c-p0002-c001",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.84873,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "opal-63e455bb359c-p0002-c000",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.843507,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "opal-63e455bb359c-p0003-c000",
+          "file_name": "opal.pdf",
+          "page_number": 3,
+          "score": 0.838697,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "opal-63e455bb359c-p0001-c001",
+          "file_name": "opal.pdf",
+          "page_number": 1,
+          "score": 0.834494,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_pearl",
+      "query": "Are pearls mineral gemstones, and what gives them their luster?",
+      "expected_file": "pearl.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "pearl-83a14418f238-p0001-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.868675,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.867861,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "pearl-83a14418f238-p0002-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.858533,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "pearl-83a14418f238-p0002-c001",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.858498,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0005-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 5,
+          "score": 0.856907,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_peridot",
+      "query": "Where does peridot form, and what color is it?",
+      "expected_file": "peridot.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.891053,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.883132,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "peridot-a5b1a85bd01c-p0003-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 3,
+          "score": 0.876053,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.873917,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.8485,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_rose_quartz",
+      "query": "What color is rose quartz, and how does its color relate to its name?",
+      "expected_file": "rose_quartz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.914997,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rose_quartz-818fa26671be-p0002-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 2,
+          "score": 0.896227,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rose_quartz-818fa26671be-p0003-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 3,
+          "score": 0.889587,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c001",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.868112,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.853377,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ruby",
+      "query": "What mineral variety is ruby, and how is it related to sapphire?",
+      "expected_file": "ruby.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.895404,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ruby-5022da992090-p0002-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 2,
+          "score": 0.866989,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.863865,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.863661,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "garnet-868e8955b354-p0001-c002",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.85957,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sapphire",
+      "query": "Can sapphire be colors other than blue, and what mineral is it?",
+      "expected_file": "sapphire.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.872773,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.870321,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.869085,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.866467,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c001",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.857813,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_spinel",
+      "query": "Why were some spinels historically mistaken for rubies?",
+      "expected_file": "spinel.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.866079,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "spinel-e5bb133ac28a-p0002-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 2,
+          "score": 0.84521,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c001",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.843507,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.830905,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "spinel-e5bb133ac28a-p0003-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 3,
+          "score": 0.82763,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sunstone",
+      "query": "What causes the glittering effect called aventurescence in sunstone?",
+      "expected_file": "sunstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.89615,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.875059,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.850034,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sunstone-bdbb40a3e331-p0003-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 3,
+          "score": 0.848746,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.84347,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tanzanite",
+      "query": "Where is tanzanite found, and what colors can it show?",
+      "expected_file": "tanzanite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.915466,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.887101,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tanzanite-d9272b744ca7-p0002-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 2,
+          "score": 0.88605,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c001",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.858165,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.847194,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_topaz",
+      "query": "What range of colors can topaz have?",
+      "expected_file": "topaz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.893925,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.873812,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "topaz-5bd9567f8a42-p0003-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 3,
+          "score": 0.873759,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.857706,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.852351,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tourmaline",
+      "query": "What colors can tourmaline have, and which trace elements are associated with its green, blue, red, or pink colors?",
+      "expected_file": "tourmaline.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.887792,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0003-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 3,
+          "score": 0.873443,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.864471,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0002-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 2,
+          "score": 0.837029,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.813292,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_turquoise",
+      "query": "What shades of blue are associated with turquoise?",
+      "expected_file": "turquoise.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "turquoise-42f91225f22a-p0001-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 1,
+          "score": 0.864472,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "turquoise-42f91225f22a-p0002-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 2,
+          "score": 0.847828,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "turquoise-42f91225f22a-p0003-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 3,
+          "score": 0.839905,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.827574,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.82483,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_zircon",
+      "query": "How is natural zircon different from cubic zirconia?",
+      "expected_file": "zircon.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "zircon-edc8cef08803-p0001-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.848878,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "zircon-edc8cef08803-p0001-c001",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.846076,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "zircon-edc8cef08803-p0002-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 2,
+          "score": 0.837028,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0002-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 2,
+          "score": 0.820947,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0003-c001",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.819312,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "buying_gemstones",
+      "query": "What should a buyer ask about gemstone treatments and their effect on care or value?",
+      "expected_file": "gemstone_diamond_pearl_buying_guide.pdf",
+      "expected_pages": [
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.905603,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.877013,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0001-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 1,
+          "score": 0.859044,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.85844,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0012-c001",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 12,
+          "score": 0.849811,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gold_color_choice",
+      "query": "How can yellow, white, and rose gold change the appearance of a diamond or colored gemstone?",
+      "expected_file": "gold_colors_guide.pdf",
+      "expected_pages": [
+        4,
+        5,
+        6,
+        15
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0004-c001",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 4,
+          "score": 0.888434,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0005-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 5,
+          "score": 0.887036,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.874799,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.872291,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.865608,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "chain_durability",
+      "query": "Which chain styles are durable or difficult to repair, and why?",
+      "expected_file": "jewelry_chain_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0003-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 3,
+          "score": 0.890274,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0002-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 2,
+          "score": 0.865454,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0004-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 4,
+          "score": 0.858547,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0001-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 1,
+          "score": 0.855379,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0001-c001",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 1,
+          "score": 0.847077,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "setting_types",
+      "query": "What is the difference between a bezel setting and a prong setting, and when might each be useful?",
+      "expected_file": "engagement_ring_settings_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        5
+      ],
+      "first_relevant_rank": 3,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0005-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 5,
+          "score": 0.880207,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0001-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 1,
+          "score": 0.877074,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0005-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 5,
+          "score": 0.875881,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0012-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 12,
+          "score": 0.871167,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0004-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 4,
+          "score": 0.865447,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "bench_pave",
+      "query": "What is pavé setting, and what bench-work considerations help produce a clean result?",
+      "expected_file": "jewelry_settings_bench_guide.pdf",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0009-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 9,
+          "score": 0.873423,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0013-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 13,
+          "score": 0.863566,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0011-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 11,
+          "score": 0.84602,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0003-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 3,
+          "score": 0.838761,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0012-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 12,
+          "score": 0.830787,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "necklace_stack",
+      "query": "How can someone build a balanced necklace stack, including base chain lengths and personal pieces?",
+      "expected_file": "necklace_stacking_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0002-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 2,
+          "score": 0.878762,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0001-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 1,
+          "score": 0.875482,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0005-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 5,
+          "score": 0.867919,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0001-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 1,
+          "score": 0.86362,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0005-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 5,
+          "score": 0.861167,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "pearl_care",
+      "query": "How should pearls be protected from scratches, heat, perfume, and other chemicals?",
+      "expected_file": "pearl_care_cleaning_guide.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.882671,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c001",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.865432,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0001-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 1,
+          "score": 0.856458,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.853849,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "pearl-83a14418f238-p0001-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.851696,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "everyday_ring_metal",
+      "query": "How should someone choose a ring metal for daily wear, durability, upkeep, and allergies?",
+      "expected_file": "ring_metals_everyday_wear.pdf",
+      "expected_pages": [
+        1,
+        2,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.900653,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c001",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.898716,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0001-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 1,
+          "score": 0.895877,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0013-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 13,
+          "score": 0.895041,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0002-c001",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 2,
+          "score": 0.893434,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_size_estimate",
+      "query": "What are practical ways to estimate someone's ring size while keeping a proposal a surprise?",
+      "expected_file": "ring_size_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 3,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0007-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 7,
+          "score": 0.883879,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0001-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 1,
+          "score": 0.878808,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0004-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 4,
+          "score": 0.878118,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0003-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 3,
+          "score": 0.877259,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0016-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 16,
+          "score": 0.873864,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "fixed_size",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_measurement_tools",
+      "query": "Which finger-sizing gauge should be used for a ring band wider than 4 millimeters?",
+      "expected_file": "ring_sizing_technical_guide.pdf",
+      "expected_pages": [
+        12
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0012-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 12,
+          "score": 0.924262,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0003-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 3,
+          "score": 0.920998,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0009-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 9,
+          "score": 0.901348,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0016-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 16,
+          "score": 0.888315,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0002-c001",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 2,
+          "score": 0.880057,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_alexandrite",
+      "query": "How does alexandrite change color under different lighting, and what causes the effect?",
+      "expected_file": "alexandrite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "alexandrite-095e0f1e026e-p0001-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 1,
+          "score": 0.894296,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "alexandrite-095e0f1e026e-p0003-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 3,
+          "score": 0.883133,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "alexandrite-095e0f1e026e-p0002-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 2,
+          "score": 0.875472,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.842964,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.83777,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amber",
+      "query": "What is amber, and what kinds of inclusions can it contain?",
+      "expected_file": "amber.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amber-92dd03ce909f-p0002-c001",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.892275,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amber-92dd03ce909f-p0002-c000",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.890602,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "amber-92dd03ce909f-p0001-c001",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.864885,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amber-92dd03ce909f-p0001-c000",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.853435,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "morganite-cafed19143bb-p0002-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 2,
+          "score": 0.819562,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amethyst",
+      "query": "What is amethyst, what is its color, and how hard is it?",
+      "expected_file": "amethyst.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amethyst-ba5f789dcee4-p0001-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 1,
+          "score": 0.879963,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c001",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.865741,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.856489,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.854576,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.850901,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ametrine",
+      "query": "What makes ametrine different from amethyst or citrine?",
+      "expected_file": "ametrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.87418,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "citrine-f972ac73db69-p0002-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.860606,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.856113,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.846598,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0002-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 2,
+          "score": 0.842874,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_aquamarine",
+      "query": "What gives aquamarine its name and characteristic color?",
+      "expected_file": "aquamarine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.878933,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.858855,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.855109,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.849681,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c002",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.844826,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_citrine",
+      "query": "What colors can citrine have, and what causes its yellow to orange color?",
+      "expected_file": "citrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "citrine-f972ac73db69-p0001-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.89833,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "citrine-f972ac73db69-p0001-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.884615,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "citrine-f972ac73db69-p0002-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.871301,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.855224,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "citrine-f972ac73db69-p0002-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.854953,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_diamond",
+      "query": "What are the 4Cs used to describe diamond quality?",
+      "expected_file": "diamond.pdf",
+      "expected_pages": [
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0008-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 8,
+          "score": 0.886528,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c000",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.860785,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.858783,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0005-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 5,
+          "score": 0.857234,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c001",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.843622,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_emerald",
+      "query": "What mineral family is emerald in, and what colors does it have?",
+      "expected_file": "emerald.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "emerald-4a4cab3f6a79-p0001-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 1,
+          "score": 0.892633,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c001",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.86739,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.865501,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.857736,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "emerald-4a4cab3f6a79-p0001-c001",
+          "file_name": "emerald.pdf",
+          "page_number": 1,
+          "score": 0.854017,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_fancy_color_diamond",
+      "query": "How rare are fancy color diamonds, and what can cause diamond color?",
+      "expected_file": "fancy_color_diamond.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c001",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.896709,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.896113,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0002-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 2,
+          "score": 0.879426,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c001",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.868231,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.864922,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_garnet",
+      "query": "Are garnets only red, or can the garnet group include other colors?",
+      "expected_file": "garnet.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "garnet-868e8955b354-p0001-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.886854,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "garnet-868e8955b354-p0002-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.866441,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "garnet-868e8955b354-p0002-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.850101,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "spinel-e5bb133ac28a-p0003-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 3,
+          "score": 0.828837,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "garnet-868e8955b354-p0001-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.82742,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_iolite",
+      "query": "What is iolite known for, including its color or historical use?",
+      "expected_file": "iolite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.887031,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c001",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.860653,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0003-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 3,
+          "score": 0.845694,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.844941,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c002",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.833547,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_jade",
+      "query": "What minerals can the name jade refer to?",
+      "expected_file": "jade.pdf",
+      "expected_pages": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jade-beabd4996ee6-p0001-c000",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.880359,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jade-beabd4996ee6-p0002-c000",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.872395,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jade-beabd4996ee6-p0003-c000",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.8497,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jade-beabd4996ee6-p0001-c001",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.844929,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0003-c001",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.838385,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_kunzite",
+      "query": "What colors can kunzite range between?",
+      "expected_file": "kunzite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.887238,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.872712,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "kunzite-974da8997bd7-p0003-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 3,
+          "score": 0.869701,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c001",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.848616,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.816689,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_lapis_lazuli",
+      "query": "What minerals make up lapis lazuli?",
+      "expected_file": "lapis_lazuli.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.905288,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c001",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.889765,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0003-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 3,
+          "score": 0.885682,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0002-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 2,
+          "score": 0.840649,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.82047,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_moonstone",
+      "query": "What causes the glowing effect seen in moonstone?",
+      "expected_file": "moonstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.889356,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.842086,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.841704,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.840298,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.840114,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_morganite",
+      "query": "What color is morganite, and what mineral family does it belong to?",
+      "expected_file": "morganite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "morganite-cafed19143bb-p0001-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.891932,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "morganite-cafed19143bb-p0001-c001",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.881928,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "morganite-cafed19143bb-p0003-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 3,
+          "score": 0.87496,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "morganite-cafed19143bb-p0002-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 2,
+          "score": 0.866114,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0002-c000",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.846444,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_opal",
+      "query": "What is distinctive about the play of color in opal?",
+      "expected_file": "opal.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "opal-63e455bb359c-p0001-c000",
+          "file_name": "opal.pdf",
+          "page_number": 1,
+          "score": 0.862834,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "opal-63e455bb359c-p0002-c001",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.85231,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "opal-63e455bb359c-p0002-c000",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.843158,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "opal-63e455bb359c-p0003-c000",
+          "file_name": "opal.pdf",
+          "page_number": 3,
+          "score": 0.838697,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "opal-63e455bb359c-p0001-c001",
+          "file_name": "opal.pdf",
+          "page_number": 1,
+          "score": 0.835968,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_pearl",
+      "query": "Are pearls mineral gemstones, and what gives them their luster?",
+      "expected_file": "pearl.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.867861,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "pearl-83a14418f238-p0001-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.86487,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "pearl-83a14418f238-p0002-c001",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.856983,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "pearl-83a14418f238-p0001-c001",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.856307,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "pearl-83a14418f238-p0002-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.855583,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_peridot",
+      "query": "Where does peridot form, and what color is it?",
+      "expected_file": "peridot.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.889486,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.882267,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "peridot-a5b1a85bd01c-p0003-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 3,
+          "score": 0.876053,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.861323,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.852031,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_rose_quartz",
+      "query": "What color is rose quartz, and how does its color relate to its name?",
+      "expected_file": "rose_quartz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.915453,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rose_quartz-818fa26671be-p0002-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 2,
+          "score": 0.896227,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rose_quartz-818fa26671be-p0003-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 3,
+          "score": 0.889587,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c001",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.872554,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c001",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.857744,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ruby",
+      "query": "What mineral variety is ruby, and how is it related to sapphire?",
+      "expected_file": "ruby.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.896471,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ruby-5022da992090-p0002-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 2,
+          "score": 0.866989,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.864197,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.863243,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ruby-5022da992090-p0003-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 3,
+          "score": 0.850264,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sapphire",
+      "query": "Can sapphire be colors other than blue, and what mineral is it?",
+      "expected_file": "sapphire.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.871014,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.870564,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.866847,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.858755,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c001",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.856623,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_spinel",
+      "query": "Why were some spinels historically mistaken for rubies?",
+      "expected_file": "spinel.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.865386,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c001",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.850346,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "spinel-e5bb133ac28a-p0002-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 2,
+          "score": 0.843351,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.833836,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "spinel-e5bb133ac28a-p0003-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 3,
+          "score": 0.82763,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sunstone",
+      "query": "What causes the glittering effect called aventurescence in sunstone?",
+      "expected_file": "sunstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.89615,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.877358,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.853711,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sunstone-bdbb40a3e331-p0003-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 3,
+          "score": 0.848746,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.842567,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tanzanite",
+      "query": "Where is tanzanite found, and what colors can it show?",
+      "expected_file": "tanzanite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.915466,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.887101,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tanzanite-d9272b744ca7-p0002-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 2,
+          "score": 0.88605,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c001",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.860972,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.847194,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_topaz",
+      "query": "What range of colors can topaz have?",
+      "expected_file": "topaz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.894935,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "topaz-5bd9567f8a42-p0003-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 3,
+          "score": 0.873759,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.873585,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.862996,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.850596,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tourmaline",
+      "query": "What colors can tourmaline have, and which trace elements are associated with its green, blue, red, or pink colors?",
+      "expected_file": "tourmaline.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.890327,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0003-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 3,
+          "score": 0.873443,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.854468,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0002-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 2,
+          "score": 0.83902,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.813893,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_turquoise",
+      "query": "What shades of blue are associated with turquoise?",
+      "expected_file": "turquoise.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "turquoise-42f91225f22a-p0001-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 1,
+          "score": 0.865261,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "turquoise-42f91225f22a-p0002-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 2,
+          "score": 0.847828,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "turquoise-42f91225f22a-p0003-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 3,
+          "score": 0.839905,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.827574,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.82483,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_zircon",
+      "query": "How is natural zircon different from cubic zirconia?",
+      "expected_file": "zircon.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "zircon-edc8cef08803-p0001-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.849673,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "zircon-edc8cef08803-p0001-c001",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.846076,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "zircon-edc8cef08803-p0002-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 2,
+          "score": 0.838268,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jade-beabd4996ee6-p0003-c001",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.82561,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0002-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 2,
+          "score": 0.820097,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "buying_gemstones",
+      "query": "What should a buyer ask about gemstone treatments and their effect on care or value?",
+      "expected_file": "gemstone_diamond_pearl_buying_guide.pdf",
+      "expected_pages": [
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.908786,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.876577,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0002-c002",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 2,
+          "score": 0.868355,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0001-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 1,
+          "score": 0.863604,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.85464,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gold_color_choice",
+      "query": "How can yellow, white, and rose gold change the appearance of a diamond or colored gemstone?",
+      "expected_file": "gold_colors_guide.pdf",
+      "expected_pages": [
+        4,
+        5,
+        6,
+        15
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c003",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.889486,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0005-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 5,
+          "score": 0.887036,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0004-c001",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 4,
+          "score": 0.881752,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.880015,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.872291,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "chain_durability",
+      "query": "Which chain styles are durable or difficult to repair, and why?",
+      "expected_file": "jewelry_chain_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0003-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 3,
+          "score": 0.890274,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0002-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 2,
+          "score": 0.865454,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0004-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 4,
+          "score": 0.858547,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0001-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 1,
+          "score": 0.853902,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0006-c003",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 6,
+          "score": 0.853854,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "setting_types",
+      "query": "What is the difference between a bezel setting and a prong setting, and when might each be useful?",
+      "expected_file": "engagement_ring_settings_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        5
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0005-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 5,
+          "score": 0.880207,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0005-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 5,
+          "score": 0.877467,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0001-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 1,
+          "score": 0.877074,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0012-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 12,
+          "score": 0.872264,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0003-c001",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 3,
+          "score": 0.866505,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "bench_pave",
+      "query": "What is pavé setting, and what bench-work considerations help produce a clean result?",
+      "expected_file": "jewelry_settings_bench_guide.pdf",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0009-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 9,
+          "score": 0.873423,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0013-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 13,
+          "score": 0.861561,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0003-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 3,
+          "score": 0.843287,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0013-c001",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 13,
+          "score": 0.842945,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0011-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 11,
+          "score": 0.842501,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "necklace_stack",
+      "query": "How can someone build a balanced necklace stack, including base chain lengths and personal pieces?",
+      "expected_file": "necklace_stacking_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0002-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 2,
+          "score": 0.87986,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0001-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 1,
+          "score": 0.873623,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0005-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 5,
+          "score": 0.867708,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0001-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 1,
+          "score": 0.86079,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0004-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 4,
+          "score": 0.858392,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "pearl_care",
+      "query": "How should pearls be protected from scratches, heat, perfume, and other chemicals?",
+      "expected_file": "pearl_care_cleaning_guide.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.878876,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c001",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.866531,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0001-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 1,
+          "score": 0.856458,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.853848,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "pearl-83a14418f238-p0003-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 3,
+          "score": 0.848384,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "everyday_ring_metal",
+      "query": "How should someone choose a ring metal for daily wear, durability, upkeep, and allergies?",
+      "expected_file": "ring_metals_everyday_wear.pdf",
+      "expected_pages": [
+        1,
+        2,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c001",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.900018,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.898781,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0001-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 1,
+          "score": 0.895877,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0013-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 13,
+          "score": 0.895653,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0006-c003",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 6,
+          "score": 0.89236,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_size_estimate",
+      "query": "What are practical ways to estimate someone's ring size while keeping a proposal a surprise?",
+      "expected_file": "ring_size_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 3,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0007-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 7,
+          "score": 0.883879,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0001-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 1,
+          "score": 0.878808,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0004-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 4,
+          "score": 0.878118,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0003-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 3,
+          "score": 0.875713,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0016-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 16,
+          "score": 0.873864,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "recursive",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_measurement_tools",
+      "query": "Which finger-sizing gauge should be used for a ring band wider than 4 millimeters?",
+      "expected_file": "ring_sizing_technical_guide.pdf",
+      "expected_pages": [
+        12
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0012-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 12,
+          "score": 0.924262,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0003-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 3,
+          "score": 0.920998,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0009-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 9,
+          "score": 0.901348,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0016-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 16,
+          "score": 0.888315,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0007-c001",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 7,
+          "score": 0.882176,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_alexandrite",
+      "query": "How does alexandrite change color under different lighting, and what causes the effect?",
+      "expected_file": "alexandrite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "alexandrite-095e0f1e026e-p0001-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 1,
+          "score": 0.895509,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "alexandrite-095e0f1e026e-p0003-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 3,
+          "score": 0.883133,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "alexandrite-095e0f1e026e-p0002-c000",
+          "file_name": "alexandrite.pdf",
+          "page_number": 2,
+          "score": 0.875472,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.839281,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.838784,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amber",
+      "query": "What is amber, and what kinds of inclusions can it contain?",
+      "expected_file": "amber.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amber-92dd03ce909f-p0002-c001",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.887382,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amber-92dd03ce909f-p0002-c000",
+          "file_name": "amber.pdf",
+          "page_number": 2,
+          "score": 0.87912,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "amber-92dd03ce909f-p0001-c002",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.861916,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amber-92dd03ce909f-p0001-c000",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.860747,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "amber-92dd03ce909f-p0001-c001",
+          "file_name": "amber.pdf",
+          "page_number": 1,
+          "score": 0.838727,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_amethyst",
+      "query": "What is amethyst, what is its color, and how hard is it?",
+      "expected_file": "amethyst.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "amethyst-ba5f789dcee4-p0001-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 1,
+          "score": 0.88102,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c001",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.863793,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.850577,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c002",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.849951,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.848314,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ametrine",
+      "query": "What makes ametrine different from amethyst or citrine?",
+      "expected_file": "ametrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c002",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.88485,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.883249,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "citrine-f972ac73db69-p0002-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.858577,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "amethyst-ba5f789dcee4-p0002-c000",
+          "file_name": "amethyst.pdf",
+          "page_number": 2,
+          "score": 0.847716,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0002-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 2,
+          "score": 0.842874,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_aquamarine",
+      "query": "What gives aquamarine its name and characteristic color?",
+      "expected_file": "aquamarine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.878933,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.856378,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0001-c001",
+          "file_name": "aquamarine.pdf",
+          "page_number": 1,
+          "score": 0.856327,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "aquamarine-f75b8d5b21e3-p0002-c000",
+          "file_name": "aquamarine.pdf",
+          "page_number": 2,
+          "score": 0.845525,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.826487,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_citrine",
+      "query": "What colors can citrine have, and what causes its yellow to orange color?",
+      "expected_file": "citrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "citrine-f972ac73db69-p0001-c000",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.898299,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "citrine-f972ac73db69-p0001-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 1,
+          "score": 0.891012,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "citrine-f972ac73db69-p0002-c001",
+          "file_name": "citrine.pdf",
+          "page_number": 2,
+          "score": 0.875318,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c002",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.856358,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ametrine-bfa68e4ce43f-p0001-c000",
+          "file_name": "ametrine.pdf",
+          "page_number": 1,
+          "score": 0.848562,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_diamond",
+      "query": "What are the 4Cs used to describe diamond quality?",
+      "expected_file": "diamond.pdf",
+      "expected_pages": [
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0008-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 8,
+          "score": 0.886528,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c000",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.857219,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.846708,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "diamond-d789a1c303f1-p0002-c001",
+          "file_name": "diamond.pdf",
+          "page_number": 2,
+          "score": 0.83731,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0005-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 5,
+          "score": 0.831444,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_emerald",
+      "query": "What mineral family is emerald in, and what colors does it have?",
+      "expected_file": "emerald.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "emerald-4a4cab3f6a79-p0001-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 1,
+          "score": 0.888714,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c000",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.86475,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "emerald-4a4cab3f6a79-p0002-c001",
+          "file_name": "emerald.pdf",
+          "page_number": 2,
+          "score": 0.863332,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.85265,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "morganite-cafed19143bb-p0001-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.851672,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_fancy_color_diamond",
+      "query": "How rare are fancy color diamonds, and what can cause diamond color?",
+      "expected_file": "fancy_color_diamond.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c001",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.896709,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0001-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 1,
+          "score": 0.895496,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0002-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 2,
+          "score": 0.878194,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0002-c001",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 2,
+          "score": 0.867888,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.864922,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_garnet",
+      "query": "Are garnets only red, or can the garnet group include other colors?",
+      "expected_file": "garnet.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "garnet-868e8955b354-p0001-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.887933,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "garnet-868e8955b354-p0002-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.864775,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "garnet-868e8955b354-p0002-c000",
+          "file_name": "garnet.pdf",
+          "page_number": 2,
+          "score": 0.850101,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "garnet-868e8955b354-p0001-c001",
+          "file_name": "garnet.pdf",
+          "page_number": 1,
+          "score": 0.829632,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0004-c002",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 4,
+          "score": 0.829323,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_iolite",
+      "query": "What is iolite known for, including its color or historical use?",
+      "expected_file": "iolite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.885055,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c002",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.867421,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c001",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.847173,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0003-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 3,
+          "score": 0.845694,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.844941,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_jade",
+      "query": "What minerals can the name jade refer to?",
+      "expected_file": "jade.pdf",
+      "expected_pages": [
+        1
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jade-beabd4996ee6-p0001-c000",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.881519,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jade-beabd4996ee6-p0002-c000",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.866207,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jade-beabd4996ee6-p0003-c000",
+          "file_name": "jade.pdf",
+          "page_number": 3,
+          "score": 0.84914,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "jade-beabd4996ee6-p0002-c001",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.844845,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0001-c001",
+          "file_name": "jade.pdf",
+          "page_number": 1,
+          "score": 0.838862,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_kunzite",
+      "query": "What colors can kunzite range between?",
+      "expected_file": "kunzite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.887238,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.872712,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "kunzite-974da8997bd7-p0003-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 3,
+          "score": 0.869701,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "kunzite-974da8997bd7-p0001-c001",
+          "file_name": "kunzite.pdf",
+          "page_number": 1,
+          "score": 0.828785,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.82852,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_lapis_lazuli",
+      "query": "What minerals make up lapis lazuli?",
+      "expected_file": "lapis_lazuli.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.908215,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0003-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 3,
+          "score": 0.885682,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0001-c001",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 1,
+          "score": 0.874447,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "lapis_lazuli-65b405e621f6-p0002-c000",
+          "file_name": "lapis_lazuli.pdf",
+          "page_number": 2,
+          "score": 0.840649,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "kunzite-974da8997bd7-p0002-c000",
+          "file_name": "kunzite.pdf",
+          "page_number": 2,
+          "score": 0.82047,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_moonstone",
+      "query": "What causes the glowing effect seen in moonstone?",
+      "expected_file": "moonstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.892557,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.843163,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.840209,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c002",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.834949,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "moonstone-1b95dfb621cd-p0002-c001",
+          "file_name": "moonstone.pdf",
+          "page_number": 2,
+          "score": 0.830753,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_morganite",
+      "query": "What color is morganite, and what mineral family does it belong to?",
+      "expected_file": "morganite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "morganite-cafed19143bb-p0001-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.891105,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "morganite-cafed19143bb-p0001-c001",
+          "file_name": "morganite.pdf",
+          "page_number": 1,
+          "score": 0.885327,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "morganite-cafed19143bb-p0003-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 3,
+          "score": 0.87496,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "morganite-cafed19143bb-p0002-c000",
+          "file_name": "morganite.pdf",
+          "page_number": 2,
+          "score": 0.866114,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jade-beabd4996ee6-p0002-c000",
+          "file_name": "jade.pdf",
+          "page_number": 2,
+          "score": 0.841869,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_opal",
+      "query": "What is distinctive about the play of color in opal?",
+      "expected_file": "opal.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "opal-63e455bb359c-p0001-c000",
+          "file_name": "opal.pdf",
+          "page_number": 1,
+          "score": 0.863573,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "opal-63e455bb359c-p0002-c001",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.848701,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "opal-63e455bb359c-p0002-c000",
+          "file_name": "opal.pdf",
+          "page_number": 2,
+          "score": 0.844183,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "opal-63e455bb359c-p0003-c000",
+          "file_name": "opal.pdf",
+          "page_number": 3,
+          "score": 0.838697,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "spinel-e5bb133ac28a-p0003-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 3,
+          "score": 0.81507,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_pearl",
+      "query": "Are pearls mineral gemstones, and what gives them their luster?",
+      "expected_file": "pearl.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "pearl-83a14418f238-p0002-c002",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.87247,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "pearl-83a14418f238-p0001-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.869401,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.867861,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "pearl-83a14418f238-p0002-c001",
+          "file_name": "pearl.pdf",
+          "page_number": 2,
+          "score": 0.866284,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "pearl-83a14418f238-p0003-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 3,
+          "score": 0.853476,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_peridot",
+      "query": "Where does peridot form, and what color is it?",
+      "expected_file": "peridot.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.890915,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.883067,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "peridot-a5b1a85bd01c-p0003-c000",
+          "file_name": "peridot.pdf",
+          "page_number": 3,
+          "score": 0.876053,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "peridot-a5b1a85bd01c-p0002-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 2,
+          "score": 0.8617,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "peridot-a5b1a85bd01c-p0001-c001",
+          "file_name": "peridot.pdf",
+          "page_number": 1,
+          "score": 0.837873,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_rose_quartz",
+      "query": "What color is rose quartz, and how does its color relate to its name?",
+      "expected_file": "rose_quartz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.913922,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "rose_quartz-818fa26671be-p0002-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 2,
+          "score": 0.896228,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "rose_quartz-818fa26671be-p0003-c000",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 3,
+          "score": 0.889587,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c001",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.863877,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.845864,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_ruby",
+      "query": "What mineral variety is ruby, and how is it related to sapphire?",
+      "expected_file": "ruby.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.895886,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ruby-5022da992090-p0002-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 2,
+          "score": 0.866989,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.862314,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.853984,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.851802,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sapphire",
+      "query": "Can sapphire be colors other than blue, and what mineral is it?",
+      "expected_file": "sapphire.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0001-c002",
+          "file_name": "iolite.pdf",
+          "page_number": 1,
+          "score": 0.873981,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c000",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.872355,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ruby-5022da992090-p0001-c000",
+          "file_name": "ruby.pdf",
+          "page_number": 1,
+          "score": 0.86753,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sapphire-c13c73c76306-p0002-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 2,
+          "score": 0.863928,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "sapphire-c13c73c76306-p0001-c001",
+          "file_name": "sapphire.pdf",
+          "page_number": 1,
+          "score": 0.863904,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_spinel",
+      "query": "Why were some spinels historically mistaken for rubies?",
+      "expected_file": "spinel.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.867596,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "spinel-e5bb133ac28a-p0001-c001",
+          "file_name": "spinel.pdf",
+          "page_number": 1,
+          "score": 0.843473,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "spinel-e5bb133ac28a-p0002-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 2,
+          "score": 0.836557,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "spinel-e5bb133ac28a-p0003-c000",
+          "file_name": "spinel.pdf",
+          "page_number": 3,
+          "score": 0.82763,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.826229,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_sunstone",
+      "query": "What causes the glittering effect called aventurescence in sunstone?",
+      "expected_file": "sunstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "sunstone-bdbb40a3e331-p0001-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 1,
+          "score": 0.900195,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "sunstone-bdbb40a3e331-p0002-c001",
+          "file_name": "sunstone.pdf",
+          "page_number": 2,
+          "score": 0.877971,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "moonstone-1b95dfb621cd-p0001-c000",
+          "file_name": "moonstone.pdf",
+          "page_number": 1,
+          "score": 0.859347,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "sunstone-bdbb40a3e331-p0003-c000",
+          "file_name": "sunstone.pdf",
+          "page_number": 3,
+          "score": 0.848746,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "rose_quartz-818fa26671be-p0001-c001",
+          "file_name": "rose_quartz.pdf",
+          "page_number": 1,
+          "score": 0.843481,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tanzanite",
+      "query": "Where is tanzanite found, and what colors can it show?",
+      "expected_file": "tanzanite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.915694,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.887101,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tanzanite-d9272b744ca7-p0002-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 2,
+          "score": 0.886708,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tanzanite-d9272b744ca7-p0001-c001",
+          "file_name": "tanzanite.pdf",
+          "page_number": 1,
+          "score": 0.857475,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.847194,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_topaz",
+      "query": "What range of colors can topaz have?",
+      "expected_file": "topaz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.897298,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.879849,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "topaz-5bd9567f8a42-p0001-c001",
+          "file_name": "topaz.pdf",
+          "page_number": 1,
+          "score": 0.874775,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "topaz-5bd9567f8a42-p0003-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 3,
+          "score": 0.873759,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "topaz-5bd9567f8a42-p0002-c000",
+          "file_name": "topaz.pdf",
+          "page_number": 2,
+          "score": 0.851823,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_tourmaline",
+      "query": "What colors can tourmaline have, and which trace elements are associated with its green, blue, red, or pink colors?",
+      "expected_file": "tourmaline.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.873677,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0003-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 3,
+          "score": 0.873443,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0001-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 1,
+          "score": 0.871884,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0002-c001",
+          "file_name": "tourmaline.pdf",
+          "page_number": 2,
+          "score": 0.840623,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "tourmaline-8b6e2056fc66-p0002-c000",
+          "file_name": "tourmaline.pdf",
+          "page_number": 2,
+          "score": 0.829813,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_turquoise",
+      "query": "What shades of blue are associated with turquoise?",
+      "expected_file": "turquoise.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "turquoise-42f91225f22a-p0001-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 1,
+          "score": 0.861908,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "turquoise-42f91225f22a-p0002-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 2,
+          "score": 0.847828,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "turquoise-42f91225f22a-p0003-c000",
+          "file_name": "turquoise.pdf",
+          "page_number": 3,
+          "score": 0.839905,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "iolite-e4cbebb9ddd6-p0002-c000",
+          "file_name": "iolite.pdf",
+          "page_number": 2,
+          "score": 0.827574,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "tanzanite-d9272b744ca7-p0003-c000",
+          "file_name": "tanzanite.pdf",
+          "page_number": 3,
+          "score": 0.82483,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gem_zircon",
+      "query": "How is natural zircon different from cubic zirconia?",
+      "expected_file": "zircon.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "zircon-edc8cef08803-p0001-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.853326,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "zircon-edc8cef08803-p0001-c001",
+          "file_name": "zircon.pdf",
+          "page_number": 1,
+          "score": 0.848646,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "zircon-edc8cef08803-p0002-c000",
+          "file_name": "zircon.pdf",
+          "page_number": 2,
+          "score": 0.840122,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "zircon-edc8cef08803-p0002-c001",
+          "file_name": "zircon.pdf",
+          "page_number": 2,
+          "score": 0.835791,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0002-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 2,
+          "score": 0.820097,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "buying_gemstones",
+      "query": "What should a buyer ask about gemstone treatments and their effect on care or value?",
+      "expected_file": "gemstone_diamond_pearl_buying_guide.pdf",
+      "expected_pages": [
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0004-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 4,
+          "score": 0.908786,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.876577,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0001-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 1,
+          "score": 0.860687,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0005-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 5,
+          "score": 0.857839,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0003-c001",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 3,
+          "score": 0.85464,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "gold_color_choice",
+      "query": "How can yellow, white, and rose gold change the appearance of a diamond or colored gemstone?",
+      "expected_file": "gold_colors_guide.pdf",
+      "expected_pages": [
+        4,
+        5,
+        6,
+        15
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0005-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 5,
+          "score": 0.887036,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0004-c001",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 4,
+          "score": 0.881752,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c000",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.880015,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "fancy_color_diamond-6c5943fdfcb7-p0003-c000",
+          "file_name": "fancy_color_diamond.pdf",
+          "page_number": 3,
+          "score": 0.872291,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "gold_colors_guide-f97d213e6b99-p0006-c002",
+          "file_name": "gold_colors_guide.pdf",
+          "page_number": 6,
+          "score": 0.869513,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "chain_durability",
+      "query": "Which chain styles are durable or difficult to repair, and why?",
+      "expected_file": "jewelry_chain_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0003-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 3,
+          "score": 0.890274,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0002-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 2,
+          "score": 0.865454,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0004-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 4,
+          "score": 0.858547,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0006-c004",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 6,
+          "score": 0.853854,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "jewelry_chain_guide-a3f43a28b759-p0001-c000",
+          "file_name": "jewelry_chain_guide.pdf",
+          "page_number": 1,
+          "score": 0.850999,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "setting_types",
+      "query": "What is the difference between a bezel setting and a prong setting, and when might each be useful?",
+      "expected_file": "engagement_ring_settings_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        5
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0005-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 5,
+          "score": 0.904536,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0005-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 5,
+          "score": 0.880207,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0012-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 12,
+          "score": 0.877662,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0005-c002",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 5,
+          "score": 0.877269,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0001-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 1,
+          "score": 0.877074,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "bench_pave",
+      "query": "What is pavé setting, and what bench-work considerations help produce a clean result?",
+      "expected_file": "jewelry_settings_bench_guide.pdf",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "first_relevant_rank": 2,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0010-c003",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 10,
+          "score": 0.891333,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0009-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 9,
+          "score": 0.873423,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "jewelry_settings_bench_guide-cbd7ec5cfc5a-p0013-c000",
+          "file_name": "jewelry_settings_bench_guide.pdf",
+          "page_number": 13,
+          "score": 0.862493,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0011-c000",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 11,
+          "score": 0.852854,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "engagement_ring_settings_guide-ce183282abbf-p0013-c002",
+          "file_name": "engagement_ring_settings_guide.pdf",
+          "page_number": 13,
+          "score": 0.842945,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "necklace_stack",
+      "query": "How can someone build a balanced necklace stack, including base chain lengths and personal pieces?",
+      "expected_file": "necklace_stacking_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0002-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 2,
+          "score": 0.883021,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0005-c002",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 5,
+          "score": 0.87211,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0001-c000",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 1,
+          "score": 0.871371,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0005-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 5,
+          "score": 0.864158,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "necklace_stacking_guide-eace269bd5fd-p0002-c001",
+          "file_name": "necklace_stacking_guide.pdf",
+          "page_number": 2,
+          "score": 0.859604,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "pearl_care",
+      "query": "How should pearls be protected from scratches, heat, perfume, and other chemicals?",
+      "expected_file": "pearl_care_cleaning_guide.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.876537,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0002-c001",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 2,
+          "score": 0.86698,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "pearl_care_cleaning_guide-f45a2c4742c1-p0001-c000",
+          "file_name": "pearl_care_cleaning_guide.pdf",
+          "page_number": 1,
+          "score": 0.856458,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "gemstone_diamond_pearl_buying_guide-b024cb5f8eca-p0006-c000",
+          "file_name": "gemstone_diamond_pearl_buying_guide.pdf",
+          "page_number": 6,
+          "score": 0.853848,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "pearl-83a14418f238-p0001-c000",
+          "file_name": "pearl.pdf",
+          "page_number": 1,
+          "score": 0.853352,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "everyday_ring_metal",
+      "query": "How should someone choose a ring metal for daily wear, durability, upkeep, and allergies?",
+      "expected_file": "ring_metals_everyday_wear.pdf",
+      "expected_pages": [
+        1,
+        2,
+        3
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c001",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.900411,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0003-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 3,
+          "score": 0.898781,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0001-c000",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 1,
+          "score": 0.895877,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0002-c001",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 2,
+          "score": 0.894643,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_metals_everyday_wear-67d730ecbfa7-p0006-c004",
+          "file_name": "ring_metals_everyday_wear.pdf",
+          "page_number": 6,
+          "score": 0.89236,
+          "relevant": false
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_size_estimate",
+      "query": "What are practical ways to estimate someone's ring size while keeping a proposal a surprise?",
+      "expected_file": "ring_size_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_relevant_rank": 4,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0001-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 1,
+          "score": 0.886459,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0007-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 7,
+          "score": 0.883879,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0001-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 1,
+          "score": 0.878808,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0004-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 4,
+          "score": 0.878118,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0003-c000",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 3,
+          "score": 0.875713,
+          "relevant": true
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "retrieval_method": "dense_cosine",
+      "case_id": "ring_measurement_tools",
+      "query": "Which finger-sizing gauge should be used for a ring band wider than 4 millimeters?",
+      "expected_file": "ring_sizing_technical_guide.pdf",
+      "expected_pages": [
+        12
+      ],
+      "first_relevant_rank": 1,
+      "top_5": [
+        {
+          "rank": 1,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0012-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 12,
+          "score": 0.924262,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0003-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 3,
+          "score": 0.920998,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0009-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 9,
+          "score": 0.901348,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "ring_sizing_technical_guide-951e77b43c9f-p0016-c000",
+          "file_name": "ring_sizing_technical_guide.pdf",
+          "page_number": 16,
+          "score": 0.888315,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "ring_size_guide-57eb092d71bc-p0002-c001",
+          "file_name": "ring_size_guide.pdf",
+          "page_number": 2,
+          "score": 0.878675,
+          "relevant": false
+        }
+      ]
+    }
+  ],
+  "embedding_model": "intfloat/e5-small-v2",
+  "device": "cpu"
+}

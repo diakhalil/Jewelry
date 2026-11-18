@@ -1,0 +1,550 @@
+{
+  "schema_version": 1,
+  "evaluation_type": "provisional_notebook_technique_comparison",
+  "status": "draft",
+  "description": "Initial notebook-only retrieval cases covering every PDF with usable text. Queries and page labels are provisional and should be reviewed after examining retrieval results. This is not the final RAG evaluation set.",
+  "included_pdf_count": 39,
+  "excluded_documents": [
+    {
+      "file_name": "birthstone_guide.pdf",
+      "reason": "The PDF contains only a title and date and has no usable retrieval content."
+    }
+  ],
+  "cases": [
+    {
+      "id": "gem_alexandrite",
+      "query": "How does alexandrite change color under different lighting, and what causes the effect?",
+      "expected_file": "alexandrite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "color-change",
+        "daylight",
+        "incandescent"
+      ]
+    },
+    {
+      "id": "gem_amber",
+      "query": "What is amber, and what kinds of inclusions can it contain?",
+      "expected_file": "amber.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "fossilized tree resin",
+        "inclusions"
+      ]
+    },
+    {
+      "id": "gem_amethyst",
+      "query": "What is amethyst, what is its color, and how hard is it?",
+      "expected_file": "amethyst.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "purple",
+        "Mohs Hardness"
+      ]
+    },
+    {
+      "id": "gem_ametrine",
+      "query": "What makes ametrine different from amethyst or citrine?",
+      "expected_file": "ametrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "amethyst",
+        "citrine",
+        "Bolivia"
+      ]
+    },
+    {
+      "id": "gem_aquamarine",
+      "query": "What gives aquamarine its name and characteristic color?",
+      "expected_file": "aquamarine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "seawater",
+        "blue"
+      ]
+    },
+    {
+      "id": "gem_citrine",
+      "query": "What colors can citrine have, and what causes its yellow to orange color?",
+      "expected_file": "citrine.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "quartz",
+        "iron"
+      ]
+    },
+    {
+      "id": "gem_diamond",
+      "query": "What are the 4Cs used to describe diamond quality?",
+      "expected_file": "diamond.pdf",
+      "expected_pages": [
+        2
+      ],
+      "answer_keywords": [
+        "clarity",
+        "color",
+        "cut",
+        "carat"
+      ]
+    },
+    {
+      "id": "gem_emerald",
+      "query": "What mineral family is emerald in, and what colors does it have?",
+      "expected_file": "emerald.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "beryl",
+        "green"
+      ]
+    },
+    {
+      "id": "gem_fancy_color_diamond",
+      "query": "How rare are fancy color diamonds, and what can cause diamond color?",
+      "expected_file": "fancy_color_diamond.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "fancy color",
+        "rare"
+      ]
+    },
+    {
+      "id": "gem_garnet",
+      "query": "Are garnets only red, or can the garnet group include other colors?",
+      "expected_file": "garnet.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "almost every color",
+        "group"
+      ]
+    },
+    {
+      "id": "gem_iolite",
+      "query": "What is iolite known for, including its color or historical use?",
+      "expected_file": "iolite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "Vikings",
+        "glare"
+      ]
+    },
+    {
+      "id": "gem_jade",
+      "query": "What minerals can the name jade refer to?",
+      "expected_file": "jade.pdf",
+      "expected_pages": [
+        1
+      ],
+      "answer_keywords": [
+        "nephrite",
+        "jadeite"
+      ]
+    },
+    {
+      "id": "gem_kunzite",
+      "query": "What colors can kunzite range between?",
+      "expected_file": "kunzite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "pink",
+        "purple"
+      ]
+    },
+    {
+      "id": "gem_lapis_lazuli",
+      "query": "What minerals make up lapis lazuli?",
+      "expected_file": "lapis_lazuli.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "lazurite",
+        "calcite",
+        "pyrite"
+      ]
+    },
+    {
+      "id": "gem_moonstone",
+      "query": "What causes the glowing effect seen in moonstone?",
+      "expected_file": "moonstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "adularescence",
+        "light scattering"
+      ]
+    },
+    {
+      "id": "gem_morganite",
+      "query": "What color is morganite, and what mineral family does it belong to?",
+      "expected_file": "morganite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "pink",
+        "beryl"
+      ]
+    },
+    {
+      "id": "gem_opal",
+      "query": "What is distinctive about the play of color in opal?",
+      "expected_file": "opal.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "play-of-color",
+        "silica spheres"
+      ]
+    },
+    {
+      "id": "gem_pearl",
+      "query": "Are pearls mineral gemstones, and what gives them their luster?",
+      "expected_file": "pearl.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "organic",
+        "nacre"
+      ]
+    },
+    {
+      "id": "gem_peridot",
+      "query": "Where does peridot form, and what color is it?",
+      "expected_file": "peridot.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "lava",
+        "yellow-green"
+      ]
+    },
+    {
+      "id": "gem_rose_quartz",
+      "query": "What color is rose quartz, and how does its color relate to its name?",
+      "expected_file": "rose_quartz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "pink",
+        "quartz"
+      ]
+    },
+    {
+      "id": "gem_ruby",
+      "query": "What mineral variety is ruby, and how is it related to sapphire?",
+      "expected_file": "ruby.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "corundum",
+        "sapphire"
+      ]
+    },
+    {
+      "id": "gem_sapphire",
+      "query": "Can sapphire be colors other than blue, and what mineral is it?",
+      "expected_file": "sapphire.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "corundum",
+        "ruby red"
+      ]
+    },
+    {
+      "id": "gem_spinel",
+      "query": "Why were some spinels historically mistaken for rubies?",
+      "expected_file": "spinel.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "ruby",
+        "crown jewels"
+      ]
+    },
+    {
+      "id": "gem_sunstone",
+      "query": "What causes the glittering effect called aventurescence in sunstone?",
+      "expected_file": "sunstone.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "aventurescence",
+        "feldspar"
+      ]
+    },
+    {
+      "id": "gem_tanzanite",
+      "query": "Where is tanzanite found, and what colors can it show?",
+      "expected_file": "tanzanite.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "Kilimanjaro",
+        "blue",
+        "violet"
+      ]
+    },
+    {
+      "id": "gem_topaz",
+      "query": "What range of colors can topaz have?",
+      "expected_file": "topaz.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "yellow",
+        "orange",
+        "pink",
+        "blue"
+      ]
+    },
+    {
+      "id": "gem_tourmaline",
+      "query": "What colors can tourmaline have, and which trace elements are associated with its green, blue, red, or pink colors?",
+      "expected_file": "tourmaline.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "all colors",
+        "iron",
+        "titanium",
+        "manganese"
+      ]
+    },
+    {
+      "id": "gem_turquoise",
+      "query": "What shades of blue are associated with turquoise?",
+      "expected_file": "turquoise.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "azure",
+        "robin's egg blue"
+      ]
+    },
+    {
+      "id": "gem_zircon",
+      "query": "How is natural zircon different from cubic zirconia?",
+      "expected_file": "zircon.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "confused",
+        "cubic zirconia"
+      ]
+    },
+    {
+      "id": "buying_gemstones",
+      "query": "What should a buyer ask about gemstone treatments and their effect on care or value?",
+      "expected_file": "gemstone_diamond_pearl_buying_guide.pdf",
+      "expected_pages": [
+        3,
+        4
+      ],
+      "answer_keywords": [
+        "treated",
+        "care",
+        "value"
+      ]
+    },
+    {
+      "id": "gold_color_choice",
+      "query": "How can yellow, white, and rose gold change the appearance of a diamond or colored gemstone?",
+      "expected_file": "gold_colors_guide.pdf",
+      "expected_pages": [
+        4,
+        5,
+        6,
+        15
+      ],
+      "answer_keywords": [
+        "yellow gold",
+        "white gold",
+        "rose gold"
+      ]
+    },
+    {
+      "id": "chain_durability",
+      "query": "Which chain styles are durable or difficult to repair, and why?",
+      "expected_file": "jewelry_chain_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "answer_keywords": [
+        "durable",
+        "repair",
+        "kink"
+      ]
+    },
+    {
+      "id": "setting_types",
+      "query": "What is the difference between a bezel setting and a prong setting, and when might each be useful?",
+      "expected_file": "engagement_ring_settings_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        5
+      ],
+      "answer_keywords": [
+        "bezel",
+        "prong",
+        "durability"
+      ]
+    },
+    {
+      "id": "bench_pave",
+      "query": "What is pavé setting, and what bench-work considerations help produce a clean result?",
+      "expected_file": "jewelry_settings_bench_guide.pdf",
+      "expected_pages": [
+        9,
+        10
+      ],
+      "answer_keywords": [
+        "pavé",
+        "beads",
+        "graver"
+      ]
+    },
+    {
+      "id": "necklace_stack",
+      "query": "How can someone build a balanced necklace stack, including base chain lengths and personal pieces?",
+      "expected_file": "necklace_stacking_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4
+      ],
+      "answer_keywords": [
+        "16",
+        "18",
+        "pendant",
+        "personal"
+      ]
+    },
+    {
+      "id": "pearl_care",
+      "query": "How should pearls be protected from scratches, heat, perfume, and other chemicals?",
+      "expected_file": "pearl_care_cleaning_guide.pdf",
+      "expected_pages": [
+        1,
+        2
+      ],
+      "answer_keywords": [
+        "Mohs",
+        "heat",
+        "perfume"
+      ]
+    },
+    {
+      "id": "everyday_ring_metal",
+      "query": "How should someone choose a ring metal for daily wear, durability, upkeep, and allergies?",
+      "expected_file": "ring_metals_everyday_wear.pdf",
+      "expected_pages": [
+        1,
+        2,
+        3
+      ],
+      "answer_keywords": [
+        "durability",
+        "maintenance",
+        "allergy"
+      ]
+    },
+    {
+      "id": "ring_size_estimate",
+      "query": "What are practical ways to estimate someone's ring size while keeping a proposal a surprise?",
+      "expected_file": "ring_size_guide.pdf",
+      "expected_pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "answer_keywords": [
+        "borrow",
+        "jeweler",
+        "soap",
+        "trace"
+      ]
+    },
+    {
+      "id": "ring_measurement_tools",
+      "query": "Which finger-sizing gauge should be used for a ring band wider than 4 millimeters?",
+      "expected_file": "ring_sizing_technical_guide.pdf",
+      "expected_pages": [
+        12
+      ],
+      "answer_keywords": [
+        "wide-finger sizing gauges"
+      ]
+    }
+  ]
+}
