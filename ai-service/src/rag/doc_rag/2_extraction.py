@@ -129,9 +129,13 @@ def build_text_from_lines(
     )
 
 
-def extract_pdf( path,
-    ocr_language="ara+eng",
-    compare_ocr=False,):
+def extract_pdf(
+    path,
+    ocr_language="eng",
+    compare_ocr=False,
+    use_ocr_fallback=True,
+    ocr_short_page_threshold=120,
+):
     """
     Extract text and text blocks from every PDF page.
 
@@ -181,11 +185,21 @@ def extract_pdf( path,
 
             ocr_text = None
 
-            if compare_ocr or not native_text_usable:
+            should_try_ocr = compare_ocr or (
+                use_ocr_fallback
+                and (
+                    not native_text_usable
+                    or len(text) < ocr_short_page_threshold
+                )
+            )
+
+            if should_try_ocr:
                 ocr_text = extract_page_ocr(
                     page,
                     language=ocr_language,
                 )
+
+            ocr_text_usable = ocr_text_looks_usable(ocr_text)
 
 
             text_blocks = extract_text_blocks(page)
@@ -205,8 +219,16 @@ def extract_pdf( path,
 
 
             if not native_text_usable:
-                final_text = ocr_text or ""
-                extraction_method = "ocr"
+                final_text = ocr_text if ocr_text_usable else ""
+                extraction_method = "ocr" if ocr_text_usable else "no_text"
+
+            elif (
+                ocr_text_usable
+                and len(clean_extracted_text(ocr_text))
+                > len(clean_extracted_text(text)) * 1.25
+            ):
+                final_text = ocr_text
+                extraction_method = "ocr_supplement"
 
             elif has_two_column_region:
                 final_text = layout_text
@@ -216,6 +238,8 @@ def extract_pdf( path,
                 final_text = text
                 extraction_method = "native"
 
+            had_mojibake = contains_mojibake(final_text)
+            html_artifact_line_count = count_html_artifact_lines(final_text)
             final_text = clean_extracted_text(final_text)
 
             pages.append({
@@ -233,6 +257,7 @@ def extract_pdf( path,
                     if ocr_text is not None
                     else None
                 ),
+                "ocr_text_usable": ocr_text_usable,
 
                 "final_text": final_text,
                 "final_text_length": len(final_text),
@@ -241,6 +266,8 @@ def extract_pdf( path,
                 "layout_region_types": layout_region_types,
                 "layout_text": layout_text,
                 "layout_text_length": len(layout_text),  
+                "had_mojibake": had_mojibake,
+                "html_artifact_line_count": html_artifact_line_count,
             })
 
         boilerplate_lines = find_repeated_boilerplate(
@@ -249,7 +276,7 @@ def extract_pdf( path,
 
         for page in pages:
 
-            if page["extraction_method"] == "ocr":
+            if page["extraction_method"] in {"ocr", "ocr_supplement"}:
                 # Keep OCR output as the source.
                 page["final_text"] = remove_boilerplate_lines(
                     page["final_text"],
@@ -358,6 +385,17 @@ def native_text_looks_usable(text):
     private_use_ratio = private_use_count / len(text)
 
     return private_use_ratio < 0.05
+
+
+def ocr_text_looks_usable(text):
+    """Reject empty or punctuation-only OCR while retaining text and tables."""
+    value = clean_extracted_text(text)
+    if len(value) < 10:
+        return False
+
+    alphanumeric = sum(character.isalnum() for character in value)
+    meaningful_tokens = re.findall(r"[A-Za-z0-9]{2,}", value)
+    return alphanumeric >= 6 and len(meaningful_tokens) >= 2
 
 def detect_layout_regions(
     text_blocks,
@@ -635,7 +673,7 @@ def clean_extracted_text(text):
     if not text:
         return ""
 
-    text = str(text)
+    text = repair_mojibake(str(text))
 
     # Remove Unicode replacement characters
     text = text.replace("\ufffd", "")
@@ -651,6 +689,7 @@ def clean_extracted_text(text):
     # Normalize spaces and tabs inside each line while
     # preserving line and paragraph boundaries
     lines = []
+    previous_nonempty_line = None
 
     for line in text.splitlines():
         line = re.sub(
@@ -659,7 +698,17 @@ def clean_extracted_text(text):
             line,
         ).strip()
 
-        lines.append(line)
+        if is_html_artifact_line(line):
+            continue
+
+        if line:
+            line = append_without_adjacent_overlap(lines, line)
+            if not line:
+                continue
+            previous_nonempty_line = line.casefold()
+        else:
+            lines.append(line)
+            previous_nonempty_line = None
 
     text = "\n".join(lines)
 
@@ -672,11 +721,90 @@ def clean_extracted_text(text):
 
     return text.strip()
 
+
+MOJIBAKE_MARKERS = ("Ã", "Â", "â€", "â€™", "â€œ", "â€�", "â€“", "â€”")
+
+
+def contains_mojibake(text):
+    """Return True when text contains common UTF-8-as-Windows-1252 damage."""
+    value = str(text or "")
+    return any(marker in value for marker in MOJIBAKE_MARKERS)
+
+
+def repair_mojibake(text):
+    """Repair common UTF-8 text decoded as Windows-1252 when it is safer."""
+    if not contains_mojibake(text):
+        return text
+
+    try:
+        repaired = text.encode("cp1252").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return text
+
+    original_markers = sum(text.count(marker) for marker in MOJIBAKE_MARKERS)
+    repaired_markers = sum(repaired.count(marker) for marker in MOJIBAKE_MARKERS)
+    return repaired if repaired_markers < original_markers else text
+
+
+HTML_ARTIFACT_PATTERNS = (
+    re.compile(r"\bhref\s*=\s*https?://", re.IGNORECASE),
+    re.compile(r"\bdata-[\w-]+\s*=", re.IGNORECASE),
+    re.compile(r"\boriginal-href\s*=", re.IGNORECASE),
+    re.compile(r"\b(?:hover:)?text-(?:white|foreground)[\w-]*", re.IGNORECASE),
+    re.compile(r"\bbuyers?-guide\b", re.IGNORECASE),
+    re.compile(r"\bbuyer's guide\b", re.IGNORECASE),
+    re.compile(r"^(?:re|researc|photos?|videos?|view gallery|& video)$", re.IGNORECASE),
+)
+
+
+def is_html_artifact_line(line):
+    """Identify HTML/CSS attribute fragments printed as visible PDF text."""
+    value = str(line or "").strip()
+    return bool(value) and any(pattern.search(value) for pattern in HTML_ARTIFACT_PATTERNS)
+
+
+def count_html_artifact_lines(text):
+    return sum(is_html_artifact_line(line) for line in str(text or "").splitlines())
+
+
+def append_without_adjacent_overlap(lines, line):
+    """Append a line while merging exact adjacent prefix/suffix overlap."""
+    if not lines or not lines[-1]:
+        lines.append(line)
+        return line
+
+    previous = lines[-1]
+    previous_folded = previous.casefold()
+    line_folded = line.casefold()
+
+    if previous_folded == line_folded or previous_folded.endswith(line_folded):
+        return ""
+
+    if line_folded.startswith(previous_folded):
+        lines[-1] = line
+        return line
+
+    previous_words = previous.split()
+    line_words = line.split()
+    maximum_overlap = min(len(previous_words), len(line_words))
+
+    for size in range(maximum_overlap, 1, -1):
+        previous_suffix = " ".join(previous_words[-size:]).casefold()
+        line_prefix = " ".join(line_words[:size]).casefold()
+        if previous_suffix == line_prefix:
+            merged = " ".join(previous_words + line_words[size:])
+            lines[-1] = merged
+            return merged
+
+    lines.append(line)
+    return line
+
 def find_repeated_boilerplate(
     pages,
     min_page_ratio=0.30,
     top_ratio=0.18,
     bottom_ratio=0.82,
+    min_characters=8,
 ):
     """
     Detect repeated header/footer text across document pages.
@@ -722,7 +850,9 @@ def find_repeated_boilerplate(
             if len(text) > 120:
                 continue
 
-            if len(text) < 4:
+            # Single short words such as "Wear" are often legitimate section
+            # content in jewelry guides, so never remove them automatically.
+            if len(text) < min_characters or len(text.split()) < 2:
                 continue
 
             line_pages.setdefault(
