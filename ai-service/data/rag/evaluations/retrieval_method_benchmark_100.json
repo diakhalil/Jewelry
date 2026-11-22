@@ -1,0 +1,2243 @@
+[
+    {
+        "id":  "retrieval_001",
+        "query":  "Should pearl jewelry be cleaned with a steam cleaner or an ultrasonic cleaner?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "pearl_care_cleaning_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ultrasonic",
+                                  "steam cleaner",
+                                  "warm soapy water",
+                                  "soft clean cloth"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_002",
+        "query":  "Why do pearls scratch easily, and what routine care do they need?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "pearl_care_cleaning_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "Mohs hardness",
+                                  "scratched or abraded",
+                                  "perfume",
+                                  "dehydration"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_003",
+        "query":  "How should a jeweler measure a finger for an accurate ring size?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "Ring Size Guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Updated to match the ring-size PDF currently included in the jewelry corpus.",
+        "expected_keywords":  [
+                                  "jeweler",
+                                  "finger gauges",
+                                  "ring sizer",
+                                  "ring mandrel"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_004",
+        "query":  "How can I find a ring size that fits snugly but comfortably?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "Ring Size Guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Updated to match the ring-size PDF currently included in the jewelry corpus.",
+        "expected_keywords":  [
+                                  "ring size",
+                                  "fits snugly",
+                                  "finger gauges",
+                                  "best comfort"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_005",
+        "query":  "Which ring metals are best for everyday wear and durability?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ring_metals_everyday_wear.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "platinum",
+                                  "gold",
+                                  "titanium",
+                                  "durability"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_006",
+        "query":  "How do white gold, yellow gold, and rose gold differ in engagement rings?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "gold_colors_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "white gold",
+                                  "yellow gold",
+                                  "rose gold",
+                                  "rhodium"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_007",
+        "query":  "What are the differences between solitaire, halo, and pave engagement ring settings?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "engagement_ring_settings_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "solitaire",
+                                  "halo",
+                                  "pav?",
+                                  "three-stone"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_008",
+        "query":  "How are gemstones secured in common jewelry settings such as bezel and pave?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jewelry_settings_bench_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "bezel",
+                                  "prong",
+                                  "pav?",
+                                  "channel"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_009",
+        "query":  "What are common jewelry chain types and their characteristics?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jewelry_chain_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "cable",
+                                  "curb",
+                                  "figaro",
+                                  "rope"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_010",
+        "query":  "How can I style and layer necklaces with different chain lengths?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "necklace_stacking_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "necklace stack",
+                                  "different lengths",
+                                  "natural separation",
+                                  "pendant"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_011",
+        "query":  "What should I consider when buying gemstones, diamonds, and pearls?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "gemstone_diamond_pearl_buying_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "diamond",
+                                  "pearl",
+                                  "gemstone",
+                                  "treatment"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_012",
+        "query":  "Why does alexandrite change color between daylight and lamplight?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "alexandrite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "alexandrite",
+                                  "daylight",
+                                  "incandescent",
+                                  "color change"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_013",
+        "query":  "What makes fancy color diamonds valuable and different from colorless diamonds?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "fancy_color_diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "fancy color diamonds",
+                                  "strength and purity",
+                                  "one in 10,000",
+                                  "valuable"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_014",
+        "query":  "What birthstone information does the GIA birthstones article provide?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "birthstone_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Existing notebook-5 pilot query; expected source retained. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "birthstone",
+                                  "GIA",
+                                  "April",
+                                  "August"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_015",
+        "query":  "How can insects or plant fragments become preserved inside amber formed from ancient tree resin?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "amber.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "amber",
+                                  "tree resin",
+                                  "inclusion",
+                                  "fossil"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_016",
+        "query":  "What mineral variety is amethyst, and why was it historically valued alongside ruby and emerald?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "amethyst.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "amethyst",
+                                  "quartz",
+                                  "ruby",
+                                  "emerald"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_017",
+        "query":  "What gives ametrine its combination of amethyst and citrine colors, and where is it commercially mined?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ametrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ametrine",
+                                  "amethyst",
+                                  "citrine",
+                                  "Bolivia"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_018",
+        "query":  "What mineral family does aquamarine belong to, and how does its name relate to its sea-blue color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "aquamarine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "aquamarine",
+                                  "beryl",
+                                  "sea water",
+                                  "blue"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_019",
+        "query":  "Why is natural citrine relatively rare, and what other yellow gem was it once confused with?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "citrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "citrine",
+                                  "natural",
+                                  "rare",
+                                  "topaz"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_020",
+        "query":  "What is diamond made of, and why is it described as the hardest natural material?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "carbon",
+                                  "hardness",
+                                  "diamond",
+                                  "Mohs"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_021",
+        "query":  "What mineral family is emerald part of, and how do experts distinguish it from green beryl?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "emerald.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "beryl",
+                                  "green beryl",
+                                  "too light",
+                                  "bluish green"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_022",
+        "query":  "Why is garnet described as a group of related minerals rather than a single-color gem?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "garnet.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "closely related minerals",
+                                  "group",
+                                  "almost every color",
+                                  "tsavorite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_023",
+        "query":  "What optical property makes iolite appear different colors when viewed from different directions?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "iolite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "pleochroic",
+                                  "cordierite",
+                                  "violetish blue",
+                                  "colorless-yellow"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_024",
+        "query":  "Which materials can be called jade, and what are the two best-known jade varieties?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jade.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "jadeite",
+                                  "nephrite",
+                                  "jade"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_025",
+        "query":  "What mineral variety is kunzite, and what trace element contributes to its color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "kunzite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "kunzite",
+                                  "spodumene",
+                                  "manganese",
+                                  "lithium"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_026",
+        "query":  "Which minerals make up lapis lazuli, and which one contributes its vivid blue color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "lapis_lazuli.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "lapis lazuli",
+                                  "lazurite",
+                                  "calcite",
+                                  "pyrite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_027",
+        "query":  "What causes the moving, moonlight-like glow known as adularescence in moonstone?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "moonstone.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "moonstone",
+                                  "adularescence",
+                                  "feldspar",
+                                  "albite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_028",
+        "query":  "What mineral family does morganite belong to, and what can give it a salmon-pink appearance?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "morganite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "morganite",
+                                  "beryl",
+                                  "manganese",
+                                  "pink"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_029",
+        "query":  "What is opal\u0027s play-of-color, and how does it create shifting flashes across the gem?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "opal.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "opal",
+                                  "play-of-color",
+                                  "silica spheres",
+                                  "diffraction"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_030",
+        "query":  "How do natural pearls form, and how do cultured pearls share their organic origin?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "pearl.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "natural pearl",
+                                  "cultured pearl",
+                                  "mollusk",
+                                  "nacre"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_031",
+        "query":  "Where can peridot form, and what gives this gem its characteristic yellow-green color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "peridot.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "peridot",
+                                  "olivine",
+                                  "iron",
+                                  "mantle"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_032",
+        "query":  "What mineral species is ruby, and which trace element gives it its red color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ruby.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ruby",
+                                  "corundum",
+                                  "chromium",
+                                  "red"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_033",
+        "query":  "How is sapphire related to ruby, and what colors can sapphire have besides red?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "sapphire.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "sapphire",
+                                  "corundum",
+                                  "ruby",
+                                  "blue"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_034",
+        "query":  "Why was spinel historically mistaken for ruby in famous crown jewels?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "spinel.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "spinel",
+                                  "ruby",
+                                  "crown jewels",
+                                  "Black Prince"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_035",
+        "query":  "What inclusions or structures create the glittering aventurescence seen in sunstone?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "sunstone.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "sunstone",
+                                  "aventurescence",
+                                  "inclusions",
+                                  "copper"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_036",
+        "query":  "Where is tanzanite found, and what mineral variety is this blue-violet gem?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "tanzanite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "tanzanite",
+                                  "zoisite",
+                                  "Tanzania",
+                                  "Merelani"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_037",
+        "query":  "Which colors can topaz have, and what is distinctive about imperial topaz?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "topaz.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "imperial topaz",
+                                  "yellow",
+                                  "orange",
+                                  "pleochroic"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_038",
+        "query":  "Why is tourmaline notable for its exceptionally broad range of colors?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "tourmaline.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "widest color ranges",
+                                  "iron",
+                                  "titanium",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_039",
+        "query":  "What geological conditions form turquoise, and how do copper-bearing materials influence its color?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "turquoise.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "turquoise",
+                                  "copper",
+                                  "aluminum",
+                                  "phosphate"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_040",
+        "query":  "What gives zircon its brilliance and fire, and how is it different from cubic zirconia?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "zircon.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Question reviewed against the cached PDF-derived text and the document?s distinctive introductory facts. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "zircon",
+                                  "dispersion",
+                                  "fire",
+                                  "cubic zirconia"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_041",
+        "query":  "How are ruby and sapphire related as corundum gems, and what distinguishes their colors?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "ruby.pdf",
+                                   "sapphire.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "corundum",
+                                  "ruby",
+                                  "sapphire",
+                                  "chromium"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_042",
+        "query":  "What do emerald and aquamarine share as beryl gems, and how do their colors differ?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "emerald.pdf",
+                                   "aquamarine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "beryl",
+                                  "emerald",
+                                  "aquamarine",
+                                  "blue to slightly greenish blue"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_043",
+        "query":  "How do amethyst and citrine compare as colored varieties of quartz?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "amethyst.pdf",
+                                   "citrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "amethyst",
+                                  "citrine",
+                                  "quartz",
+                                  "purple",
+                                  "yellow"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_044",
+        "query":  "How does alexandrite change color with lighting, compared with sapphire color descriptions?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "alexandrite.pdf",
+                                   "sapphire.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "alexandrite",
+                                  "chrysoberyl",
+                                  "daylight",
+                                  "incandescent",
+                                  "sapphire"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_045",
+        "query":  "What makes ordinary diamonds different from rare fancy color diamonds?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "diamond.pdf",
+                                   "fancy_color_diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "carbon atoms",
+                                  "hardest material",
+                                  "fancy color diamonds",
+                                  "strength and purity"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_046",
+        "query":  "How do natural pearls form, and what care protects pearl jewelry?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "pearl.pdf",
+                                   "pearl_care_cleaning_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "natural pearl",
+                                  "cultured pearl",
+                                  "mollusk",
+                                  "nacre",
+                                  "cleaning"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_047",
+        "query":  "How can chain-link styles be combined when creating a layered necklace stack?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "jewelry_chain_guide.pdf",
+                                   "necklace_stacking_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "link styles",
+                                  "box chains",
+                                  "cable link",
+                                  "layered look"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_048",
+        "query":  "Which ring-sizing methods are reliable, and why can string or paper measurements be inaccurate?",
+        "language":  "en",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "Ring Size Guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Updated to match the ring-size PDF currently included in the jewelry corpus.",
+        "expected_keywords":  [
+                                  "finger gauges",
+                                  "ring mandrel",
+                                  "string can stretch",
+                                  "paper can be easily damaged"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_049",
+        "query":  "How should everyday ring durability be weighed alongside gold-color choices?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "ring_metals_everyday_wear.pdf",
+                                   "gold_colors_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "gold",
+                                  "platinum",
+                                  "titanium",
+                                  "tungsten",
+                                  "durability"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_050",
+        "query":  "How do engagement-ring styles relate to bench techniques used to secure their stones?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "engagement_ring_settings_guide.pdf",
+                                   "jewelry_settings_bench_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "solitaire",
+                                  "halo",
+                                  "pav?",
+                                  "prong",
+                                  "bezel"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_051",
+        "query":  "What buying checks apply to diamonds, and how are fancy color diamonds evaluated?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "gemstone_diamond_pearl_buying_guide.pdf",
+                                   "fancy_color_diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "cut",
+                                  "clarity",
+                                  "carat",
+                                  "fancy color diamonds"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_052",
+        "query":  "How do amber and pearls differ as organic gems in origin and formation?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "amber.pdf",
+                                   "pearl.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "amber",
+                                  "resin",
+                                  "pearl",
+                                  "mollusk",
+                                  "organic"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_053",
+        "query":  "How do jade and lapis lazuli differ in composition and material type?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "jade.pdf",
+                                   "lapis_lazuli.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "jadeite",
+                                  "nephrite",
+                                  "lapis lazuli",
+                                  "lazurite",
+                                  "calcite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_054",
+        "query":  "How do opal play-of-color and moonstone adularescence create different optical effects?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "opal.pdf",
+                                   "moonstone.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "opal",
+                                  "play-of-color",
+                                  "silica spheres",
+                                  "moonstone",
+                                  "adularescence"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_055",
+        "query":  "What should buyers compare about garnet\u0027s color range and tourmaline\u0027s color variety?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "garnet.pdf",
+                                   "tourmaline.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "closely related minerals",
+                                  "garnet colors",
+                                  "iron",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_056",
+        "query":  "How do kunzite and morganite compare in mineral family and pink color?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "kunzite.pdf",
+                                   "morganite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "kunzite",
+                                  "spodumene",
+                                  "morganite",
+                                  "beryl",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_057",
+        "query":  "How does zircon\u0027s brilliance compare with diamond, and why is zircon not cubic zirconia?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "zircon.pdf",
+                                   "diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "zircon",
+                                  "fire",
+                                  "diamond",
+                                  "cubic zirconia"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_058",
+        "query":  "How do turquoise and lapis lazuli differ in composition and sources of blue color?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "turquoise.pdf",
+                                   "lapis_lazuli.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "turquoise",
+                                  "copper",
+                                  "lapis lazuli",
+                                  "lazurite",
+                                  "blue"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_059",
+        "query":  "How can birthstone information help compare gems such as amethyst and garnet?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "birthstone_guide.pdf",
+                                   "amethyst.pdf",
+                                   "garnet.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "birthstone",
+                                  "amethyst",
+                                  "garnet",
+                                  "April",
+                                  "January"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_060",
+        "query":  "How do topaz and citrine compare in yellow-to-orange color and gem identity?",
+        "language":  "en",
+        "query_type":  "cross_document",
+        "cross_pdf":  true,
+        "expected_documents":  [
+                                   "topaz.pdf",
+                                   "citrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "All listed PDFs are relevant targets. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "topaz",
+                                  "citrine",
+                                  "quartz",
+                                  "yellow",
+                                  "orange"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_061",
+        "query":  "ما الخصائص المميزة لحجر الألكسندريت المذكورة في الدليل؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "alexandrite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "alexandrite",
+                                  "daylight",
+                                  "incandescent",
+                                  "chrysoberyl",
+                                  "color change"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_062",
+        "query":  "كيف يصف الدليل حجر الكهرمان من حيث اللون والتركيب والمصدر؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "amber.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "fossilized tree resin",
+                                  "animal and plant inclusions",
+                                  "plant matter",
+                                  "time capsule"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_063",
+        "query":  "ما الذي يميّز حجر الجمشت ويجعل لونه أو تأثيره البصري فريداً؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "amethyst.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "amethyst",
+                                  "quartz",
+                                  "purple",
+                                  "ruby",
+                                  "emerald"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_064",
+        "query":  "إلى أي مجموعة معدنية ينتمي حجر الأمترين وما أبرز صفاته؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ametrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ametrine",
+                                  "quartz",
+                                  "amethyst",
+                                  "citrine",
+                                  "Bolivia"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_065",
+        "query":  "ما الخصائص المميزة لحجر الأكوامارين المذكورة في الدليل؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "aquamarine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "aquamarine",
+                                  "beryl",
+                                  "sea water",
+                                  "blue"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_066",
+        "query":  "كيف يصف الدليل حجر السترين من حيث اللون والتركيب والمصدر؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "citrine.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "citrine",
+                                  "quartz",
+                                  "yellow",
+                                  "topaz",
+                                  "amethyst"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_067",
+        "query":  "ما الذي يميّز حجر الألماس ويجعل لونه أو تأثيره البصري فريداً؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "diamond",
+                                  "carbon",
+                                  "hardness",
+                                  "Mohs"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_068",
+        "query":  "إلى أي مجموعة معدنية ينتمي حجر الزمرد وما أبرز صفاته؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "emerald.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "beryl",
+                                  "green beryl",
+                                  "too light",
+                                  "emerald"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_069",
+        "query":  "ما الخصائص المميزة لحجر الألماس الملون المذكورة في الدليل؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "fancy_color_diamond.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "fancy color diamonds",
+                                  "strength and purity",
+                                  "rare",
+                                  "one in 10,000"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_070",
+        "query":  "كيف يصف الدليل حجر العقيق من حيث اللون والتركيب والمصدر؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "garnet.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "closely related minerals",
+                                  "almost every color",
+                                  "red garnets",
+                                  "tsavorite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_071",
+        "query":  "ما الذي يميّز حجر الإيولايت ويجعل لونه أو تأثيره البصري فريداً؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "iolite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "pleochroic",
+                                  "cordierite",
+                                  "violetish blue",
+                                  "colorless-yellow"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_072",
+        "query":  "إلى أي مجموعة معدنية ينتمي حجر اليشم وما أبرز صفاته؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jade.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "nephrite",
+                                  "jadeite",
+                                  "green omphacite",
+                                  "generic term"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_073",
+        "query":  "ما الخصائص المميزة لحجر الكونزيت المذكورة في الدليل؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "kunzite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "kunzite",
+                                  "spodumene",
+                                  "lithium",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_074",
+        "query":  "كيف يصف الدليل حجر اللازورد من حيث اللون والتركيب والمصدر؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "lapis_lazuli.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "lapis lazuli",
+                                  "lazurite",
+                                  "calcite",
+                                  "pyrite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_075",
+        "query":  "ما الذي يميّز حجر حجر القمر ويجعل لونه أو تأثيره البصري فريداً؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "moonstone.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "moonstone",
+                                  "feldspar",
+                                  "adularescence",
+                                  "orthoclase",
+                                  "albite"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_076",
+        "query":  "إلى أي مجموعة معدنية ينتمي حجر المورغانيت وما أبرز صفاته؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "morganite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "beryl",
+                                  "orange-pink",
+                                  "salmon color",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_077",
+        "query":  "ما الخصائص المميزة لحجر الأوبال المذكورة في الدليل؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "opal.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "opal",
+                                  "silica spheres",
+                                  "diffraction",
+                                  "play-of-color"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_078",
+        "query":  "كيف يصف الدليل حجر اللؤلؤ من حيث اللون والتركيب والمصدر؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "pearl.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "pearl",
+                                  "nacre",
+                                  "mollusk",
+                                  "organic"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_079",
+        "query":  "ما الذي يميّز حجر البريدوت ويجعل لونه أو تأثيره البصري فريداً؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "peridot.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "olivine",
+                                  "mantle",
+                                  "meteorites",
+                                  "yellow-green"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_080",
+        "query":  "إلى أي مجموعة معدنية ينتمي حجر الياقوت الأحمر وما أبرز صفاته؟",
+        "language":  "ar",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ruby.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Arabic cross-lingual retrieval query; named gemstone is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ruby",
+                                  "corundum",
+                                  "chromium",
+                                  "red"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_081",
+        "query":  "En quoi le saphir est-il lie au rubis, et quelles couleurs peut-il avoir en dehors du rouge ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "sapphire.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "corundum",
+                                  "ruby",
+                                  "sapphire",
+                                  "violet",
+                                  "green",
+                                  "yellow",
+                                  "orange",
+                                  "pink"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_082",
+        "query":  "Pourquoi le spinelle a-t-il ete pris pour un rubis dans certaines couronnes royales ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "spinel.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "Black Prince\u0027s Ruby",
+                                  "Timur Ruby",
+                                  "crown jewels",
+                                  "spinel"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_083",
+        "query":  "Quelle structure produit les eclats scintillants de la pierre de soleil ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "sunstone.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "aventurescence",
+                                  "flat reflective inclusions",
+                                  "copper inclusions",
+                                  "feldspar"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_084",
+        "query":  "Ou trouve-t-on la tanzanite, et a quelle variete minerale appartient-elle ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "tanzanite.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "tanzanite",
+                                  "zoisite",
+                                  "Tanzania",
+                                  "Merelani"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_085",
+        "query":  "Quelles couleurs peut presenter la topaze, et qu\u0027est-ce qui distingue la topaze imperiale ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "topaz.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "imperial topaz",
+                                  "yellow",
+                                  "orange",
+                                  "pleochroic"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_086",
+        "query":  "Pourquoi la tourmaline est-elle connue pour sa grande diversite de couleurs ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "tourmaline.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "widest color ranges",
+                                  "iron",
+                                  "titanium",
+                                  "manganese"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_087",
+        "query":  "Comment se forme la turquoise, et quelles conditions produisent sa couleur bleue ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "turquoise.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "dry and barren",
+                                  "acidic copper-rich groundwater",
+                                  "phosphorus",
+                                  "aluminum phosphate"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_088",
+        "query":  "Qu est-ce qui donne son feu au zircon, et pourquoi le confond-on avec la zircone cubique ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "zircon.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "high refraction",
+                                  "fire",
+                                  "diamond",
+                                  "cubic zirconia"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_089",
+        "query":  "Quelles informations sur les pierres de naissance l\u0027article du GIA presente-t-il ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "birthstone_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "birthstone",
+                                  "GIA",
+                                  "January",
+                                  "April"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_090",
+        "query":  "Quelles differences distinguent les styles solitaire, halo et trois pierres ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "engagement_ring_settings_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "solitaire",
+                                  "halo",
+                                  "three-stone",
+                                  "engagement ring"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_091",
+        "query":  "Quels criteres verifier lors de l\u0027achat de gemmes, de diamants et de perles ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "gemstone_diamond_pearl_buying_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "cut",
+                                  "clarity",
+                                  "carat",
+                                  "natural gemstones"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_092",
+        "query":  "Comment comparer l\u0027or blanc, jaune et rose pour une bague de fiancailles ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "gold_colors_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "white gold",
+                                  "yellow gold",
+                                  "rose gold",
+                                  "karat",
+                                  "rhodium"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_093",
+        "query":  "Quelles caracteristiques distinguent les principaux styles de maillons de chaine ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jewelry_chain_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "link styles",
+                                  "box chains",
+                                  "cable link",
+                                  "curb chain"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_094",
+        "query":  "Comment les sertis a griffes et les sertis clos maintiennent-ils les pierres ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "jewelry_settings_bench_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "prong setting",
+                                  "bezel",
+                                  "shared prong",
+                                  "channel"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_095",
+        "query":  "Comment associer les longueurs et les styles de chaine pour superposer les colliers ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "necklace_stacking_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "necklace stacks",
+                                  "different lengths",
+                                  "chain styles",
+                                  "pendant"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_096",
+        "query":  "Comment nettoyer les perles sans les rayer ni les abimer ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "pearl_care_cleaning_guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "ultrasonic",
+                                  "steam cleaner",
+                                  "warm soapy water",
+                                  "soft clean cloth"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_097",
+        "query":  "Quels metaux de bague allient resistance, entretien et confort au quotidien ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "ring_metals_everyday_wear.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "durability",
+                                  "maintenance",
+                                  "24k",
+                                  "titanium"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_098",
+        "query":  "Quels conseils aident ? choisir une taille de bague bien ajust?e et confortable ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "Ring Size Guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Updated to match the ring-size PDF currently included in the jewelry corpus.",
+        "expected_keywords":  [
+                                  "ring size",
+                                  "fits snugly",
+                                  "finger gauges",
+                                  "best comfort"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_099",
+        "query":  "Quels outils fiables mesurent une taille de bague, et pourquoi ?viter la ficelle ou le papier ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "Ring Size Guide.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "Updated to match the ring-size PDF currently included in the jewelry corpus.",
+        "expected_keywords":  [
+                                  "finger gauges",
+                                  "ring mandrel",
+                                  "string can stretch",
+                                  "paper can be easily damaged"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    },
+    {
+        "id":  "retrieval_100",
+        "query":  "Quelles caracteristiques de couleur distinguent le quartz rose des autres quartz ?",
+        "language":  "fr",
+        "query_type":  "single_document",
+        "cross_pdf":  false,
+        "expected_documents":  [
+                                   "rose_quartz.pdf"
+                               ],
+        "variants":  [
+
+                     ],
+        "annotation_note":  "French cross-lingual retrieval query; named topic is an explicit retrieval target. Expected keywords are answer concepts to locate inside chunks from the labeled source PDFs.",
+        "expected_keywords":  [
+                                  "rose quartz",
+                                  "quartz",
+                                  "pink",
+                                  "color"
+                              ],
+        "keyword_match_rule":  "normalized_case_insensitive_substring",
+        "expected_keyword_note":  "Answer-focused terms grounded in the labeled PDF text; at least one term should appear in an answer-bearing chunk."
+    }
+]

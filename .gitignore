@@ -9,6 +9,7 @@ node_modules/
 !.env.example
 !.env.sample
 !.env.template
+ai-service/.env
 
 # Build and test output
 build/
@@ -35,6 +36,8 @@ pnpm-debug.log*
 .parcel-cache/
 .npm/
 .yarn/cache/
+__pycache__/
+*.py[cod]
 
 # Editor and operating-system files
 .vscode/
@@ -49,3 +52,11 @@ Desktop.ini
 tmp/
 temp/
 *.tmp
+
+# RAG runtime artifacts (caches, local Qdrant data, and generated evaluations)
+ai-service/data/rag/*
+!ai-service/data/rag/evaluations/
+ai-service/data/rag/evaluations/*
+!ai-service/data/rag/evaluations/final_retrieval_generation_gold.json
+!ai-service/data/rag/evaluations/image_retrieval_benchmark_100.json
+!ai-service/data/rag/evaluations/retrieval_method_benchmark_100.json

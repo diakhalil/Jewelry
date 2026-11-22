@@ -1,0 +1,1939 @@
+{
+  "schema_version": 2,
+  "title": "SheCraft image retrieval benchmark",
+  "description": "93 multilingual jewelry questions with relevant image labels across the jewelry PDF corpus. Only expected_image_ids are image relevance labels; candidate_pdfs identify the PDFs reviewed for each question.",
+  "languages": {
+    "en": 56,
+    "ar": 19,
+    "fr": 18
+  },
+  "annotation_guidance": [
+    "Each retained case has one or more reviewed expected_image_ids.",
+    "Only exact image IDs are image relevance labels; candidate_pdfs identify the PDFs reviewed for that question.",
+    "Image IDs were checked against the extracted image records and cached VLM visual descriptions.",
+    "Do not use headings, nearby PDF text, chunk IDs, page matches, or PDF names alone as image relevance labels."
+  ],
+  "cases": [
+    {
+      "id": "image_003",
+      "query": "How should a jeweler measure a finger for an accurate ring size?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "Ring Size Guide-5ada662598a071ee",
+        "Ring Size Guide-616cb72dc1a458f6"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "Ring Size Guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_004",
+      "query": "How can I find a ring size that fits snugly but comfortably?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "Ring Size Guide-5ada662598a071ee",
+        "Ring Size Guide-616cb72dc1a458f6"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "Ring Size Guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_005",
+      "query": "Which ring metals are best for everyday wear and durability?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ring_metals_everyday_wear-7396b4eb56a2fb9b"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ring_metals_everyday_wear.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_006",
+      "query": "How do white gold, yellow gold, and rose gold differ in engagement rings?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "gold_colors_guide-5e6b08a0c9d2dd46",
+        "gold_colors_guide-69f6261e69fcc769",
+        "gold_colors_guide-98eafeb4a852bbc9",
+        "gold_colors_guide-bbae0b05fd963bdf",
+        "gold_colors_guide-bb76104b1912fe6f",
+        "gold_colors_guide-9e813f80eb55189c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "gold_colors_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_007",
+      "query": "What are the differences between solitaire, halo, and pave engagement ring settings?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "engagement_ring_settings_guide-1c26871ac04cfc37"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "engagement_ring_settings_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_008",
+      "query": "How are gemstones secured in common jewelry settings such as bezel and pave?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jewelry_settings_bench_guide-6f613d6be9069794",
+        "jewelry_settings_bench_guide-5756e874937406c4",
+        "jewelry_settings_bench_guide-c6de649e50d8ba44",
+        "jewelry_settings_bench_guide-08d039d109b20c0b",
+        "jewelry_settings_bench_guide-8e57bbd604756404",
+        "jewelry_settings_bench_guide-d10a7c5e2b801e93",
+        "jewelry_settings_bench_guide-dc7d07ca6dcebcb3",
+        "jewelry_settings_bench_guide-76af3085aecd495c",
+        "jewelry_settings_bench_guide-aaeef5d72194673c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jewelry_settings_bench_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_009",
+      "query": "What are common jewelry chain types and their characteristics?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jewelry_chain_guide-d0fbe5c55e3cee75",
+        "jewelry_chain_guide-30cf96e0fc107f2d",
+        "jewelry_chain_guide-62812e7298fdc77a",
+        "jewelry_chain_guide-50c4c66d60c8ee3a",
+        "jewelry_chain_guide-73e493475b4d8aea",
+        "jewelry_chain_guide-eb9ff812cc28d7a7",
+        "jewelry_chain_guide-6da7c86e656e89f6",
+        "jewelry_chain_guide-82fdaf61c6049cd2",
+        "jewelry_chain_guide-850ba9274dcd2333"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jewelry_chain_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_010",
+      "query": "How can I style and layer necklaces with different chain lengths?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "necklace_stacking_guide-a66ccaa88e7bc025",
+        "necklace_stacking_guide-cd39eca215d1c07e",
+        "necklace_stacking_guide-624f943416a3979e",
+        "necklace_stacking_guide-1693ef76a9fe05a9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "necklace_stacking_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_012",
+      "query": "Why does alexandrite change color between daylight and lamplight?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "alexandrite-b60aeed3315b52bd",
+        "alexandrite-b835672dde2c1360",
+        "alexandrite-896142563ee6c32f",
+        "alexandrite-dadd293dab0ffc33"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "alexandrite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_013",
+      "query": "What makes fancy color diamonds valuable and different from colorless diamonds?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "fancy_color_diamond-4bc3e5db56ba51a1",
+        "fancy_color_diamond-9dffd63e34d8c09a",
+        "fancy_color_diamond-58e0ca3ea27e9596",
+        "fancy_color_diamond-cd7a527d0e244309"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "fancy_color_diamond.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_014",
+      "query": "What birthstone information does the GIA birthstones article provide?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "birthstone_guide-0f370e418bddcfbd",
+        "birthstone_guide-878f05261e4cf6b3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "birthstone_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_015",
+      "query": "How can insects or plant fragments become preserved inside amber formed from ancient tree resin?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "amber-a5c363645cd8e8fe",
+        "amber-f4e5dab6d4633332",
+        "amber-f8ab4359c3723eb6",
+        "amber-8778e8bac6977e83",
+        "amber-1aefeeb9c8b02770"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amber.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_016",
+      "query": "What mineral variety is amethyst, and why was it historically valued alongside ruby and emerald?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "amethyst-76e561d3c4fc77d0",
+        "amethyst-3ccaa54e7c14de51",
+        "amethyst-6f5fe68d0a12b2fb",
+        "amethyst-0eff861c860fb507",
+        "amethyst-1e7fd3f16b5997da"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amethyst.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_017",
+      "query": "What gives ametrine its combination of amethyst and citrine colors, and where is it commercially mined?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ametrine-9d53f878b006f3e8",
+        "ametrine-efdf8b2cdb9dfc26",
+        "ametrine-c68843ef8d8d3e44"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ametrine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_018",
+      "query": "What mineral family does aquamarine belong to, and how does its name relate to its sea-blue color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "aquamarine-62b158617d5b0b77",
+        "aquamarine-f860f5a98383ae5f",
+        "aquamarine-7c6ad9b124214312",
+        "aquamarine-95175fc12a78d4bf",
+        "aquamarine-33256548aa2c1e2e",
+        "aquamarine-9fda52028f30da6b"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "aquamarine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_019",
+      "query": "Why is natural citrine relatively rare, and what other yellow gem was it once confused with?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "citrine-a73f2008938081ff",
+        "citrine-02c197fd15790628",
+        "citrine-4e9ac20a771a7048",
+        "citrine-6580ad4b67c6fff3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "citrine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_020",
+      "query": "What is diamond made of, and why is it described as the hardest natural material?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "diamond-1a02148b5d72b99e",
+        "diamond-23d0782486a7f218",
+        "diamond-c887886cacd49f91",
+        "diamond-7dd898ee3b0ae0ff",
+        "diamond-358080e7dcc805e9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "diamond.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_021",
+      "query": "What mineral family is emerald part of, and how do experts distinguish it from green beryl?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "emerald-9172a481a76e828f",
+        "emerald-bff50bd98b516eb4",
+        "emerald-783f96b4d4f05bb2",
+        "emerald-bd3dbf849d433455",
+        "emerald-bba4c58b5ed1b399"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "emerald.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_022",
+      "query": "Why is garnet described as a group of related minerals rather than a single-color gem?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "garnet-09f0c338ff87dcc2",
+        "garnet-a8c6bbfe000e3daa",
+        "garnet-3c81c017c7f600a6",
+        "garnet-74631b3a2cc79eda",
+        "garnet-6180c7b2bb747e4a"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "garnet.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_024",
+      "query": "Which materials can be called jade, and what are the two best-known jade varieties?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jade-bf97336d4b255c08",
+        "jade-0d900cf47c40681a",
+        "jade-a402fdce597dd32c",
+        "jade-77a884f1a9a169ed",
+        "jade-0069b39998003744"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jade.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_025",
+      "query": "What mineral variety is kunzite, and what trace element contributes to its color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "kunzite-e94fb843c95956b1",
+        "kunzite-95be2b8c232d88b4",
+        "kunzite-067206a9151af6e6",
+        "kunzite-311e935a5d62693f",
+        "kunzite-e1a5bba8784a8463"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "kunzite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_026",
+      "query": "Which minerals make up lapis lazuli, and which one contributes its vivid blue color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "lapis_lazuli-c6b6f01aa701c764",
+        "lapis_lazuli-3fc1988ace95474b",
+        "lapis_lazuli-e610cd353f2fda50",
+        "lapis_lazuli-1b5d133ed2ca5af7",
+        "lapis_lazuli-cde474a5c268ea8e"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "lapis_lazuli.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_027",
+      "query": "What causes the moving, moonlight-like glow known as adularescence in moonstone?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "moonstone-7cd8add9655a2656",
+        "moonstone-c7db7a9a64564fad",
+        "moonstone-48cd4673be5dd0e7",
+        "moonstone-61281d95c7dab122",
+        "moonstone-7014ac368a3fff6d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "moonstone.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_028",
+      "query": "What mineral family does morganite belong to, and what can give it a salmon-pink appearance?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "morganite-66f17f47de6a5269",
+        "morganite-1f1c486b05e85840",
+        "morganite-c0945ba4b3d9c003"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "morganite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_029",
+      "query": "What is opal's play-of-color, and how does it create shifting flashes across the gem?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "opal-32f6a54fc21f03d8",
+        "opal-06888f0b4cd1f470",
+        "opal-30df94e6cafef883",
+        "opal-4e2e5c734691e4fd",
+        "opal-ad4dc86b6ee088de"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "opal.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_030",
+      "query": "How do natural pearls form, and how do cultured pearls share their organic origin?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "pearl-a1889d317ba3a385",
+        "pearl-a166c69550d3d095",
+        "pearl-64f9995095532ec7",
+        "pearl-282d695d64c96066",
+        "pearl-8ca48a5436e9d9cc",
+        "pearl-eab5d6be4d28928d",
+        "pearl-f1cef8c9695aee0d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "pearl.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_031",
+      "query": "Where can peridot form, and what gives this gem its characteristic yellow-green color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "peridot-4e552b5574d794ba",
+        "peridot-332890c43b678e08",
+        "peridot-fcb7d0842b970dd3",
+        "peridot-2f3b9e398c6f7cd8",
+        "peridot-93fd2bf595b97bc5",
+        "peridot-88efd621b2ae11df"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "peridot.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_032",
+      "query": "What mineral species is ruby, and which trace element gives it its red color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ruby-c7d158c7f9143731",
+        "ruby-acbcdf8b74c9000d",
+        "ruby-e5b41cbe3d212565",
+        "ruby-6239b7e2cd3adca5",
+        "ruby-d47df4d7279e55d0"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ruby.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_033",
+      "query": "How is sapphire related to ruby, and what colors can sapphire have besides red?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "sapphire-05953b11c0388d40",
+        "sapphire-35bd2c281d438502",
+        "sapphire-22c238bce74a4eca",
+        "sapphire-f27f0abe0d69ab34",
+        "sapphire-a3a844b6faf28fb7",
+        "sapphire-fcb63bd1fe968c75"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "sapphire.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_034",
+      "query": "Why was spinel historically mistaken for ruby in famous crown jewels?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "spinel-a5e34a2e72f100ec",
+        "spinel-ea88ad47f2835a9a",
+        "spinel-d0dbc47b4c895f77",
+        "spinel-aee822680caedcc3",
+        "spinel-6a37a0881564d9fa"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "spinel.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_035",
+      "query": "What inclusions or structures create the glittering aventurescence seen in sunstone?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "sunstone-4266d56fc1097a9b",
+        "sunstone-fc68783f9c018759"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "sunstone.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_036",
+      "query": "Where is tanzanite found, and what mineral variety is this blue-violet gem?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "tanzanite-160dd1633f57d44d",
+        "tanzanite-1a22589396832048",
+        "tanzanite-2d1a19ae3af11d1a",
+        "tanzanite-1bb0ec06094c3610",
+        "tanzanite-1d218f899c5a7dd1"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "tanzanite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_037",
+      "query": "Which colors can topaz have, and what is distinctive about imperial topaz?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "topaz-3b03eb234a297048",
+        "topaz-a4733a518304b247",
+        "topaz-82f791d6723dc84f"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "topaz.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_038",
+      "query": "Why is tourmaline notable for its exceptionally broad range of colors?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "tourmaline-58aa52f9a2aa215a",
+        "tourmaline-296392c3b288d49e",
+        "tourmaline-393e6072bda55a9c",
+        "tourmaline-4349ba17cab19755"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "tourmaline.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_039",
+      "query": "What geological conditions form turquoise, and how do copper-bearing materials influence its color?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "turquoise-e7b81e4f4aad407f",
+        "turquoise-bea292b3036b053e",
+        "turquoise-42099fe79f404815",
+        "turquoise-425636a219816616"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "turquoise.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_040",
+      "query": "What gives zircon its brilliance and fire, and how is it different from cubic zirconia?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "zircon-b6a61451e96193be",
+        "zircon-626f2f2bdaa59fe9",
+        "zircon-f2ca485af718c9d0",
+        "zircon-748d941304cdbd21"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "zircon.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_041",
+      "query": "How are ruby and sapphire related as corundum gems, and what distinguishes their colors?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "ruby-c7d158c7f9143731",
+        "ruby-acbcdf8b74c9000d",
+        "ruby-e5b41cbe3d212565",
+        "ruby-6239b7e2cd3adca5",
+        "ruby-d47df4d7279e55d0",
+        "sapphire-05953b11c0388d40",
+        "sapphire-35bd2c281d438502",
+        "sapphire-22c238bce74a4eca",
+        "sapphire-f27f0abe0d69ab34",
+        "sapphire-a3a844b6faf28fb7",
+        "sapphire-fcb63bd1fe968c75"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ruby.pdf",
+        "sapphire.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_042",
+      "query": "What do emerald and aquamarine share as beryl gems, and how do their colors differ?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "emerald-9172a481a76e828f",
+        "emerald-bff50bd98b516eb4",
+        "emerald-783f96b4d4f05bb2",
+        "emerald-bd3dbf849d433455",
+        "emerald-bba4c58b5ed1b399",
+        "aquamarine-62b158617d5b0b77",
+        "aquamarine-f860f5a98383ae5f",
+        "aquamarine-7c6ad9b124214312",
+        "aquamarine-95175fc12a78d4bf",
+        "aquamarine-33256548aa2c1e2e",
+        "aquamarine-9fda52028f30da6b"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "emerald.pdf",
+        "aquamarine.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_043",
+      "query": "How do amethyst and citrine compare as colored varieties of quartz?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "amethyst-76e561d3c4fc77d0",
+        "amethyst-3ccaa54e7c14de51",
+        "amethyst-6f5fe68d0a12b2fb",
+        "amethyst-0eff861c860fb507",
+        "amethyst-1e7fd3f16b5997da",
+        "citrine-a73f2008938081ff",
+        "citrine-02c197fd15790628",
+        "citrine-4e9ac20a771a7048",
+        "citrine-6580ad4b67c6fff3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amethyst.pdf",
+        "citrine.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_044",
+      "query": "How does alexandrite change color with lighting, compared with sapphire color descriptions?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "alexandrite-b60aeed3315b52bd",
+        "alexandrite-b835672dde2c1360",
+        "alexandrite-896142563ee6c32f",
+        "alexandrite-dadd293dab0ffc33",
+        "sapphire-05953b11c0388d40",
+        "sapphire-35bd2c281d438502",
+        "sapphire-22c238bce74a4eca",
+        "sapphire-f27f0abe0d69ab34",
+        "sapphire-a3a844b6faf28fb7",
+        "sapphire-fcb63bd1fe968c75"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "alexandrite.pdf",
+        "sapphire.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_045",
+      "query": "What makes ordinary diamonds different from rare fancy color diamonds?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "diamond-1a02148b5d72b99e",
+        "diamond-23d0782486a7f218",
+        "diamond-c887886cacd49f91",
+        "diamond-7dd898ee3b0ae0ff",
+        "diamond-358080e7dcc805e9",
+        "fancy_color_diamond-4bc3e5db56ba51a1",
+        "fancy_color_diamond-9dffd63e34d8c09a",
+        "fancy_color_diamond-58e0ca3ea27e9596",
+        "fancy_color_diamond-cd7a527d0e244309"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "diamond.pdf",
+        "fancy_color_diamond.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_046",
+      "query": "How do natural pearls form, and what care protects pearl jewelry?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "pearl-a1889d317ba3a385",
+        "pearl-a166c69550d3d095",
+        "pearl-64f9995095532ec7",
+        "pearl-282d695d64c96066",
+        "pearl-8ca48a5436e9d9cc",
+        "pearl-eab5d6be4d28928d",
+        "pearl-f1cef8c9695aee0d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "pearl.pdf",
+        "pearl_care_cleaning_guide.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_047",
+      "query": "How can chain-link styles be combined when creating a layered necklace stack?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "jewelry_chain_guide-d0fbe5c55e3cee75",
+        "jewelry_chain_guide-30cf96e0fc107f2d",
+        "jewelry_chain_guide-62812e7298fdc77a",
+        "jewelry_chain_guide-50c4c66d60c8ee3a",
+        "jewelry_chain_guide-73e493475b4d8aea",
+        "jewelry_chain_guide-eb9ff812cc28d7a7",
+        "jewelry_chain_guide-6da7c86e656e89f6",
+        "jewelry_chain_guide-82fdaf61c6049cd2",
+        "jewelry_chain_guide-850ba9274dcd2333",
+        "necklace_stacking_guide-a66ccaa88e7bc025",
+        "necklace_stacking_guide-cd39eca215d1c07e",
+        "necklace_stacking_guide-624f943416a3979e",
+        "necklace_stacking_guide-1693ef76a9fe05a9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jewelry_chain_guide.pdf",
+        "necklace_stacking_guide.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_048",
+      "query": "Which ring-sizing methods are reliable, and why can string or paper measurements be inaccurate?",
+      "language": "en",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "Ring Size Guide-5ada662598a071ee",
+        "Ring Size Guide-616cb72dc1a458f6"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "Ring Size Guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_049",
+      "query": "How should everyday ring durability be weighed alongside gold-color choices?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "ring_metals_everyday_wear-7396b4eb56a2fb9b",
+        "gold_colors_guide-5e6b08a0c9d2dd46",
+        "gold_colors_guide-69f6261e69fcc769",
+        "gold_colors_guide-98eafeb4a852bbc9",
+        "gold_colors_guide-bbae0b05fd963bdf",
+        "gold_colors_guide-bb76104b1912fe6f",
+        "gold_colors_guide-9e813f80eb55189c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ring_metals_everyday_wear.pdf",
+        "gold_colors_guide.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_050",
+      "query": "How do engagement-ring styles relate to bench techniques used to secure their stones?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "engagement_ring_settings_guide-1c26871ac04cfc37",
+        "jewelry_settings_bench_guide-6f613d6be9069794",
+        "jewelry_settings_bench_guide-5756e874937406c4",
+        "jewelry_settings_bench_guide-c6de649e50d8ba44",
+        "jewelry_settings_bench_guide-08d039d109b20c0b",
+        "jewelry_settings_bench_guide-8e57bbd604756404",
+        "jewelry_settings_bench_guide-d10a7c5e2b801e93",
+        "jewelry_settings_bench_guide-dc7d07ca6dcebcb3",
+        "jewelry_settings_bench_guide-76af3085aecd495c",
+        "jewelry_settings_bench_guide-aaeef5d72194673c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "engagement_ring_settings_guide.pdf",
+        "jewelry_settings_bench_guide.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_051",
+      "query": "What buying checks apply to diamonds, and how are fancy color diamonds evaluated?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "fancy_color_diamond-4bc3e5db56ba51a1",
+        "fancy_color_diamond-9dffd63e34d8c09a",
+        "fancy_color_diamond-58e0ca3ea27e9596",
+        "fancy_color_diamond-cd7a527d0e244309"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "gemstone_diamond_pearl_buying_guide.pdf",
+        "fancy_color_diamond.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_052",
+      "query": "How do amber and pearls differ as organic gems in origin and formation?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "amber-a5c363645cd8e8fe",
+        "amber-f4e5dab6d4633332",
+        "amber-f8ab4359c3723eb6",
+        "amber-8778e8bac6977e83",
+        "amber-1aefeeb9c8b02770",
+        "pearl-a1889d317ba3a385",
+        "pearl-a166c69550d3d095",
+        "pearl-64f9995095532ec7",
+        "pearl-282d695d64c96066",
+        "pearl-8ca48a5436e9d9cc",
+        "pearl-eab5d6be4d28928d",
+        "pearl-f1cef8c9695aee0d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amber.pdf",
+        "pearl.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_053",
+      "query": "How do jade and lapis lazuli differ in composition and material type?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "jade-bf97336d4b255c08",
+        "jade-0d900cf47c40681a",
+        "jade-a402fdce597dd32c",
+        "jade-77a884f1a9a169ed",
+        "jade-0069b39998003744",
+        "lapis_lazuli-c6b6f01aa701c764",
+        "lapis_lazuli-3fc1988ace95474b",
+        "lapis_lazuli-e610cd353f2fda50",
+        "lapis_lazuli-1b5d133ed2ca5af7",
+        "lapis_lazuli-cde474a5c268ea8e"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jade.pdf",
+        "lapis_lazuli.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_054",
+      "query": "How do opal play-of-color and moonstone adularescence create different optical effects?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "opal-32f6a54fc21f03d8",
+        "opal-06888f0b4cd1f470",
+        "opal-30df94e6cafef883",
+        "opal-4e2e5c734691e4fd",
+        "opal-ad4dc86b6ee088de",
+        "moonstone-7cd8add9655a2656",
+        "moonstone-c7db7a9a64564fad",
+        "moonstone-48cd4673be5dd0e7",
+        "moonstone-61281d95c7dab122",
+        "moonstone-7014ac368a3fff6d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "opal.pdf",
+        "moonstone.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_055",
+      "query": "What should buyers compare about garnet's color range and tourmaline's color variety?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "garnet-09f0c338ff87dcc2",
+        "garnet-a8c6bbfe000e3daa",
+        "garnet-3c81c017c7f600a6",
+        "garnet-74631b3a2cc79eda",
+        "garnet-6180c7b2bb747e4a",
+        "tourmaline-58aa52f9a2aa215a",
+        "tourmaline-296392c3b288d49e",
+        "tourmaline-393e6072bda55a9c",
+        "tourmaline-4349ba17cab19755"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "garnet.pdf",
+        "tourmaline.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_056",
+      "query": "How do kunzite and morganite compare in mineral family and pink color?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "kunzite-e94fb843c95956b1",
+        "kunzite-95be2b8c232d88b4",
+        "kunzite-067206a9151af6e6",
+        "kunzite-311e935a5d62693f",
+        "kunzite-e1a5bba8784a8463",
+        "morganite-66f17f47de6a5269",
+        "morganite-1f1c486b05e85840",
+        "morganite-c0945ba4b3d9c003"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "kunzite.pdf",
+        "morganite.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_057",
+      "query": "How does zircon's brilliance compare with diamond, and why is zircon not cubic zirconia?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "zircon-b6a61451e96193be",
+        "zircon-626f2f2bdaa59fe9",
+        "zircon-f2ca485af718c9d0",
+        "zircon-748d941304cdbd21",
+        "diamond-1a02148b5d72b99e",
+        "diamond-23d0782486a7f218",
+        "diamond-c887886cacd49f91",
+        "diamond-7dd898ee3b0ae0ff",
+        "diamond-358080e7dcc805e9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "zircon.pdf",
+        "diamond.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_058",
+      "query": "How do turquoise and lapis lazuli differ in composition and sources of blue color?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "turquoise-e7b81e4f4aad407f",
+        "turquoise-bea292b3036b053e",
+        "turquoise-42099fe79f404815",
+        "turquoise-425636a219816616",
+        "lapis_lazuli-c6b6f01aa701c764",
+        "lapis_lazuli-3fc1988ace95474b",
+        "lapis_lazuli-e610cd353f2fda50",
+        "lapis_lazuli-1b5d133ed2ca5af7",
+        "lapis_lazuli-cde474a5c268ea8e"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "turquoise.pdf",
+        "lapis_lazuli.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_059",
+      "query": "How can birthstone information help compare gems such as amethyst and garnet?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "birthstone_guide-0f370e418bddcfbd",
+        "birthstone_guide-878f05261e4cf6b3",
+        "amethyst-76e561d3c4fc77d0",
+        "amethyst-3ccaa54e7c14de51",
+        "amethyst-6f5fe68d0a12b2fb",
+        "amethyst-0eff861c860fb507",
+        "amethyst-1e7fd3f16b5997da",
+        "garnet-09f0c338ff87dcc2",
+        "garnet-a8c6bbfe000e3daa",
+        "garnet-3c81c017c7f600a6",
+        "garnet-74631b3a2cc79eda",
+        "garnet-6180c7b2bb747e4a"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "birthstone_guide.pdf",
+        "amethyst.pdf",
+        "garnet.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_060",
+      "query": "How do topaz and citrine compare in yellow-to-orange color and gem identity?",
+      "language": "en",
+      "query_type": "cross_document",
+      "cross_pdf": true,
+      "expected_image_ids": [
+        "topaz-3b03eb234a297048",
+        "topaz-a4733a518304b247",
+        "topaz-82f791d6723dc84f",
+        "citrine-a73f2008938081ff",
+        "citrine-02c197fd15790628",
+        "citrine-4e9ac20a771a7048",
+        "citrine-6580ad4b67c6fff3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "topaz.pdf",
+        "citrine.pdf"
+      ],
+      "query_scope": "cross_pdf"
+    },
+    {
+      "id": "image_061",
+      "query": "ما الخصائص المميزة لحجر الألكسندريت المذكورة في الدليل؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "alexandrite-b60aeed3315b52bd",
+        "alexandrite-b835672dde2c1360",
+        "alexandrite-896142563ee6c32f",
+        "alexandrite-dadd293dab0ffc33"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "alexandrite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_062",
+      "query": "كيف يصف الدليل حجر الكهرمان من حيث اللون والتركيب والمصدر؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "amber-a5c363645cd8e8fe",
+        "amber-f4e5dab6d4633332",
+        "amber-f8ab4359c3723eb6",
+        "amber-8778e8bac6977e83",
+        "amber-1aefeeb9c8b02770"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amber.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_063",
+      "query": "ما الذي يميّز حجر الجمشت ويجعل لونه أو تأثيره البصري فريداً؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "amethyst-76e561d3c4fc77d0",
+        "amethyst-3ccaa54e7c14de51",
+        "amethyst-6f5fe68d0a12b2fb",
+        "amethyst-0eff861c860fb507",
+        "amethyst-1e7fd3f16b5997da"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "amethyst.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_064",
+      "query": "إلى أي مجموعة معدنية ينتمي حجر الأمترين وما أبرز صفاته؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ametrine-9d53f878b006f3e8",
+        "ametrine-efdf8b2cdb9dfc26",
+        "ametrine-c68843ef8d8d3e44"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ametrine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_065",
+      "query": "ما الخصائص المميزة لحجر الأكوامارين المذكورة في الدليل؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "aquamarine-62b158617d5b0b77",
+        "aquamarine-f860f5a98383ae5f",
+        "aquamarine-7c6ad9b124214312",
+        "aquamarine-95175fc12a78d4bf",
+        "aquamarine-33256548aa2c1e2e",
+        "aquamarine-9fda52028f30da6b"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "aquamarine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_066",
+      "query": "كيف يصف الدليل حجر السترين من حيث اللون والتركيب والمصدر؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "citrine-a73f2008938081ff",
+        "citrine-02c197fd15790628",
+        "citrine-4e9ac20a771a7048",
+        "citrine-6580ad4b67c6fff3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "citrine.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_067",
+      "query": "ما الذي يميّز حجر الألماس ويجعل لونه أو تأثيره البصري فريداً؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "diamond-1a02148b5d72b99e",
+        "diamond-23d0782486a7f218",
+        "diamond-c887886cacd49f91",
+        "diamond-7dd898ee3b0ae0ff",
+        "diamond-358080e7dcc805e9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "diamond.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_068",
+      "query": "إلى أي مجموعة معدنية ينتمي حجر الزمرد وما أبرز صفاته؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "emerald-9172a481a76e828f",
+        "emerald-bff50bd98b516eb4",
+        "emerald-783f96b4d4f05bb2",
+        "emerald-bd3dbf849d433455",
+        "emerald-bba4c58b5ed1b399"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "emerald.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_069",
+      "query": "ما الخصائص المميزة لحجر الألماس الملون المذكورة في الدليل؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "fancy_color_diamond-4bc3e5db56ba51a1",
+        "fancy_color_diamond-9dffd63e34d8c09a",
+        "fancy_color_diamond-58e0ca3ea27e9596",
+        "fancy_color_diamond-cd7a527d0e244309"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "fancy_color_diamond.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_070",
+      "query": "كيف يصف الدليل حجر العقيق من حيث اللون والتركيب والمصدر؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "garnet-09f0c338ff87dcc2",
+        "garnet-a8c6bbfe000e3daa",
+        "garnet-3c81c017c7f600a6",
+        "garnet-74631b3a2cc79eda",
+        "garnet-6180c7b2bb747e4a"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "garnet.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_072",
+      "query": "إلى أي مجموعة معدنية ينتمي حجر اليشم وما أبرز صفاته؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jade-bf97336d4b255c08",
+        "jade-0d900cf47c40681a",
+        "jade-a402fdce597dd32c",
+        "jade-77a884f1a9a169ed",
+        "jade-0069b39998003744"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jade.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_073",
+      "query": "ما الخصائص المميزة لحجر الكونزيت المذكورة في الدليل؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "kunzite-e94fb843c95956b1",
+        "kunzite-95be2b8c232d88b4",
+        "kunzite-067206a9151af6e6",
+        "kunzite-311e935a5d62693f",
+        "kunzite-e1a5bba8784a8463"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "kunzite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_074",
+      "query": "كيف يصف الدليل حجر اللازورد من حيث اللون والتركيب والمصدر؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "lapis_lazuli-c6b6f01aa701c764",
+        "lapis_lazuli-3fc1988ace95474b",
+        "lapis_lazuli-e610cd353f2fda50",
+        "lapis_lazuli-1b5d133ed2ca5af7",
+        "lapis_lazuli-cde474a5c268ea8e"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "lapis_lazuli.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_075",
+      "query": "ما الذي يميّز حجر حجر القمر ويجعل لونه أو تأثيره البصري فريداً؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "moonstone-7cd8add9655a2656",
+        "moonstone-c7db7a9a64564fad",
+        "moonstone-48cd4673be5dd0e7",
+        "moonstone-61281d95c7dab122",
+        "moonstone-7014ac368a3fff6d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "moonstone.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_076",
+      "query": "إلى أي مجموعة معدنية ينتمي حجر المورغانيت وما أبرز صفاته؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "morganite-66f17f47de6a5269",
+        "morganite-1f1c486b05e85840",
+        "morganite-c0945ba4b3d9c003"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "morganite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_077",
+      "query": "ما الخصائص المميزة لحجر الأوبال المذكورة في الدليل؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "opal-32f6a54fc21f03d8",
+        "opal-06888f0b4cd1f470",
+        "opal-30df94e6cafef883",
+        "opal-4e2e5c734691e4fd",
+        "opal-ad4dc86b6ee088de"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "opal.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_078",
+      "query": "كيف يصف الدليل حجر اللؤلؤ من حيث اللون والتركيب والمصدر؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "pearl-a1889d317ba3a385",
+        "pearl-a166c69550d3d095",
+        "pearl-64f9995095532ec7",
+        "pearl-282d695d64c96066",
+        "pearl-8ca48a5436e9d9cc",
+        "pearl-eab5d6be4d28928d",
+        "pearl-f1cef8c9695aee0d"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "pearl.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_079",
+      "query": "ما الذي يميّز حجر البريدوت ويجعل لونه أو تأثيره البصري فريداً؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "peridot-4e552b5574d794ba",
+        "peridot-332890c43b678e08",
+        "peridot-fcb7d0842b970dd3",
+        "peridot-2f3b9e398c6f7cd8",
+        "peridot-93fd2bf595b97bc5",
+        "peridot-88efd621b2ae11df"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "peridot.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_080",
+      "query": "إلى أي مجموعة معدنية ينتمي حجر الياقوت الأحمر وما أبرز صفاته؟",
+      "language": "ar",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ruby-c7d158c7f9143731",
+        "ruby-acbcdf8b74c9000d",
+        "ruby-e5b41cbe3d212565",
+        "ruby-6239b7e2cd3adca5",
+        "ruby-d47df4d7279e55d0"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ruby.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_081",
+      "query": "En quoi le saphir est-il lie au rubis, et quelles couleurs peut-il avoir en dehors du rouge ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "sapphire-05953b11c0388d40",
+        "sapphire-35bd2c281d438502",
+        "sapphire-22c238bce74a4eca",
+        "sapphire-f27f0abe0d69ab34",
+        "sapphire-a3a844b6faf28fb7",
+        "sapphire-fcb63bd1fe968c75"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "sapphire.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_082",
+      "query": "Pourquoi le spinelle a-t-il ete pris pour un rubis dans certaines couronnes royales ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "spinel-a5e34a2e72f100ec",
+        "spinel-ea88ad47f2835a9a",
+        "spinel-d0dbc47b4c895f77",
+        "spinel-aee822680caedcc3",
+        "spinel-6a37a0881564d9fa"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "spinel.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_083",
+      "query": "Quelle structure produit les eclats scintillants de la pierre de soleil ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "sunstone-4266d56fc1097a9b",
+        "sunstone-fc68783f9c018759"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "sunstone.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_084",
+      "query": "Ou trouve-t-on la tanzanite, et a quelle variete minerale appartient-elle ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "tanzanite-160dd1633f57d44d",
+        "tanzanite-1a22589396832048",
+        "tanzanite-2d1a19ae3af11d1a",
+        "tanzanite-1bb0ec06094c3610",
+        "tanzanite-1d218f899c5a7dd1"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "tanzanite.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_085",
+      "query": "Quelles couleurs peut presenter la topaze, et qu'est-ce qui distingue la topaze imperiale ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "topaz-3b03eb234a297048",
+        "topaz-a4733a518304b247",
+        "topaz-82f791d6723dc84f"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "topaz.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_086",
+      "query": "Pourquoi la tourmaline est-elle connue pour sa grande diversite de couleurs ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "tourmaline-58aa52f9a2aa215a",
+        "tourmaline-296392c3b288d49e",
+        "tourmaline-393e6072bda55a9c",
+        "tourmaline-4349ba17cab19755"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "tourmaline.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_087",
+      "query": "Comment se forme la turquoise, et quelles conditions produisent sa couleur bleue ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "turquoise-e7b81e4f4aad407f",
+        "turquoise-bea292b3036b053e",
+        "turquoise-42099fe79f404815",
+        "turquoise-425636a219816616"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "turquoise.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_088",
+      "query": "Qu est-ce qui donne son feu au zircon, et pourquoi le confond-on avec la zircone cubique ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "zircon-b6a61451e96193be",
+        "zircon-626f2f2bdaa59fe9",
+        "zircon-f2ca485af718c9d0",
+        "zircon-748d941304cdbd21"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "zircon.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_089",
+      "query": "Quelles informations sur les pierres de naissance l'article du GIA presente-t-il ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "birthstone_guide-0f370e418bddcfbd",
+        "birthstone_guide-878f05261e4cf6b3"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "birthstone_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_090",
+      "query": "Quelles differences distinguent les styles solitaire, halo et trois pierres ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "engagement_ring_settings_guide-1c26871ac04cfc37"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "engagement_ring_settings_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_092",
+      "query": "Comment comparer l'or blanc, jaune et rose pour une bague de fiancailles ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "gold_colors_guide-5e6b08a0c9d2dd46",
+        "gold_colors_guide-69f6261e69fcc769",
+        "gold_colors_guide-98eafeb4a852bbc9",
+        "gold_colors_guide-bbae0b05fd963bdf",
+        "gold_colors_guide-bb76104b1912fe6f",
+        "gold_colors_guide-9e813f80eb55189c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "gold_colors_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_093",
+      "query": "Quelles caracteristiques distinguent les principaux styles de maillons de chaine ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jewelry_chain_guide-d0fbe5c55e3cee75",
+        "jewelry_chain_guide-30cf96e0fc107f2d",
+        "jewelry_chain_guide-62812e7298fdc77a",
+        "jewelry_chain_guide-50c4c66d60c8ee3a",
+        "jewelry_chain_guide-73e493475b4d8aea",
+        "jewelry_chain_guide-eb9ff812cc28d7a7",
+        "jewelry_chain_guide-6da7c86e656e89f6",
+        "jewelry_chain_guide-82fdaf61c6049cd2",
+        "jewelry_chain_guide-850ba9274dcd2333"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jewelry_chain_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_094",
+      "query": "Comment les sertis a griffes et les sertis clos maintiennent-ils les pierres ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "jewelry_settings_bench_guide-6f613d6be9069794",
+        "jewelry_settings_bench_guide-5756e874937406c4",
+        "jewelry_settings_bench_guide-c6de649e50d8ba44",
+        "jewelry_settings_bench_guide-08d039d109b20c0b",
+        "jewelry_settings_bench_guide-8e57bbd604756404",
+        "jewelry_settings_bench_guide-d10a7c5e2b801e93",
+        "jewelry_settings_bench_guide-dc7d07ca6dcebcb3",
+        "jewelry_settings_bench_guide-76af3085aecd495c",
+        "jewelry_settings_bench_guide-aaeef5d72194673c"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "jewelry_settings_bench_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_095",
+      "query": "Comment associer les longueurs et les styles de chaine pour superposer les colliers ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "necklace_stacking_guide-a66ccaa88e7bc025",
+        "necklace_stacking_guide-cd39eca215d1c07e",
+        "necklace_stacking_guide-624f943416a3979e",
+        "necklace_stacking_guide-1693ef76a9fe05a9"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "necklace_stacking_guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_097",
+      "query": "Quels metaux de bague allient resistance, entretien et confort au quotidien ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "ring_metals_everyday_wear-7396b4eb56a2fb9b"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "ring_metals_everyday_wear.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_098",
+      "query": "Quels conseils aident ? choisir une taille de bague bien ajust?e et confortable ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "Ring Size Guide-5ada662598a071ee",
+        "Ring Size Guide-616cb72dc1a458f6"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "Ring Size Guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_099",
+      "query": "Quels outils fiables mesurent une taille de bague, et pourquoi ?viter la ficelle ou le papier ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "Ring Size Guide-5ada662598a071ee",
+        "Ring Size Guide-616cb72dc1a458f6"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "Ring Size Guide.pdf"
+      ],
+      "query_scope": "single_pdf"
+    },
+    {
+      "id": "image_100",
+      "query": "Quelles caracteristiques de couleur distinguent le quartz rose des autres quartz ?",
+      "language": "fr",
+      "query_type": "single_document",
+      "cross_pdf": false,
+      "expected_image_ids": [
+        "rose_quartz-2f7d8dd6a73fb6f7",
+        "rose_quartz-9bba0be111f29f48",
+        "rose_quartz-f14de4ba8cfaa7be",
+        "rose_quartz-a7929573c6329db7"
+      ],
+      "annotation_status": "reviewed",
+      "annotation_note": "Selected image IDs depict the queried jewelry or gemstone subject/features in the cached VLM descriptions.",
+      "candidate_pdfs": [
+        "rose_quartz.pdf"
+      ],
+      "query_scope": "single_pdf"
+    }
+  ],
+  "evaluation_type": "image_retrieval_only"
+}
