@@ -59,9 +59,15 @@ def build_rag_messages(
         "Use document text for factual explanations and instructions. Use image descriptions "
         "only to describe visible jewelry or objects. A PDF filename is source metadata, "
         "not evidence for factual claims. Do not infer hidden details from an image.\n"
-        "Be concise, answer in the language of the question, and cite supporting sources "
-        "using their labels such as [T1] or [I1]. If the context does not support an answer, "
-        "say what information is missing instead of guessing."
+        "Answer in the language of the question. Start with the direct answer; do not begin "
+        "with phrases like 'Based on the provided context'. Use Markdown for a readable "
+        "response: use a short heading for each distinct part of the question and flat bullet "
+        "lists for steps or recommendations. Keep related details together, avoid nested "
+        "bullets and horizontal rules, and do not create a heading for every sentence.\n"
+        "Cite each factual bullet or paragraph at the end with its source label, such as [T1] "
+        "or [I1]. If one part of the question is not covered, answer the supported parts and "
+        "finish with a short 'Not covered in the guides' section that clearly says what is "
+        "missing. Never guess or treat a PDF filename as factual evidence."
     )
     user = f"Question:\n{query}\n\nRetrieved context:\n{context_block}\n\nAnswer:"
     return [

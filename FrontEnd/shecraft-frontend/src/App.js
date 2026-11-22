@@ -42,6 +42,7 @@ import EditAccountPage from "./pages/EditAccountPage";
 import CartPage from "./pages/CartPage";
 import DesignerDashboard from "./pages/DesignerDashboard";
 import AccountOrdersPage from "./pages/AccountOrdersPage";
+import ChatbotWidget from "./components/ChatbotWidget";
 
 
 
@@ -167,6 +168,7 @@ function App() {
 
         {/* ================= FOOTER ================= */}
         <Footer />
+        <ChatbotWidget />
       </div>
     </Router>
   );

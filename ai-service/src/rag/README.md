@@ -33,3 +33,36 @@ configured as `GEMINI_VLM_MODEL`.
 
 Use `--force` only when intentionally rebuilding cached document processing,
 VLM descriptions, and embeddings. Normal runs are incremental.
+
+## Run the chatbot RAG service locally
+
+1. Start the Qdrant server and make sure `ai-service/.env` has
+   `GEMINI_API_KEY` and the correct `QDRANT_URL` / `QDRANT_API_KEY`.
+2. From `ai-service/`, run the ingestion command above once so both RAG
+   collections are populated in that Qdrant server.
+3. Install Python dependencies if needed, including FastAPI and Uvicorn:
+
+   ```powershell
+   py -m pip install -r requirements.txt
+   ```
+
+4. Start the API from `ai-service/`:
+
+   ```powershell
+   py -m uvicorn app:app --app-dir src/rag/service --host 127.0.0.1 --port 8000 --reload
+   ```
+
+   `GET http://localhost:8000/health` reports service and collection status;
+   `POST http://localhost:8000/api/chat` accepts `{"message":"..."}` and
+   returns a generated answer with retrieved text and image-description sources.
+   Retrieved image files are served by `GET /api/images/{image_id}` from the
+   local processed-document cache.
+
+5. Start the React frontend as usual. The chatbot button appears at the bottom
+   right of each page and calls `http://localhost:8000`. To change the URL, set
+   `REACT_APP_RAG_API_URL` in the frontend environment before starting React.
+
+The API uses Gemini Embedding 2 for query vectors, retrieves from the text and
+image Qdrant collections, then calls the configured Gemini generation model.
+Gemini and Qdrant credentials remain in the backend `.env`; they are never
+sent to the browser. This local development service binds to `127.0.0.1`.
