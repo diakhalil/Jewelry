@@ -138,10 +138,7 @@ class OpenRouterQwenVLM:
 
 
 class GeminiVLM:
-    """Cloud VLM via Gemini.
-
-    Cache identity is the actual Gemini model ID, independent of the API key.
-    """
+    """Cloud VLM via Gemini."""
 
     def __init__(
         self,
@@ -156,6 +153,8 @@ class GeminiVLM:
 
         self.api_model = api_model
         self.max_retries = max_retries
+        self.min_request_interval = 5.0
+        self.last_request_time = 0.0
 
         key = api_key or os.getenv("GEMINI_API_KEY")
         if not key:
@@ -185,6 +184,14 @@ class GeminiVLM:
 
         for attempt in range(1, self.max_retries + 1):
             try:
+                elapsed = time.monotonic() - self.last_request_time
+                wait_time = self.min_request_interval - elapsed
+
+                if wait_time > 0:
+                    time.sleep(wait_time)
+
+                self.last_request_time = time.monotonic()
+
                 response = self.client.models.generate_content(
                     model=self.api_model,
                     contents=[
@@ -199,13 +206,18 @@ class GeminiVLM:
                         max_output_tokens=512,
                     ),
                 )
+
                 text = (response.text or "").strip()
                 if not text:
-                    raise RuntimeError("Gemini returned an empty VLM description.")
+                    raise RuntimeError(
+                        "Gemini returned an empty VLM description."
+                    )
                 return text
+
             except Exception as error:
                 last_error = error
                 message = str(error).casefold()
+
                 permanent = any(
                     marker in message
                     for marker in (
@@ -219,6 +231,7 @@ class GeminiVLM:
                         "403",
                     )
                 )
+
                 retryable = (not permanent) and any(
                     marker in message
                     for marker in (
@@ -232,11 +245,18 @@ class GeminiVLM:
                         "temporarily",
                     )
                 )
+
                 if "no longer available" in message:
                     retryable = False
+
                 if not retryable or attempt == self.max_retries:
                     raise
-                sleep_seconds = min(2 ** attempt, 8)
+
+                if "429" in message or "resource_exhausted" in message:
+                    sleep_seconds = 30
+                else:
+                    sleep_seconds = min(5 * (2 ** (attempt - 1)), 20)
+
                 print(
                     f"Gemini temporary error on attempt {attempt}/"
                     f"{self.max_retries}; retrying in {sleep_seconds}s...\n"
