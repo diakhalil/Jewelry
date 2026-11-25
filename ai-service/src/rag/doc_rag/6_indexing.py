@@ -9,7 +9,7 @@ import pandas as pd
 from qdrant_client import QdrantClient, models
 
 
-DEFAULT_QDRANT_URL = "http://localhost:6333"
+DEFAULT_QDRANT_URL = "http://127.0.0.1:6333"
 DEFAULT_COLLECTION_NAME = "gatherly_document_text_bge_m3_v1"
 POINT_NAMESPACE = uuid.UUID("ea981375-7b13-4c99-af35-e2c15fda0299")
 IMAGE_COLLECTION_NAME = "gatherly_document_images_e5_v1"
@@ -32,8 +32,7 @@ def connect_to_qdrant(url: str = DEFAULT_QDRANT_URL) -> QdrantClient:
         client.get_collections()
     except Exception as error:
         raise ConnectionError(
-            f"Cannot connect to Qdrant at {url}. Start it with "
-            "'docker compose up -d qdrant'."
+            f"Cannot connect to Qdrant at {url}. Start the Qdrant container and check port 6333."
         ) from error
     return client
 
@@ -432,4 +431,3 @@ def index_image_stage1(
         collection_name=collection_name,
         batch_size=batch_size,
     )
-    

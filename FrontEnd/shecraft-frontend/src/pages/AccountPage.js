@@ -67,7 +67,7 @@ export default function AccountPage() {
   if (loading) {
     return (
       <div className="account-container">
-        <p style={{ color: "#e4c67b" }}>Loading account...</p>
+        <p style={{ color: "var(--sc-text-main)" }}>Loading account...</p>
       </div>
     );
   }
@@ -140,8 +140,9 @@ export default function AccountPage() {
           <button
             className="edit-btn"
             style={{
-              backgroundColor: "#3a0d0d",
-              border: "1px solid #7d2a2a",
+              backgroundColor: "var(--sc-error-surface)",
+              border: "1px solid var(--sc-error)",
+              color: "var(--sc-error)",
             }}
             onClick={handleLogout}
           >

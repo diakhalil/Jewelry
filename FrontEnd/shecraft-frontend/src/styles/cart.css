@@ -5,10 +5,11 @@
   min-height: 100vh;
   padding: 60px 40px;
   background: var(--sc-bg);
-  font-family: "Playfair Display", serif;
+  font-family: var(--sc-font-body);
 }
 
 .cart-title {
+  font-family: var(--sc-font-display);
   font-size: 2.6rem;
   text-align: center;
   color: var(--sc-text-main);
@@ -69,15 +70,18 @@
 }
 
 .status.pending {
-  background: #e4b24c;
+  background: var(--sc-warning-surface);
+  color: var(--sc-warning);
 }
 
 .status.in-progress {
-  background: var(--sc-accent);
+  background: var(--sc-bg-soft);
+  color: var(--sc-purple-dark);
 }
 
 .status.completed {
-  background: #6bbf73;
+  background: var(--sc-success-surface);
+  color: var(--sc-success);
 }
 
 /* ---------- COMPLETE ORDER BUTTON ---------- */
@@ -86,7 +90,7 @@
   padding: 12px 22px;
   border: none;
   border-radius: 10px;
-  background: var(--sc-accent);
+  background: var(--sc-purple);
   color: var(--sc-bg);
   font-size: 1rem;
   cursor: pointer;
@@ -94,13 +98,14 @@
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-:is(.cart-page, .designer-page) .complete-btn:hover {
-  background: var(--sc-accent-hover);
+:is(.cart-page, .designer-page) .complete-btn:hover:not(:disabled) {
+  background: var(--sc-purple-dark);
   transform: translateY(-2px);
 }
 
 :is(.cart-page, .designer-page) .complete-btn:disabled {
-  background: #cccccc;
+  background: var(--sc-border-neutral);
+  color: var(--sc-text-subtle);
   cursor: not-allowed;
 }
 

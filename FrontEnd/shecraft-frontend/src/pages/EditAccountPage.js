@@ -269,7 +269,7 @@ export default function EditAccountPage() {
   if (loading) {
     return (
       <div className="account-container">
-        <p style={{ color: "#e4c67b" }}>Loading account...</p>
+        <p style={{ color: "var(--sc-text-main)" }}>Loading account...</p>
       </div>
     );
   }
@@ -283,7 +283,7 @@ export default function EditAccountPage() {
 
       <div className="account-card">
         {message && (
-          <p style={{ color: "#e4c67b", marginBottom: "20px" }}>{message}</p>
+          <p style={{ color: "var(--sc-text-main)", marginBottom: "20px" }}>{message}</p>
         )}
 
         <h2 className="section-title">Account Information</h2>

@@ -1,7 +1,7 @@
 .about-page {
-  background-color: #e8e4eb;
-  color: #350754;
-  font-family: "Playfair Display", "Cinzel", serif;
+  background: var(--sc-page-wash);
+  color: var(--sc-text-main);
+  font-family: var(--sc-font-body);
   min-height: 100vh;
 }
 
@@ -25,6 +25,12 @@
   font-size: 40px;
   margin-bottom: 10px;
   font-weight: 700;
+}
+
+.about-hero h1,
+.about-text h2 {
+  font-family: var(--sc-font-display);
+  color: var(--sc-purple-dark);
 }
 
 .about-hero p {
@@ -74,7 +80,7 @@
   max-width: 430px;
   border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--sc-shadow-card);
 }
 
 /* ---------- RESPONSIVE ---------- */

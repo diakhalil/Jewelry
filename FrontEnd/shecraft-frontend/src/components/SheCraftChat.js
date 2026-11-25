@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { LoaderCircle, MessageCircle, Send, X } from "lucide-react";
+import { ArrowUpRight, LoaderCircle, MessageCircle, Send, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { askSheCraft } from "../api/chat";
 import "../styles/chat.css";
 
 const prompts = [
+  "Generate a gold sapphire ring",
+  "Make a silver bracelet",
   "How do I measure my ring size?",
-  "What is the birthstone for May?",
-  "How should I care for pearl jewelry?",
 ];
 
 const timeFormat = new Intl.DateTimeFormat(undefined, {
@@ -15,7 +16,7 @@ const timeFormat = new Intl.DateTimeFormat(undefined, {
 });
 const maxQuestionLength = 1000;
 
-function ChatMessage({ message }) {
+function ChatMessage({ message, onPreview }) {
   const isAssistant = message.role === "assistant";
 
   return (
@@ -25,6 +26,17 @@ function ChatMessage({ message }) {
         <time dateTime={message.time.toISOString()}>{timeFormat.format(message.time)}</time>
       </div>
       <p>{message.text}</p>
+      {message.design && (
+        <Link
+          className="sc-button sc-chat-preview"
+          to={`/designs/${message.design.id}`}
+          state={{ title: message.design.title }}
+          onClick={onPreview}
+        >
+          View your {message.design.kind} in 3D
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
+      )}
       {message.sources?.length > 0 && (
         <details className="sc-chat-sources">
           <summary>Sources ({message.sources.length})</summary>
@@ -46,11 +58,16 @@ export default function SheCraftChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [draft, setDraft] = useState("");
-  const [isPending, setIsPending] = useState(false);
-  const [failedQuestion, setFailedQuestion] = useState("");
+  const [progress, setProgress] = useState("");
+  const [failure, setFailure] = useState(null);
+  const [conversationId, setConversationId] = useState(null);
+  const isPending = Boolean(progress);
+  const launcherRef = useRef(null);
   const dialogRef = useRef(null);
+  const closeRef = useRef(null);
   const logRef = useRef(null);
   const requestRef = useRef(null);
+  const pressedBackdrop = useRef(false);
 
   useEffect(() => () => requestRef.current?.abort(), []);
 
@@ -58,7 +75,7 @@ export default function SheCraftChat() {
     if (isOpen && logRef.current) {
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
-  }, [isOpen, messages, isPending, failedQuestion]);
+  }, [isOpen, messages, progress, failure]);
 
   useEffect(() => {
     const viewport = window.visualViewport;
@@ -81,12 +98,16 @@ export default function SheCraftChat() {
   }, [isOpen]);
 
   function openChat() {
+    pressedBackdrop.current = false;
     dialogRef.current.showModal();
     setIsOpen(true);
+    closeRef.current.focus();
   }
 
   function closeChat() {
     dialogRef.current.close();
+    setIsOpen(false);
+    launcherRef.current.focus();
   }
 
   async function send(question, retry = false) {
@@ -95,27 +116,36 @@ export default function SheCraftChat() {
 
     const request = new AbortController();
     requestRef.current = request;
-    setIsPending(true);
-    setFailedQuestion("");
+    setProgress("Sending your request…");
+    setFailure(null);
     if (!retry) {
       setDraft("");
       setMessages((previous) => [...previous, { role: "user", text, time: new Date() }]);
     }
 
     try {
-      const result = await askSheCraft(text, request.signal);
+      const result = await askSheCraft(text, request.signal, setProgress, conversationId);
+      if (result.conversationId !== undefined) setConversationId(result.conversationId);
       setMessages((previous) => [...previous, {
         role: "assistant",
         text: result.answer,
         sources: result.sources,
+        design: result.design,
+        options: result.options,
         time: new Date(),
       }]);
-    } catch {
-      if (!request.signal.aborted) setFailedQuestion(text);
+    } catch (error) {
+      if (!request.signal.aborted) {
+        setFailure({
+          question: text,
+          message: error.name === "SheCraftChatError" ? error.message : null,
+          requestId: error.requestId,
+        });
+      }
     } finally {
       if (!request.signal.aborted) {
         requestRef.current = null;
-        setIsPending(false);
+        setProgress("");
       }
     }
   }
@@ -129,6 +159,7 @@ export default function SheCraftChat() {
         aria-controls="shecraft-chat"
         aria-expanded={isOpen}
         onClick={openChat}
+        ref={launcherRef}
       >
         <MessageCircle size={20} aria-hidden="true" />
         Ask SheCraft
@@ -139,7 +170,14 @@ export default function SheCraftChat() {
         className="sc-chat"
         aria-labelledby="shecraft-chat-title"
         ref={dialogRef}
-        onClose={() => setIsOpen(false)}
+        onCancel={(event) => { event.preventDefault(); closeChat(); }}
+        onPointerDown={(event) => {
+          pressedBackdrop.current = event.target === event.currentTarget;
+        }}
+        onClick={(event) => {
+          if (pressedBackdrop.current && event.target === event.currentTarget) closeChat();
+          pressedBackdrop.current = false;
+        }}
       >
         <header className="sc-chat-header">
           <span className="sc-chat-avatar"><MessageCircle size={21} aria-hidden="true" /></span>
@@ -147,7 +185,7 @@ export default function SheCraftChat() {
             <h2 id="shecraft-chat-title">Ask SheCraft</h2>
             <p>Jewelry design assistant</p>
           </div>
-          <button type="button" className="sc-chat-close" aria-label="Close chat" onClick={closeChat}>
+          <button type="button" className="sc-chat-close" aria-label="Close chat" onClick={closeChat} ref={closeRef}>
             <X size={21} aria-hidden="true" />
           </button>
         </header>
@@ -155,7 +193,7 @@ export default function SheCraftChat() {
         <div className="sc-chat-scroll" ref={logRef} tabIndex={0} aria-label="Chat conversation">
           <div className="sc-chat-message sc-chat-message--assistant">
             <div className="sc-chat-byline">SheCraft</div>
-            <p>Ask me about gemstones, jewelry sizing, or caring for a piece you love.</p>
+            <p>Generate a ring or bracelet in 3D, or ask me about gemstones, sizing, and jewelry care.</p>
           </div>
 
           {messages.length === 0 && (
@@ -163,23 +201,34 @@ export default function SheCraftChat() {
               {prompts.map((prompt) => (
                 <button type="button" key={prompt} onClick={() => { logRef.current.focus(); send(prompt); }}>
                   {prompt}
+                  <ArrowUpRight size={15} aria-hidden="true" />
                 </button>
               ))}
             </div>
           )}
 
           <div role="log" aria-label="Messages" className="sc-chat-messages">
-            {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
+            {messages.map((message, index) => <ChatMessage key={index} message={message} onPreview={closeChat} />)}
           </div>
+          {messages.at(-1)?.options?.length > 0 && (
+            <div className="sc-chat-prompts" aria-label="Design choices">
+              {messages.at(-1).options.map((option) => (
+                <button key={option} type="button" disabled={isPending} onClick={() => send(option)}>
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
           <div role="status">
             {isPending && (
-              <p className="sc-chat-status"><LoaderCircle size={16} aria-hidden="true" /> Looking up your question…</p>
+              <p className="sc-chat-status"><LoaderCircle size={16} aria-hidden="true" /> {progress}</p>
             )}
           </div>
-          {failedQuestion && (
+          {failure && (
             <div className="sc-chat-error">
-              <p role="alert">The jewelry assistant is temporarily unavailable. Please try again.</p>
-              <button type="button" onClick={() => { logRef.current.focus(); send(failedQuestion, true); }}>
+              <p role="alert">{failure.message || "The jewelry assistant is temporarily unavailable."}</p>
+              {failure.requestId && <p className="sc-chat-request-id">Request {failure.requestId}</p>}
+              <button type="button" onClick={() => { logRef.current.focus(); send(failure.question, true); }}>
                 Try again
               </button>
             </div>
@@ -189,6 +238,7 @@ export default function SheCraftChat() {
         <footer className="sc-chat-footer">
           <form className="sc-chat-form" onSubmit={(event) => { event.preventDefault(); send(draft); }}>
             <input
+              type="text"
               aria-label="Your jewelry question"
               placeholder="Ask a jewelry question"
               maxLength={maxQuestionLength}

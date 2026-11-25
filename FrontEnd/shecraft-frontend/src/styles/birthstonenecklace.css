@@ -179,7 +179,7 @@
   height: 18px;
   border-radius: 999px;
   border: 1px solid rgba(0,0,0,.18);
-  background: #ece7ef;
+  background: var(--sc-border-neutral);
 }
 
 .bs-colorDot.on{
@@ -488,7 +488,7 @@
 
 .bs-error{
   margin: 0;
-  color: #7a1b2b;
+  color: var(--sc-error);
   font-weight: 800;
   font-size: 12.5px;
 }
@@ -680,5 +680,5 @@
   font-size: 12px;
   margin-top: 4px;
   font-weight: 600;
-  color: #000;
+  color: var(--sc-text-deep);
 }

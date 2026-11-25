@@ -19,8 +19,8 @@
   width: 25px;  /* smaller */
   height: 25px;
   border-radius: 50%;
-  background-color: #ddd;
-  color: #333;
+  background-color: var(--sc-border-neutral);
+  color: var(--sc-text-deep);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,11 +32,11 @@
 .step-label {
   font-size: 12px;
   text-align: center;
-  color: #42023f;
+  color: var(--sc-purple-dark);
 }
 
 .step-box.active .step-number {
-  background-color: #2d0258;
+  background-color: var(--sc-purple-dark);
   color: var(--sc-bg);
 }
 
@@ -46,9 +46,9 @@
   top: 12px;
   right: -30px;
   font-size: 18px;
-  color: #ccc;
+  color: var(--sc-border-neutral);
 }
 
 .step-box.active + .step-box::after {
-  color: #3c0546;
+  color: var(--sc-purple-dark);
 }

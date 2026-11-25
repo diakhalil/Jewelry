@@ -11,7 +11,7 @@
   box-sizing: border-box;
   padding: var(--sc-space-2) var(--sc-gutter);
   border-bottom: 1px solid var(--sc-border);
-  background: linear-gradient(var(--sc-chrome), var(--sc-chrome)), var(--sc-bg);
+  background: var(--sc-wash);
 }
 
 .sc-left,
@@ -53,12 +53,12 @@
 .sc-header .icon-button {
   width: var(--sc-target);
   padding: 0;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--sc-bg);
   cursor: pointer;
 }
 
 .sc-header .icon-button:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--sc-lilac-glow);
 }
 
 .sc-header .icon-img {

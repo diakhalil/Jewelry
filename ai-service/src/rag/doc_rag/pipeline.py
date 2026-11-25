@@ -15,9 +15,9 @@ import pandas as pd
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-SRC_DIR = PROJECT_ROOT / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+RAG_DIR = Path(__file__).resolve().parents[1]
+if str(RAG_DIR) not in sys.path:
+    sys.path.insert(0, str(RAG_DIR))
 
 
 loader_module = importlib.import_module("doc_rag.1_loader")
@@ -611,8 +611,8 @@ def main() -> None:
         "paths",
         nargs="*",
         type=Path,
-        default=[PROJECT_ROOT / "docs"],
-        help="PDF files or directories. Defaults to the project's docs folder.",
+        default=[PROJECT_ROOT.parent / "rag_documents"],
+        help="PDF files or directories. Defaults to ai-service/rag_documents.",
     )
     parser.add_argument(
         "--force",

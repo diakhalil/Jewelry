@@ -2,7 +2,7 @@
 
 .ear-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--sc-lavender-pale) 0%, #ece7ef 50%, #e8dff0 100%);
+  background: linear-gradient(135deg, var(--sc-lavender-pale) 0%, var(--sc-border-neutral) 50%, var(--sc-border-lavender) 100%);
   padding: 3rem 2rem;
   font-family: var(--sc-font-display);
 }
@@ -38,7 +38,7 @@
 }
 
 .ear-typeCard {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 20px;
   padding: 2rem;
@@ -121,7 +121,7 @@
 }
 
 .ear-previewCard {
-  background: white;
+  background: var(--sc-bg);
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(155, 89, 182, 0.15);
@@ -229,7 +229,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--sc-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -272,7 +272,7 @@
 /* ========== RIGHT CONTROLS ========== */
 
 .ear-controls {
-  background: white;
+  background: var(--sc-bg);
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(155, 89, 182, 0.15);
@@ -308,7 +308,7 @@
 }
 
 .ear-monthBtn {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 0.8rem 0.5rem;
@@ -353,7 +353,7 @@
 }
 
 .ear-colorBtn {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
@@ -381,7 +381,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid var(--sc-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -401,7 +401,7 @@
 }
 
 .ear-cutCard {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
@@ -447,7 +447,7 @@
 }
 
 .ear-metalBtn {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 0.8rem 1.5rem;
@@ -476,7 +476,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--sc-bg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -496,7 +496,7 @@
 }
 
 .ear-backingBtn {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1rem;
@@ -531,7 +531,7 @@
 }
 
 .ear-styleCard {
-  background: white;
+  background: var(--sc-bg);
   border: 2px solid var(--sc-border-lavender);
   border-radius: 12px;
   padding: 1.2rem;
@@ -580,7 +580,7 @@
   font-size: 1rem;
   color: var(--sc-purple-deep);
   font-family: var(--sc-font-display);
-  background: white;
+  background: var(--sc-bg);
   transition: all 0.25s ease;
 }
 
@@ -627,10 +627,10 @@
 .ear-error {
   margin-top: 1rem;
   padding: 1rem;
-  background: #fff0f0;
-  border: 2px solid #ffb3b3;
+  background: var(--sc-error-surface);
+  border: 2px solid var(--sc-error-surface);
   border-radius: 12px;
-  color: #c62828;
+  color: var(--sc-error);
   font-size: 0.95rem;
   text-align: center;
   font-weight: 500;

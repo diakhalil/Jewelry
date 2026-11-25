@@ -46,7 +46,7 @@
   padding:12px;
   border-radius:25px;
   border:none;
-  background:#222;
+  background:var(--sc-text-deep);
   color:var(--sc-bg);
   font-size:17px;
   cursor:pointer;
@@ -55,10 +55,10 @@
 }
 
 .auth-container button:hover {
-  background:#444;
+  background:var(--sc-text-subtle);
 }
 
 .error-message {
-  color: #ff7f50;
+  color: var(--sc-error);
   margin-top: 10px;
 }

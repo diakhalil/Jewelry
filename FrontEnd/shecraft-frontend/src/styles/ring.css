@@ -47,7 +47,7 @@
   width:36px;
   height:36px;
   border-radius:999px;
-  background:#e9e6ee !important;
+  background:var(--sc-border-neutral) !important;
   color:var(--sc-text-deep) !important;
   display:flex;
   align-items:center;
@@ -67,7 +67,7 @@
 .step-labels{
   font-size:13px;
   font-weight:700;
-  color:#5a3a66 !important;
+  color:var(--sc-text-main) !important;
   text-align:center;
   max-width:160px;
 }
@@ -78,7 +78,7 @@
   top:48%;
   right:-18px;
   transform:translateY(-50%);
-  color:#cdbfd6 !important;
+  color:var(--sc-accent) !important;
 }
 
 /* ---------- LAYOUT ---------- */
@@ -148,7 +148,7 @@ input[type="text"], select, input[type="number"]{
   margin:6px 0;
   padding:12px 14px;
   border-radius:16px;
-  border:1px solid #ded6e4;
+  border:1px solid var(--sc-border-neutral);
   font-size:14px;
   background:var(--sc-bg);
 }
@@ -169,7 +169,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
 }
 
 .metal-chip{
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   border-radius:999px;
   padding:12px 14px;
@@ -214,7 +214,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
   flex:1;
   padding:12px 14px;
   border-radius:999px;
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   cursor:pointer;
   font-weight:900;
@@ -268,7 +268,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
   flex:1;
   border-radius:18px;
   padding:14px 14px;
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   cursor:pointer;
   font-weight:900;
@@ -296,7 +296,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
 }
 
 .cut-pic-card{
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   border-radius:18px;
   padding:12px;
@@ -339,7 +339,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
 }
 
 .stone-btn{
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   border-radius:999px;
   padding:10px 12px;
@@ -411,7 +411,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
 }
 
 .real-gem-card{
-  border:1px solid #eee6f1;
+  border:1px solid var(--sc-border);
   background:var(--sc-bg);
   border-radius:18px;
   padding:12px;
@@ -452,7 +452,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
   align-items:center;
   margin-top:10px;
   padding-top:12px;
-  border-top:1px solid #eee;
+  border-top:1px solid var(--sc-border);
 }
 
 .next-btn{
@@ -501,7 +501,7 @@ input[type="text"]:focus, select:focus, input[type="number"]:focus{
 }
 
 .tabs-sidebar .next-btn:hover{
-  background:#5a1668 !important;
+  background:var(--sc-purple-dark) !important;
 }
 
 .tabs-sidebar .next-btn:disabled{

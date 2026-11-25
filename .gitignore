@@ -46,6 +46,8 @@ Thumbs.db
 Desktop.ini
 
 # Local temporary files
+.venv/
+/ai-service/src/data/
 tmp/
 temp/
 *.tmp

@@ -1,0 +1,73 @@
+.sapphire-preview {
+  flex: 1;
+  padding: clamp(1.5rem, 5vw, 4rem) var(--sc-gutter);
+  background: var(--sc-page-wash);
+}
+
+.sapphire-preview-content {
+  max-width: 55rem;
+  margin-inline: auto;
+}
+
+.sapphire-preview-back {
+  display: inline-flex;
+  min-height: var(--sc-target);
+  align-items: center;
+  gap: var(--sc-space-2);
+  color: var(--sc-purple);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.sapphire-preview h1 {
+  margin: var(--sc-space-3) 0 0;
+  color: var(--sc-purple-dark);
+  font: 700 clamp(2rem, 5vw, 3.25rem)/1.12 var(--sc-font-display);
+}
+
+.sapphire-preview p {
+  margin: var(--sc-space-2) 0 var(--sc-space-4);
+  color: var(--sc-text-subtle);
+}
+
+.sapphire-preview-stage {
+  position: relative;
+  height: clamp(20rem, 55vw, 34rem);
+  overflow: hidden;
+  border: 1px solid var(--sc-border);
+  border-radius: var(--sc-radius-panel);
+  background: var(--sc-preview-wash);
+  box-shadow: var(--sc-shadow);
+  cursor: grab;
+  touch-action: none;
+}
+
+.sapphire-preview-stage:active {
+  cursor: grabbing;
+}
+
+.sapphire-preview-stage > .sapphire-preview-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+}
+
+.sapphire-preview .sapphire-preview-status {
+  margin: 0;
+  padding: var(--sc-space-4);
+  text-align: center;
+}
+
+.sapphire-preview-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sc-space-2);
+  margin-top: var(--sc-space-4);
+}
+
+.sapphire-preview-controls .sc-button[aria-pressed="false"] {
+  border-color: var(--sc-control-border);
+  background: var(--sc-bg);
+  color: var(--sc-purple-dark);
+}

@@ -5,18 +5,16 @@ import json
 from pathlib import Path
 from typing import Any
 
-import numpy as np
 import pandas as pd
 import torch
 from sentence_transformers import CrossEncoder, SentenceTransformer
 import ollama
 import re
 import logging
-logger = logging.getLogger("gatherly.rag")
+logger = logging.getLogger("uvicorn.error.shecraft")
 import os
 import time
 from qdrant_client import QdrantClient
-QDRANT_URL = os.environ.get("QDRANT_URL", "http://localhost:6333")
 
 
 OPS_TOPIC_FILES: dict[str, list[str]] = {
@@ -69,11 +67,21 @@ class RagService:
         device = "cuda" if torch.cuda.is_available() else "cpu"
         model_kwargs = {"torch_dtype": torch.float16} if device == "cuda" else None
 
-       
-        embedding_matrix = np.load(EMBEDDING_DIR / "embeddings.npy", allow_pickle=False)
-        saved_ids = json.loads(
-            (EMBEDDING_DIR / "chunks.json").read_text(encoding="utf-8")
-        )["chunk_ids"]
+        manifest = EMBEDDING_DIR / "chunks.json"
+        if not manifest.is_file():
+            raise RuntimeError("Text embeddings are missing. Run doc_rag/pipeline.py --no-images first.")
+        self.qdrant_url = os.environ.get("QDRANT_URL", "http://127.0.0.1:6333")
+        self.text_collection = TEXT_COLLECTION
+        self.qdrant = QdrantClient(url=self.qdrant_url, timeout=60)
+        try:
+            text_count = self.qdrant.count(collection_name=self.text_collection, exact=True).count
+        except Exception as exc:
+            raise RuntimeError("Cannot read the text index. Start Qdrant and run the document pipeline.") from exc
+        if not text_count:
+            raise RuntimeError("The Qdrant text index is empty. Run the document pipeline.")
+        logger.info("Qdrant ready: collection=%s points=%s", self.text_collection, text_count)
+
+        saved_ids = json.loads(manifest.read_text(encoding="utf-8"))["chunk_ids"]
 
         rows = []
         for path in PROCESSED_DIR.glob("*/chunks.json"):
@@ -84,18 +92,18 @@ class RagService:
         self.device = device
         self.model_name = embeddings_module.DEFAULT_MODEL_NAME
         self.chunks_df = chunks_df
-        self.embedding_matrix = embedding_matrix
+        logger.info("Loading the text embedding model and reranker on %s", device)
         self.embedding_model = embeddings_module.load_embedding_model(
             self.model_name,
             device=device,
-            local_files_only=True,
+            local_files_only=False,
             model_kwargs=model_kwargs,
         )
         self.tfidf_index = retrieval.build_tfidf_index(chunks_df)
         self.reranker = CrossEncoder(
             retrieval.DEFAULT_RERANKER_MODEL,
             device=device,
-            local_files_only=True,
+            local_files_only=False,
             model_kwargs=model_kwargs,
         )
         self.top_k = retrieval.DEFAULT_TOP_K
@@ -105,11 +113,18 @@ class RagService:
         self.theme_rerank_boost = retrieval.DEFAULT_THEME_RERANK_LAMBDA
         logger.info("Theme registry: %s docs (boost=%s)", len(self.theme_registry), self.theme_rerank_boost)
 
-       
-        self.image_records = image_embeddings.load_image_records(PROCESSED_DIR)
+        self.image_records = (
+            [] if os.getenv("RAG_TEXT_ONLY") == "1"
+            else image_embeddings.load_image_records(PROCESSED_DIR)
+        )
         self.image_by_id = {
             str(r["image_id"]): r for r in self.image_records
         }
+        if self.image_records:
+            self._initialize_images(device, model_kwargs)
+        logger.info("RAG ready: %s text chunks, %s images", len(chunks_df), len(self.image_records))
+
+    def _initialize_images(self, device, model_kwargs) -> None:
         self.image_stage1_collection = "gatherly_document_images_stage1_e5_v1"
         self.image_context_collection = retrieval.DEFAULT_IMAGE_COLLECTION_NAME
 
@@ -142,19 +157,9 @@ class RagService:
         self.image_candidate_k = retrieval.DEFAULT_IMAGE_CANDIDATE_K
         self.image_confidence = IMAGE_CONFIDENCE
 
-        logger.info("RAG ready: %s text chunks, %s images (context_cache=%s, stage_cache=%s)", len(chunks_df), len(self.image_records), image_pack["cache_hit"], stage_pack["cache_hit"])
-        self.qdrant_url = QDRANT_URL
-        self.text_collection = TEXT_COLLECTION
-        self.qdrant = QdrantClient(url=self.qdrant_url, timeout=60)
-        text_count = self.qdrant.count(
-            collection_name=self.text_collection,
-            exact=True,
-        ).count
         logger.info(
-            "Qdrant text index: url=%s collection=%s points=%s",
-            self.qdrant_url,
-            self.text_collection,
-            text_count,
+            "Image retrieval ready: context_cache=%s stage_cache=%s",
+            image_pack["cache_hit"], stage_pack["cache_hit"],
         )
 
     def retrieve(self, query: str) -> list[dict[str, Any]]:
@@ -163,7 +168,6 @@ class RagService:
             query,
             self.qdrant,
             self.embedding_model,
-            # self.embedding_matrix,
             self.chunks_df,
             self.tfidf_index,
             self.reranker,
@@ -188,9 +192,9 @@ class RagService:
                     f"@{row.get('file_name')}:p{row.get('page_number')}"
                 )
         logger.info(
-            "Text retrieve (hybrid_reranked_qdrant): query=%r hits=%s "
+            "Text retrieve (hybrid_reranked_qdrant): characters=%s hits=%s "
             "theme_applied=%s elapsed_ms=%.1f top=%s",
-            query[:80],
+            len(query),
             len(frame),
             bool(len(frame) and frame["theme_rerank_applied"].iloc[0])
             if "theme_rerank_applied" in frame.columns
@@ -217,6 +221,8 @@ class RagService:
 
     def retrieve_images(self, query: str) -> list[dict[str, Any]]:
         # same but with qdrant
+        if not hasattr(self, "image_model"):
+            return []
         started = time.perf_counter()
         frame = retrieval.retrieve_images_retrieve_rerank_fallback_qdrant(
             query,
@@ -400,7 +406,7 @@ class RagService:
             if first in {"visual", "text"}:
                 return first
         except Exception as exc:
-            logger.warning("Router Ollama failed (%s); using keyword fallback", exc)
+            logger.warning("Intent classifier failed (%s); using keyword fallback", type(exc).__name__)
 
         q = query.casefold()
         visual_hints = (
@@ -420,9 +426,10 @@ class RagService:
         max_tokens: int = 2048,
         public_base_url: str = "http://host.docker.internal:8001",
         jewelry: bool = False,
+        request_id: str = "-",
     ) -> dict[str, Any]:
         mode = "text" if jewelry else self.classify_intent(query)
-        logger.info("Intent: %s", mode)
+        logger.info("request=%s step=retrieval.started mode=%s", request_id, mode)
 
         if mode == "visual":
             image_contexts = self.retrieve_images(query)
@@ -431,6 +438,10 @@ class RagService:
             text_contexts = self.retrieve(query)
             image_contexts = []
 
+        logger.info(
+            "request=%s step=generation.started text_sources=%s image_sources=%s model=%s",
+            request_id, len(text_contexts), len(image_contexts), generation.DEFAULT_LLM_MODEL,
+        )
         answer = generation.generate_answer(
             query,
             text_contexts,
@@ -441,7 +452,7 @@ class RagService:
         base = public_base_url.rstrip("/")
         cards = self.build_display_cards(text_contexts, image_contexts, base)
         	
-        logger.info("Cards built: %s", len(cards))
+        logger.info("request=%s step=generation.completed cards=%s", request_id, len(cards))
         return {
             "answer": answer,
             "sources": text_contexts,

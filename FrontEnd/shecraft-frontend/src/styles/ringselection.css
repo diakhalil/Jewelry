@@ -7,13 +7,7 @@
   justify-content: flex-start;
   font-family: var(--sc-font-body);
 
-  /* soft gradient */
-  background: linear-gradient(
-    180deg,
-    #fdf8ff 0%,
-    #f9f5ff 40%,
-    var(--sc-bg) 100%
-  );
+  background: var(--sc-page-wash);
 
   /* ↓↓ reduce bottom padding so it doesn't leave a big strip */
   padding: 70px 20px 25px;
@@ -28,7 +22,7 @@
   font-family: var(--sc-font-display);
   font-size: 44px;
   font-weight: 700;
-  color: #4b164c;
+  color: var(--sc-purple-dark);
   margin-bottom: 10px;
   text-align: center;
   letter-spacing: 0.14em;
@@ -37,7 +31,7 @@
 
 .ring-subtitle {
   font-size: 18px;
-  color: #7b6d8d;
+  color: var(--sc-text-subtle);
   margin-bottom: 50px;
   text-align: center;
   max-width: 780px;
@@ -55,6 +49,11 @@
   max-width: 1180px;
 }
 
+.ring-preview-link {
+  margin: var(--sc-space-5) 0;
+  text-align: center;
+}
+
 /* ---------- PRODUCT CARD ---------- */
 
 .ring-card {
@@ -62,7 +61,7 @@
   background: var(--sc-bg);
   border-radius: 26px;
   box-shadow: 0 18px 40px rgba(75, 22, 76, 0.12);
-  border: 1px solid #f0e6ff;
+  border: 1px solid var(--sc-border);
 
   cursor: pointer;
   transition: transform 0.28s ease, box-shadow 0.28s ease,
@@ -78,7 +77,7 @@
 .ring-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 28px 60px rgba(75, 22, 76, 0.2);
-  border-color: #d3b5ff;
+  border-color: var(--sc-lavender);
 }
 
 /* floating "Customize" pill on hover */
@@ -91,7 +90,7 @@
   padding: 10px 22px;
   border-radius: 999px;
 
-  background: linear-gradient(90deg, #cf8ecc, var(--sc-purple-lavender));
+  background: var(--sc-purple);
   color: var(--sc-bg);
   font-size: 12px;
   font-weight: 600;
@@ -103,7 +102,7 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.ring-card:hover::after {
+.ring-card:is(:hover, :focus-visible)::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-2px);
 }
@@ -116,8 +115,8 @@
   border-radius: 22px;
   overflow: hidden;
 
-  background: radial-gradient(circle at 30% 10%, var(--sc-bg), #d5d3d9 55%, #dedbe3);
-  border: 1px solid #e2d4ff;
+  background: var(--sc-preview-wash);
+  border: 1px solid var(--sc-border-lavender);
 
   display: flex;
   align-items: center;
@@ -145,7 +144,7 @@
 .ring-label {
   font-size: 20px;
   font-weight: 700;
-  color: #3c0f46;
+  color: var(--sc-purple-dark);
   text-align: center;
   margin-top: 6px;
   text-transform: uppercase;

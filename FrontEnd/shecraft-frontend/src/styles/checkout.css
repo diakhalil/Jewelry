@@ -1,7 +1,7 @@
 .checkout-page {
   min-height: 100vh;
   padding: 80px 20px;
-  background: linear-gradient(to bottom, var(--sc-bg), #f6edf9);
+  background: linear-gradient(to bottom, var(--sc-bg), var(--sc-bg-soft));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .checkout-title {
   font: 700 clamp(2rem, 5vw, 3rem)/1.1 var(--sc-font-display);
-  color: #8a3fa0;
+  color: var(--sc-purple);
   margin-bottom: 40px;
   font-weight: 700;
 }
@@ -47,14 +47,14 @@
 }
 
 .checkout-details h3 {
-  color: #8a3fa0;
+  color: var(--sc-purple);
   font-size: 26px;
   margin-bottom: 24px;
 }
 
 .checkout-details p {
   font-size: 16px;
-  color: #4b2d57;
+  color: var(--sc-text-main);
   margin: 10px 0;
 }
 
@@ -68,7 +68,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1px solid #999;
+  border: 1px solid var(--sc-control-border);
   display: inline-block;
 }
 
@@ -90,9 +90,9 @@
 }
 
 .checkout-actions .secondary {
-  background: white;
-  border: 1px solid #b58cc9;
-  color: #6a2c7a;
+  background: var(--sc-bg);
+  border: 1px solid var(--sc-purple-lavender);
+  color: var(--sc-purple);
   border-radius: 28px;
   padding: 14px 26px;
   font-size: 15px;

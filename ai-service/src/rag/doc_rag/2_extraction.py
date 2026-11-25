@@ -51,7 +51,7 @@ def extract_text_blocks(page):
 
     return text_blocks
 
-def extract_text_lines(page):
+def extract_text_lines(page, *, sort=True):
     """
     Extract individual text lines with bounding boxes.
 
@@ -61,7 +61,7 @@ def extract_text_lines(page):
     """
     page_dict = page.get_text(
         "dict",
-        sort=True,
+        sort=sort,
     )
 
     text_lines = []
@@ -131,7 +131,11 @@ def build_text_from_lines(
 
 def extract_pdf( path,
     ocr_language="ara+eng",
-    compare_ocr=False,):
+    compare_ocr=False,
+    *,
+    use_ocr=True,
+    preserve_pdf_order=False,
+):
     """
     Extract text and text blocks from every PDF page.
 
@@ -174,14 +178,14 @@ def extract_pdf( path,
 
             text = page.get_text(
                 "text",
-                sort=True,
+                sort=not preserve_pdf_order,
             ).strip()
 
             native_text_usable = native_text_looks_usable(text)
 
             ocr_text = None
 
-            if compare_ocr or not native_text_usable:
+            if use_ocr and (compare_ocr or not native_text_usable):
                 ocr_text = extract_page_ocr(
                     page,
                     language=ocr_language,
@@ -190,7 +194,7 @@ def extract_pdf( path,
 
             text_blocks = extract_text_blocks(page)
 
-            text_lines = extract_text_lines(page)
+            text_lines = extract_text_lines(page, sort=not preserve_pdf_order)
             
 
             (
@@ -208,7 +212,7 @@ def extract_pdf( path,
                 final_text = ocr_text or ""
                 extraction_method = "ocr"
 
-            elif has_two_column_region:
+            elif has_two_column_region and not preserve_pdf_order:
                 final_text = layout_text
                 extraction_method = "native_layout_aware"
 

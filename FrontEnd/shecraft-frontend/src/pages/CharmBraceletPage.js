@@ -338,7 +338,7 @@ export default function CharmBraceletPage() {
               marginBottom: 12,
               padding: 10,
               borderRadius: 10,
-              background: "#ffe7e7",
+              background: "var(--sc-error-surface)",
               fontWeight: 700,
             }}
           >

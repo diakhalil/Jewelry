@@ -3,18 +3,17 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from pathlib import Path
-from dotenv import load_dotenv
+AI_SERVICE_ROOT = Path(__file__).resolve().parents[3]
+load_dotenv(AI_SERVICE_ROOT / ".env")
+load_dotenv(AI_SERVICE_ROOT.parent / ".env")
 
-_ROOT = Path(__file__).resolve().parents[4] 
-load_dotenv(_ROOT / ".env")
-
-DEFAULT_LLM_MODEL = "gemini-3.5-flash"
+DEFAULT_LLM_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 # OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434/v1")
 # DEFAULT_LLM_MODEL = "qwen2.5:7b"

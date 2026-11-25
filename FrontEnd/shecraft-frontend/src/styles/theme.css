@@ -6,7 +6,7 @@
   --sc-bg-neutral: #f6f4f7;
   --sc-bg-inset: #fbfafc;
   --sc-text-main: #5a3d7a;
-  --sc-text-muted: #7a6b85;
+  --sc-text-muted: #71617b;
   --sc-text-deep: #2d1336;
   --sc-text-subtle: #6f5a76;
   --sc-accent: #bfadd7;
@@ -25,11 +25,18 @@
   --sc-border: #efdef8;
   --sc-border-neutral: #e6ddea;
   --sc-border-lavender: #ebdef0;
-  --sc-border-deep: #421889;
   --sc-gold: #e4c67b;
-  --sc-chrome: rgba(167, 114, 193, 0.35);
+  --sc-control-border: #907c9a;
+  --sc-wash: linear-gradient(115deg, var(--sc-bg-soft), var(--sc-bg-blush));
+  --sc-page-wash: linear-gradient(180deg, var(--sc-lavender-pale), var(--sc-bg));
+  --sc-preview-wash: radial-gradient(circle at 30% 10%, var(--sc-bg), var(--sc-bg-neutral) 55%, var(--sc-border-neutral));
+  --sc-backdrop: rgba(45, 19, 54, 0.26);
   --sc-error: #a21b49;
   --sc-error-surface: var(--sc-bg-blush);
+  --sc-success: #1a633c;
+  --sc-success-surface: #e6f3ea;
+  --sc-warning: #704912;
+  --sc-warning-surface: #f9efd8;
 
   --sc-font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
   --sc-font-display: "Cormorant Garamond", Georgia, serif;

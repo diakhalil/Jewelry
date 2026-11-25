@@ -29,7 +29,7 @@
 .nk-badge{ background:rgba(79,10,87,.08); padding:6px 10px; border-radius:999px; font-weight:900; }
 .nk-chip{ background:var(--sc-bg-inset); border:1px solid var(--sc-border-neutral); padding:6px 10px; border-radius:999px; }
 
-.nk-imageWrap{ padding:16px; border-radius:18px; background:#faf7fb; }
+.nk-imageWrap{ padding:16px; border-radius:18px; background:var(--sc-bg-inset); }
 
 /* 🔒 PREVIEW IMAGE */
 .nk-mainImg{

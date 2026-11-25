@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   font-family: var(--sc-font-body);
-  background: linear-gradient(to bottom, #f8f9fa, var(--sc-bg));
+  background: var(--sc-page-wash);
 }
 
 /* Title */
@@ -24,7 +24,7 @@
 /* Subtitle */
 .designer-subtitle {
   font-size: 18px;
-  color: #555;
+  color: var(--sc-text-subtle);
   margin-bottom: 40px;
   text-align: center;
 }
@@ -46,8 +46,8 @@
   height: 500px;
   border-radius: 20px;
   overflow: hidden;
-  background: radial-gradient(circle at top, #e6e6e6, #cfcfcf);
-  border: 1px solid #ddd;
+  background: var(--sc-preview-wash);
+  border: 1px solid var(--sc-border-neutral);
 }
 
 /* Designer options */
@@ -62,7 +62,7 @@
 .designer-card {
   width: 200px;
   padding: 20px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--sc-border-neutral);
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
@@ -147,8 +147,8 @@
   width: 28px;       /* smaller circle */
   height: 28px;
   border-radius: 50%;
-  background-color: #ddd;
-  color: #333;
+  background-color: var(--sc-border-neutral);
+  color: var(--sc-text-deep);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,7 +179,7 @@
   right: -20px;
   transform: translateY(-50%);
   font-size: 16px;
-  color: #ccc;
+  color: var(--sc-border-neutral);
   z-index: 0;
 }
 
@@ -229,7 +229,7 @@
 .designer-card {
   width: 200px;
   padding: 20px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--sc-border-neutral);
   border-radius: 12px;
   text-align: center;
   cursor: pointer;

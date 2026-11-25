@@ -6,7 +6,7 @@
   padding: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  border: 1px solid #e7ddf6;
+  border: 1px solid var(--sc-border-lavender);
   border-radius: var(--sc-radius-panel);
   background: var(--sc-bg);
   color: var(--sc-text-deep);
@@ -15,7 +15,7 @@
 }
 
 .sc-login::backdrop {
-  background: rgba(45, 19, 54, 0.35);
+  background: var(--sc-backdrop);
 }
 
 .sc-login-content {
@@ -47,12 +47,12 @@
   border: 0;
   border-radius: var(--sc-radius-pill);
   background: transparent;
-  color: #6d4ca3;
+  color: var(--sc-purple);
   cursor: pointer;
 }
 
 .sc-login-close:hover:not(:disabled) {
-  background: #f1e7ff;
+  background: var(--sc-bg-soft);
 }
 
 .sc-login-tabs,
@@ -64,9 +64,9 @@
 
 .sc-login-tabs {
   padding: var(--sc-space-1);
-  border: 1px solid #ebdef8;
+  border: 1px solid var(--sc-border);
   border-radius: var(--sc-radius-control);
-  background: #f1e7ff;
+  background: var(--sc-bg-soft);
 }
 
 .sc-login-tabs button,
@@ -86,11 +86,11 @@
 }
 
 .sc-login-tabs button:hover:not(:disabled) {
-  background: #e5d4ff;
+  background: var(--sc-lilac-glow);
 }
 
 .sc-login-tabs button[aria-pressed="true"] {
-  border-color: #dac5f5;
+  border-color: var(--sc-lavender);
   background: var(--sc-bg);
 }
 
@@ -131,17 +131,17 @@
 }
 
 .sc-login-roles span {
-  border-color: #d4b8ff;
-  background: #f7f0ff;
+  border-color: var(--sc-lavender);
+  background: var(--sc-bg-soft);
 }
 
 .sc-login-roles label:hover span {
-  border-color: #bda8df;
+  border-color: var(--sc-accent);
 }
 
 .sc-login-roles input:checked + span {
   border-color: var(--sc-purple);
-  background: linear-gradient(135deg, #c5b2e4, #e6ade3);
+  background: linear-gradient(135deg, var(--sc-accent), var(--sc-bg-blush));
 }
 
 .sc-login-roles input:focus-visible + span {
@@ -161,22 +161,20 @@
   padding: var(--sc-space-2) var(--sc-space-3);
   border: 1px solid var(--sc-text-muted);
   border-radius: var(--sc-radius-control);
-  background: #f8f3ff;
+  background: var(--sc-lavender-pale);
   color: var(--sc-text-deep);
   font: 400 1rem/1.25 var(--sc-font-body);
 }
 
 .sc-login-fields input:focus {
   border-color: var(--sc-purple);
-  background: #fdf9ff;
-  box-shadow: 0 0 0 2px #a295bb;
+  background: var(--sc-bg-inset);
+  box-shadow: 0 0 0 2px var(--sc-control-border);
 }
 
 .sc-login .sc-login-submit {
   min-height: 48px;
   margin-top: var(--sc-space-1);
-  background: linear-gradient(135deg, #bea9e3, #cf8ecc);
-  color: var(--sc-purple-dark);
 }
 
 .sc-login .sc-login-submit:disabled {
@@ -187,10 +185,10 @@
 .sc-login-error {
   margin: 0;
   padding: var(--sc-space-2) var(--sc-space-3);
-  border-inline-start: 3px solid #f9a8d4;
+  border-inline-start: 3px solid var(--sc-error);
   border-radius: var(--sc-radius-control);
-  background: #fdf2f8;
-  color: #b91c1c;
+  background: var(--sc-error-surface);
+  color: var(--sc-error);
   font-size: 0.875rem;
   overflow-wrap: anywhere;
 }

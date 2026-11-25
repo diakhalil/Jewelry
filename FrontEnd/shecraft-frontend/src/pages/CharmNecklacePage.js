@@ -347,7 +347,7 @@ export default function CharmNecklacePage() {
               marginBottom: 12,
               padding: 10,
               borderRadius: 10,
-              background: "#ffe7e7",
+              background: "var(--sc-error-surface)",
               fontWeight: 700,
             }}
           >
@@ -442,8 +442,8 @@ export default function CharmNecklacePage() {
                       flex: 0,
                       padding: "12px 16px",
                       borderRadius: 12,
-                      border: "1px solid #999",
-                      background: "#fff",
+                      border: "1px solid var(--sc-control-border)",
+                      background: "var(--sc-bg)",
                       cursor: "pointer",
                       fontWeight: 700,
                     }}

@@ -376,7 +376,7 @@ export default function RingsPage() {
                         onClick={() => toggleDiamond(i)}
                       >
                         {i === 0 ? "Middle" : `Side ${i}`}
-                        <span className="stone-mini" style={{ background: diamondColors[i]?.color || "#eee" }} />
+                        <span className="stone-mini" style={{ background: diamondColors[i]?.color || "var(--sc-border-neutral)" }} />
                       </button>
                     ))}
                   </div>

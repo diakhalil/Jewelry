@@ -1,2 +1,7 @@
+-r requirements-local.txt
 playwright>=1.56,<2
-PyMuPDF>=1.26,<2
+sentence-transformers>=3.3,<6
+google-genai>=1.0,<2
+Pillow>=10,<12
+ollama>=0.4,<1
+ftfy>=6.2,<7

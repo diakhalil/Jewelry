@@ -8,7 +8,7 @@
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   font-family: var(--sc-font-body);
-  color: #333;
+  color: var(--sc-text-deep);
 }
 
 /* ================== Headings ================== */
@@ -16,15 +16,15 @@
   text-align: center;
   margin-bottom: 25px;
   font-size: 28px;
-  color: #222;
+  color: var(--sc-text-deep);
 }
 
 .final-step h3 {
   margin-top: 20px;
   margin-bottom: 12px;
   font-size: 20px;
-  color: #444;
-  border-bottom: 2px solid #f0f0f0;
+  color: var(--sc-text-subtle);
+  border-bottom: 2px solid var(--sc-border);
   padding-bottom: 6px;
 }
 
@@ -43,7 +43,7 @@
 .final-step ul li {
   padding: 10px 12px;
   margin-bottom: 8px;
-  background-color: #f9f9f9;
+  background-color: var(--sc-bg-inset);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -56,7 +56,7 @@
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--sc-border-neutral);
   font-size: 16px;
   margin-bottom: 15px;
   transition: all 0.2s ease;

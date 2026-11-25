@@ -3,34 +3,57 @@
 from __future__ import annotations
 
 import logging
+import os
+import tempfile
 import time
 import uuid
-from typing import Any, Literal, Optional
+from contextlib import asynccontextmanager
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Literal, Optional
 
-from fastapi import FastAPI, Header, HTTPException
+from dotenv import load_dotenv
+from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-from doc_rag.rag_service import RagService
-from pathlib import Path
-import importlib
+if TYPE_CHECKING:
+    from doc_rag.local_rag import LocalRagService
+    from doc_rag.rag_service import RagService
 
-import os
-from fastapi import FastAPI, Header, HTTPException
-from fastapi.responses import FileResponse
+AI_SERVICE_ROOT = Path(__file__).resolve().parents[3]
+load_dotenv(AI_SERVICE_ROOT / ".env")
+load_dotenv(AI_SERVICE_ROOT.parent / ".env")
 PUBLIC_BASE_URL = os.getenv(
     "RAG_PUBLIC_BASE_URL",
     "http://host.docker.internal:8001",
 )
 
 
-logger = logging.getLogger("gatherly.rag")
+logger = logging.getLogger("uvicorn.error.shecraft")
+local_mode = os.getenv("RAG_MODE") == "local"
+service: RagService | LocalRagService | None = None
 
 
-generation = importlib.import_module("doc_rag.11_generation")
-DEFAULT_LLM_MODEL = generation.DEFAULT_LLM_MODEL
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    global service
+    logger.info("RAG API starting mode=%s", "local" if local_mode else "server")
+    if local_mode:
+        from doc_rag.local_rag import LocalRagService
 
-app = FastAPI(title="Gatherly RAG API", version="1.0.0")
-service: RagService | None = None
+        service = LocalRagService()
+    else:
+        from doc_rag.rag_service import RagService
+
+        service = RagService()
+    try:
+        yield
+    finally:
+        service.qdrant.close()
+        service = None
+
+
+app = FastAPI(title="Gatherly RAG API", version="1.0.0", lifespan=lifespan)
 
 RAG_MODEL_ID = "gatherly-rag"
 
@@ -59,16 +82,20 @@ class AskOpsRequest(BaseModel):
 
 
 
-@app.on_event("startup")
-def startup() -> None:
-    global service
-    logger.info("RAG API starting")
-    service = RagService()
-
-
 @app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def health() -> dict[str, Any]:
+    if service is None:
+        raise HTTPException(status_code=503, detail="RAG service not ready")
+    if local_mode:
+        return {
+            "status": "ok",
+            "text_collection": service.text_collection,
+            "documents": service.document_count,
+            "answer_mode": service.answer_mode,
+        }
+    if not os.getenv("GEMINI_API_KEY"):
+        raise HTTPException(status_code=503, detail="Set GEMINI_API_KEY in ai-service/.env")
+    return {"status": "ok", "text_collection": service.text_collection}
 
 
 @app.get("/v1/models")
@@ -102,7 +129,7 @@ def get_image(image_id: str):
     return FileResponse(path)
 
 @app.post("/v1/ask")
-def ask(body: AskRequest) -> dict[str, Any]:
+def ask(body: AskRequest, x_request_id: str | None = Header(default=None)) -> dict[str, Any]:
     """Structured RAG result for Gatherly chat (answer + paired cards)."""
     if service is None:
         raise HTTPException(status_code=503, detail="RAG service not ready")
@@ -110,12 +137,30 @@ def ask(body: AskRequest) -> dict[str, Any]:
     if not question:
         raise HTTPException(status_code=400, detail="question is required")
 
-    result = service.ask(
-        question,
-        max_tokens=body.max_tokens or 2048,
-        public_base_url=PUBLIC_BASE_URL,
-        jewelry=body.experience == "shecraft",
-    )
+    try:
+        request_id = str(uuid.UUID(x_request_id)) if x_request_id else str(uuid.uuid4())
+    except ValueError:
+        request_id = str(uuid.uuid4())
+    started = time.perf_counter()
+    logger.info("request=%s step=chat.started characters=%s", request_id, len(question))
+    if not local_mode and not os.getenv("GEMINI_API_KEY"):
+        logger.warning("request=%s step=chat.failed reason=missing_gemini_key", request_id)
+        raise HTTPException(status_code=503, detail="Set GEMINI_API_KEY in ai-service/.env")
+    try:
+        result = service.ask(
+            question,
+            max_tokens=body.max_tokens or 2048,
+            public_base_url=PUBLIC_BASE_URL,
+            jewelry=body.experience == "shecraft",
+            request_id=request_id,
+        )
+    except Exception as exc:
+        logger.error(
+            "request=%s step=chat.failed reason=%s upstream_status=%s",
+            request_id, type(exc).__name__, getattr(exc, "status_code", None),
+        )
+        raise HTTPException(status_code=502, detail="RAG failed. See the Python service log.") from exc
+    logger.info("request=%s step=chat.completed elapsed_ms=%.1f", request_id, (time.perf_counter() - started) * 1000)
     text_sources = []
     for s in (result.get("sources") or [])[:8]:
         text = str(s.get("text") or "").strip()
@@ -221,10 +266,6 @@ def chat_completions(
     }
 
 
-from fastapi import File, Form, UploadFile
-import tempfile
-from pathlib import Path
-
 @app.post("/v1/ask_by_image")
 async def ask_by_image(
     file: UploadFile = File(...),
@@ -233,6 +274,8 @@ async def ask_by_image(
 ) -> dict[str, Any]:
     if service is None:
         raise HTTPException(status_code=503, detail="RAG service not ready")
+    if local_mode:
+        raise HTTPException(status_code=501, detail="Image questions require the full RAG service")
 
     suffix = Path(file.filename or "upload.jpg").suffix or ".jpg"
     raw = await file.read()
@@ -261,6 +304,8 @@ def ask_ops(body: AskOpsRequest) -> dict[str, Any]:
     """Ops/checklist/sustainable/Arabic RAG only."""
     if service is None:
         raise HTTPException(status_code=503, detail="RAG service not ready")
+    if local_mode:
+        raise HTTPException(status_code=501, detail="Operations questions require the full RAG service")
     question = (body.question or "").strip()
     if not question:
         raise HTTPException(status_code=400, detail="question is required")

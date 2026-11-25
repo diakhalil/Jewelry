@@ -18,6 +18,7 @@ import LoginPage from "./pages/LoginPage";
 import OrderPage from "./pages/OrderPage";
 import Checkout from "./pages/CheckOut";
 import RingSelection from "./pages/RingSelection";
+import SapphireRingPreview from "./pages/SapphireRingPreview";
 import DesignerPage from "./pages/DesignerPage";
 
 import NecklaceSelection from "./pages/NecklaceSelection";
@@ -102,6 +103,8 @@ function App() {
 
             {/* RINGS */}
             <Route path="/rings" element={<RingSelection />} />
+            <Route path="/rings/sapphire-preview" element={<SapphireRingPreview />} />
+            <Route path="/designs/:id" element={<SapphireRingPreview />} />
             <Route path="/ringspage" element={<RingsPage />} />
 
             {/* BRACELETS */}

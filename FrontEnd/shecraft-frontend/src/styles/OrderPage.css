@@ -3,8 +3,8 @@
 .order-page {
   min-height: 100vh;
   padding: 70px 80px 80px; 
-  background: radial-gradient(circle at top, #f9f5ff 0%, var(--sc-bg) 55%, #fbe9ff 100%);
-  color: #3a2b4d;
+  background: radial-gradient(circle at top, var(--sc-lavender-mist) 0%, var(--sc-bg) 55%, var(--sc-bg-soft) 100%);
+  color: var(--sc-text-deep);
   font-family: var(--sc-font-body);
 }
 
@@ -19,7 +19,7 @@
 .order-header h1 {
   font-family: var(--sc-font-display);
   font-size: 2.2rem;
-  color: #3a2b4d;          /* deep lilac-violet, not yellow */
+  color: var(--sc-text-deep);          /* deep lilac-violet, not yellow */
   margin-bottom: 8px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -46,7 +46,7 @@
   background-color: var(--sc-bg);
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid #e4ddf7;
+  border: 1px solid var(--sc-border-lavender);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
   width: 100%;
   padding-top: 70%; /* aspect ratio tile */
   overflow: hidden;
-  background-color: #f9f5ff;
+  background-color: var(--sc-lavender-mist);
 }
 
 .order-image {
@@ -87,7 +87,7 @@
 .order-card-footer h2 {
   font-family: var(--sc-font-display);
   font-size: 1.3rem;
-  color: #3a2b4d;
+  color: var(--sc-text-deep);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
