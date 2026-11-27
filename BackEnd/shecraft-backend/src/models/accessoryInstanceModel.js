@@ -60,18 +60,35 @@ function getBasePrice(type, product = {}) {
   return 0; // not a fixed-price product
 }
 
+function normalizeDesignComponents({ charms = [], stones = [] } = {}) {
+  function normalize(items, idKey) {
+    const quantities = new Map();
+    for (const item of Array.isArray(items) ? items : []) {
+      const id = item?.[idKey];
+      if (!id) continue;
+
+      const quantity = item.quantity == null ? 1 : Number(item.quantity);
+      if (!Number.isFinite(quantity) || quantity <= 0) continue;
+      quantities.set(id, (quantities.get(id) || 0) + quantity);
+    }
+
+    return [...quantities.entries()].map(([id, requestedQuantity]) => ({
+      [idKey]: id,
+      requestedQuantity,
+      storedQuantity: Math.max(1, Math.trunc(requestedQuantity)),
+    }));
+  }
+
+  return {
+    charms: normalize(charms, "charmID"),
+    stones: normalize(stones, "stoneID"),
+  };
+}
+
 async function reserveAndDecrementCharms(conn, charms) {
   if (!Array.isArray(charms) || charms.length === 0) return;
 
-  const req = new Map();
-  for (const it of charms) {
-    if (!it?.charmID) continue;
-    const q = it.quantity == null ? 1 : Number(it.quantity);
-    if (!Number.isFinite(q) || q <= 0) continue;
-    req.set(it.charmID, (req.get(it.charmID) || 0) + q);
-  }
-
-  const ids = [...req.keys()];
+  const ids = charms.map((item) => item.charmID);
   if (ids.length === 0) return;
 
   const placeholders = ids.map(() => "?").join(",");
@@ -84,14 +101,14 @@ async function reserveAndDecrementCharms(conn, charms) {
   if (rows.length !== ids.length) throw badRequest("One or more charmIDs do not exist");
 
   const stock = new Map(rows.map((r) => [r.charmID, Number(r.qty)]));
-  for (const [id, needed] of req.entries()) {
+  for (const { charmID: id, requestedQuantity: needed } of charms) {
     const available = stock.get(id) ?? 0;
     if (available < needed) {
       throw badRequest(`Charm ${id} out of stock (need ${needed}, have ${available})`);
     }
   }
 
-  for (const [id, needed] of req.entries()) {
+  for (const { charmID: id, requestedQuantity: needed } of charms) {
     await conn.query(`UPDATE charm SET qty = qty - ? WHERE charmID = ?`, [needed, id]);
   }
 }
@@ -99,15 +116,7 @@ async function reserveAndDecrementCharms(conn, charms) {
 async function reserveAndDecrementStones(conn, stones) {
   if (!Array.isArray(stones) || stones.length === 0) return;
 
-  const req = new Map();
-  for (const it of stones) {
-    if (!it?.stoneID) continue;
-    const q = it.quantity == null ? 1 : Number(it.quantity);
-    if (!Number.isFinite(q) || q <= 0) continue;
-    req.set(it.stoneID, (req.get(it.stoneID) || 0) + q);
-  }
-
-  const ids = [...req.keys()];
+  const ids = stones.map((item) => item.stoneID);
   if (ids.length === 0) return;
 
   const placeholders = ids.map(() => "?").join(",");
@@ -120,78 +129,106 @@ async function reserveAndDecrementStones(conn, stones) {
   if (rows.length !== ids.length) throw badRequest("One or more stoneIDs do not exist");
 
   const stock = new Map(rows.map((r) => [r.stoneID, Number(r.qty)]));
-  for (const [id, needed] of req.entries()) {
+  for (const { stoneID: id, requestedQuantity: needed } of stones) {
     const available = stock.get(id) ?? 0;
     if (available < needed) {
       throw badRequest(`Stone ${id} out of stock (need ${needed}, have ${available})`);
     }
   }
 
-  for (const [id, needed] of req.entries()) {
+  for (const { stoneID: id, requestedQuantity: needed } of stones) {
     await conn.query(`UPDATE stone SET qty = qty - ? WHERE stoneID = ?`, [needed, id]);
   }
 }
 
-/**
- * ✅ pricing: basePrice + (optional material) + charms + stones
- * includeMaterial=true => adds material.price
- * includeMaterial=false => ignores material.price
- */
-async function computeAccessoryPrice(conn, accessoryID, { basePrice = 0, includeMaterial = true } = {}) {
-  const [[row]] = await conn.query(
-    `
-    SELECT
-      a.accessoryID,
-      (? + (CASE WHEN ? THEN COALESCE(m.price, 0) ELSE 0 END)
-        + COALESCE(ch.charmsTotal, 0)
-        + COALESCE(st.stonesTotal, 0)
-      ) AS totalPrice
-    FROM accessory a
-    JOIN material m ON m.materialID = a.materialID
+async function calculateDesignPrice(conn, design = {}, normalizedComponents = null) {
+  const { type, materialID, product = {}, charms = [], stones = [] } = design;
+  const components = normalizedComponents || normalizeDesignComponents({ charms, stones });
+  const basePrice = getBasePrice(type, product);
+  const materialIncluded = basePrice <= 0;
 
-    LEFT JOIN (
-      SELECT o.accessoryID, SUM(o.quantity * c.price) AS charmsTotal
-      FROM ornaments o
-      JOIN charm c ON c.charmID = o.charmID
-      WHERE o.accessoryID = ?
-      GROUP BY o.accessoryID
-    ) ch ON ch.accessoryID = a.accessoryID
-
-    LEFT JOIN (
-      SELECT g.accessoryID, SUM(g.quantity * s.price) AS stonesTotal
-      FROM gems g
-      JOIN stone s ON s.stoneID = g.stoneID
-      WHERE g.accessoryID = ?
-      GROUP BY g.accessoryID
-    ) st ON st.accessoryID = a.accessoryID
-
-    WHERE a.accessoryID = ?
-    `,
-    [Number(basePrice) || 0, includeMaterial ? 1 : 0, accessoryID, accessoryID, accessoryID]
+  const [[material]] = await conn.query(
+    `SELECT materialID, price FROM material WHERE materialID = ?`,
+    [materialID]
   );
+  if (!material) throw badRequest(`Material not found for pricing: ${materialID}`);
 
-  if (!row) throw new Error(`Accessory not found for pricing: ${accessoryID}`);
-  return Number(row.totalPrice || 0);
+  async function getComponentPrices(table, idColumn, componentsForType) {
+    if (componentsForType.length === 0) return new Map();
+    const ids = componentsForType.map((item) => item[idColumn]);
+    const placeholders = ids.map(() => "?").join(", ");
+    const [rows] = await conn.query(
+      `SELECT ${idColumn}, price FROM ${table} WHERE ${idColumn} IN (${placeholders})`,
+      ids
+    );
+    const prices = new Map(rows.map((row) => [row[idColumn], Number(row.price) || 0]));
+    if (prices.size !== ids.length) {
+      throw badRequest(`One or more ${table} IDs do not exist`);
+    }
+    return prices;
+  }
+
+  const charmPrices = await getComponentPrices("charm", "charmID", components.charms);
+  const stonePrices = await getComponentPrices("stone", "stoneID", components.stones);
+  const toCents = (value) => Math.round((Number(value) || 0) * 100);
+  const charmLines = components.charms.map(({ charmID, storedQuantity }) => {
+    const unitPrice = charmPrices.get(charmID);
+    return {
+      charmID,
+      quantity: storedQuantity,
+      unitPrice,
+      lineTotal: toCents(unitPrice * storedQuantity) / 100,
+    };
+  });
+  const stoneLines = components.stones.map(({ stoneID, storedQuantity }) => {
+    const unitPrice = stonePrices.get(stoneID);
+    return {
+      stoneID,
+      quantity: storedQuantity,
+      unitPrice,
+      lineTotal: toCents(unitPrice * storedQuantity) / 100,
+    };
+  });
+
+  const charmsTotalCents = charmLines.reduce((sum, line) => sum + toCents(line.lineTotal), 0);
+  const stonesTotalCents = stoneLines.reduce((sum, line) => sum + toCents(line.lineTotal), 0);
+  const materialPrice = Number(material.price) || 0;
+  const materialCost = materialIncluded ? materialPrice : 0;
+  const totalCents = toCents(basePrice) + toCents(materialCost) + charmsTotalCents + stonesTotalCents;
+
+  return {
+    totalPrice: totalCents / 100,
+    breakdown: {
+      basePrice,
+      material: {
+        materialID,
+        unitPrice: materialPrice,
+        included: materialIncluded,
+        lineTotal: materialCost,
+      },
+      charms: charmLines,
+      charmsTotal: charmsTotalCents / 100,
+      stones: stoneLines,
+      stonesTotal: stonesTotalCents / 100,
+    },
+  };
+}
+
+async function previewAccessoryPrice(design) {
+  const conn = await pool.getConnection();
+  try {
+    return await calculateDesignPrice(conn, design);
+  } finally {
+    conn.release();
+  }
 }
 
 async function upsertOrnaments(conn, accessoryID, charms) {
   if (!Array.isArray(charms) || charms.length === 0) return;
-
-  const map = new Map();
-  for (const it of charms) {
-    if (!it?.charmID) continue;
-    const q = it.quantity == null ? 1 : Number(it.quantity);
-    if (!Number.isFinite(q) || q <= 0) continue;
-    map.set(it.charmID, (map.get(it.charmID) || 0) + q);
-  }
-
-  const entries = [...map.entries()];
-  if (entries.length === 0) return;
-
-  const rows = entries.map(([charmID, quantity]) => [
+  const rows = charms.map(({ charmID, storedQuantity }) => [
     accessoryID,
     charmID,
-    Math.max(1, Math.trunc(quantity)),
+    storedQuantity,
   ]);
 
   const placeholders = rows.map(() => "(?,?,?)").join(", ");
@@ -209,22 +246,10 @@ async function upsertOrnaments(conn, accessoryID, charms) {
 
 async function upsertGems(conn, accessoryID, stones) {
   if (!Array.isArray(stones) || stones.length === 0) return;
-
-  const map = new Map();
-  for (const it of stones) {
-    if (!it?.stoneID) continue;
-    const q = it.quantity == null ? 1 : Number(it.quantity);
-    if (!Number.isFinite(q) || q <= 0) continue;
-    map.set(it.stoneID, (map.get(it.stoneID) || 0) + q);
-  }
-
-  const entries = [...map.entries()];
-  if (entries.length === 0) return;
-
-  const rows = entries.map(([stoneID, quantity]) => [
+  const rows = stones.map(({ stoneID, storedQuantity }) => [
     accessoryID,
     stoneID,
-    Math.max(1, Math.trunc(quantity)),
+    storedQuantity,
   ]);
 
   const placeholders = rows.map(() => "(?,?,?)").join(", ");
@@ -250,6 +275,7 @@ async function createAccessoryInstance({
   charms = [],
   stones = [],
 }) {
+  const components = normalizeDesignComponents({ charms, stones });
   const conn = await pool.getConnection();
   try {
     await conn.beginTransaction();
@@ -300,20 +326,20 @@ async function createAccessoryInstance({
     }
 
     // 4) reserve + decrement inventory, then insert ornaments/gems
-    await reserveAndDecrementCharms(conn, charms);
-    await reserveAndDecrementStones(conn, stones);
+    await reserveAndDecrementCharms(conn, components.charms);
+    await reserveAndDecrementStones(conn, components.stones);
 
-    await upsertOrnaments(conn, accessoryID, charms);
-    await upsertGems(conn, accessoryID, stones);
+    await upsertOrnaments(conn, accessoryID, components.charms);
+    await upsertGems(conn, accessoryID, components.stones);
 
     // 5) compute price and update accessory
-    const basePrice = getBasePrice(type, product);
-    const includeMaterial = basePrice <= 0; // fixed-price items ignore material
-
-    const computedPrice = await computeAccessoryPrice(conn, accessoryID, {
-      basePrice,
-      includeMaterial,
-    });
+    const { totalPrice: computedPrice } = await calculateDesignPrice(conn, {
+      type,
+      materialID,
+      product,
+      charms,
+      stones,
+    }, components);
 
     await conn.query(`UPDATE accessory SET price = ? WHERE accessoryID = ?`, [
       computedPrice,
@@ -401,6 +427,9 @@ async function cancelAccessoryReservation(accessoryID) {
 }
 
 module.exports = {
+  normalizeDesignComponents,
+  calculateDesignPrice,
+  previewAccessoryPrice,
   createAccessoryInstance,
   cancelAccessoryReservation,
 };

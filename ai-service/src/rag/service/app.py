@@ -19,9 +19,13 @@ from pydantic import BaseModel, Field
 
 
 AI_SERVICE_ROOT = Path(__file__).resolve().parents[3]
+if str(AI_SERVICE_ROOT) not in sys.path:
+    sys.path.insert(0, str(AI_SERVICE_ROOT))
 RAG_ROOT = AI_SERVICE_ROOT / "src" / "rag"
 if str(RAG_ROOT) not in sys.path:
     sys.path.insert(0, str(RAG_ROOT))
+
+from src.validation.api import router as validation_router
 
 indexing = importlib.import_module("scripts.6_indexing")
 embedding_utils = importlib.import_module("scripts.5_embeddings")
@@ -82,6 +86,7 @@ app = FastAPI(
     description="Retrieves jewelry knowledge from Qdrant and generates cited answers.",
     lifespan=lifespan,
 )
+app.include_router(validation_router)
 
 allowed_origins = [
     origin.strip()
