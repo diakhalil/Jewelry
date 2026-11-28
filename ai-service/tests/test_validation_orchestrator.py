@@ -60,6 +60,104 @@ class ValidationOrchestratorTests(unittest.TestCase):
         self.assertEqual(calls[0][1]["material_id"], "MT01")
         self.assertEqual(calls[1][1]["design"], self.price_request["design"])
 
+    def test_incompatible_3d_configuration_skips_catalog_inventory_and_price(self):
+        calls = []
+        result = orchestrate_validation(
+            inventory_request=self.inventory_request,
+            price_request=self.price_request,
+            catalog_preferences={"material": "gold"},
+            three_d_configuration={
+                "kind": "ring", "style": "plain", "metal": "gold",
+                "gem": "sapphire", "size": 7,
+            },
+            inventory_validator=lambda **_: calls.append("inventory"),
+            price_validator=lambda **_: calls.append("price"),
+            catalog_resolver=lambda *_: calls.append("catalog"),
+        )
+
+        self.assertFalse(result["valid"])
+        self.assertEqual(result["checks"]["compatibility"]["status"], "failed")
+        self.assertEqual(result["checks"]["catalog"]["status"], "skipped")
+        self.assertEqual(result["checks"]["inventory"]["status"], "skipped")
+        self.assertEqual(result["checks"]["price"]["status"], "skipped")
+        self.assertEqual(calls, [])
+        self.assertEqual(result["unresolved_mappings"], [])
+
+    def test_compatible_3d_config_does_not_auto_approve_database_mappings(self):
+        result = orchestrate_validation(
+            inventory_request=self.inventory_request,
+            price_request=self.price_request,
+            catalog_preferences={"material": "gold"},
+            three_d_configuration={
+                "kind": "ring", "style": "tennis", "metal": "gold",
+                "gem": "sapphire", "count": 8, "size": 7,
+            },
+            three_d_field_provenance={"kind": "explicit", "style": "explicit", "metal": "explicit", "gem": "explicit", "count": "explicit", "size": "explicit"},
+            three_d_confirmed_components={"materialID": "MT01", "stones": [{"stoneID": "S001", "quantity": 1}]},
+            inventory_validator=lambda **_: {"valid": True, "errors": [], "warnings": [], "components": {}},
+            price_validator=lambda **_: {
+                "valid": True, "computed_price": 20, "budget": 100,
+                "difference": 80, "errors": [], "warnings": [], "breakdown": {},
+            },
+            catalog_resolver=lambda _: {
+                "status": "matched", "resolved": {"materialID": "MT01", "stones": [{"stoneID": "S001", "quantity": 1}]},
+                "matches": {
+                    "material": {"status": "matched", "candidates": [{"id": "MT01"}]},
+                    "stones": [{"status": "matched", "candidates": [{"id": "S001"}]}],
+                }, "errors": [], "warnings": [],
+            },
+        )
+
+        self.assertTrue(result["checks_valid"])
+        self.assertFalse(result["valid"])
+        self.assertFalse(result["complete_validation"])
+        self.assertEqual(result["status"], "clarification_required")
+        self.assertTrue(any(item["configuration_field"] == "size" for item in result["unresolved_mappings"]))
+        self.assertEqual(result["checks"]["catalog"]["status"], "passed")
+
+    def test_3d_orchestration_sends_identical_canonical_components_to_validators(self):
+        config = {
+            "kind": "ring", "style": "tennis", "metal": "gold",
+            "gem": "diamond", "color": "blue", "count": 20, "size": 7,
+        }
+        seen = {}
+
+        def resolver(preferences):
+            return {
+                "status": "matched", "resolved": {}, "errors": [], "warnings": [],
+                "matches": {
+                    "material": {"status": "matched", "candidates": [{"id": "MT01"}]},
+                    "stones": [{"status": "matched", "candidates": [{"id": "S001"}]}],
+                },
+            }
+
+        def inventory(**kwargs):
+            seen["inventory"] = kwargs
+            return {"valid": True, "errors": [], "warnings": [], "components": {}}
+
+        def price(**kwargs):
+            seen["price"] = kwargs
+            return {"valid": True, "computed_price": 50, "budget": 100, "difference": 50, "errors": [], "warnings": [], "breakdown": {}}
+
+        result = orchestrate_validation(
+            inventory_request={},
+            price_request={"design": {}, "budget": 100},
+            three_d_configuration=config,
+            three_d_field_provenance={field: "explicit" for field in config},
+            three_d_confirmed_components={"materialID": "MT01", "stones": [{"stoneID": "S001", "quantity": 2}]},
+            three_d_approved_mappings={"diamond_color": {"catalog_field": "color", "catalog_value": "Blue"}},
+            catalog_resolver=resolver,
+            inventory_validator=inventory,
+            price_validator=price,
+        )
+
+        self.assertEqual(seen["inventory"]["stones"], seen["price"]["design"]["stones"])
+        self.assertEqual(seen["inventory"]["material_id"], seen["price"]["design"]["materialID"])
+        self.assertTrue(result["checks_valid"])
+        self.assertFalse(result["complete_validation"])
+        self.assertFalse(result["valid"])
+        self.assertEqual(result["status"], "clarification_required")
+
     def test_failed_inventory_makes_overall_validation_fail(self):
         inventory_result = {
             "valid": False,

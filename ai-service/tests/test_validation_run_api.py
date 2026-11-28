@@ -135,6 +135,54 @@ class ValidationRunAPITests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 422)
 
+    def test_compatibility_endpoint_returns_valid_configuration(self):
+        response = self.client.post("/validation/compatibility", json={
+            "kind": "bracelet", "style": "plain", "metal": "silver",
+            "gem": "none", "diameter": 60,
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json()["valid"])
+
+    def test_compatibility_endpoint_returns_actionable_invalid_configuration(self):
+        response = self.client.post("/validation/compatibility", json={
+            "kind": "ring", "style": "tennis", "metal": "gold",
+            "gem": "none", "count": 7, "size": 7,
+        })
+        self.assertEqual(response.status_code, 422)
+        body = response.json()
+        self.assertFalse(body["valid"])
+        self.assertTrue(body["errors"])
+        self.assertTrue(body["revision_suggestions"])
+
+    def test_run_endpoint_forwards_optional_3d_configuration(self):
+        body = {
+            **self.request_data,
+            "three_d_configuration": {
+                "kind": "ring", "style": "solitaire", "metal": "gold",
+                "gem": "sapphire", "size": 7,
+            },
+            "three_d_field_provenance": {"kind": "explicit"},
+            "three_d_confirmed_components": {"materialID": "MT01"},
+            "three_d_approved_mappings": {"metal": "gold"},
+        }
+        with patch("src.validation.api.orchestrate_validation", return_value={"valid": False, "status": "configuration_mapping_required", "checks": {}}) as run:
+            response = self.client.post("/validation/run", json=body)
+        self.assertEqual(response.status_code, 200)
+        run.assert_called_once_with(
+            inventory_request=body["inventory_request"],
+            price_request=body["price_request"],
+            three_d_configuration=body["three_d_configuration"],
+            three_d_field_provenance=body["three_d_field_provenance"],
+            three_d_confirmed_components=body["three_d_confirmed_components"],
+            three_d_approved_mappings=body["three_d_approved_mappings"],
+        )
+
+    def test_run_rejects_orphaned_3d_metadata(self):
+        body = {**self.request_data, "three_d_field_provenance": {"kind": "explicit"}}
+        response = self.client.post("/validation/run", json=body)
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.json()["errors"][0]["code"], "3d_metadata_without_configuration")
+
 
 if __name__ == "__main__":
     unittest.main()

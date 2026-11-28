@@ -12,6 +12,9 @@ from .inventory import validate_inventory
 from .catalog import resolve_catalog_preferences
 from .orchestrator import orchestrate_validation
 from .pricing import validate_price
+from .compatibility import validate_3d_configuration
+from .decision import DecisionState, ValidationDecision, decide_validation_route
+from .agent import ValidationAgentRequest, ValidationAgentState, run_validation_agent
 
 
 router = APIRouter()
@@ -43,12 +46,33 @@ class ValidationRunRequest(BaseModel):
     inventory_request: dict[str, Any]
     price_request: dict[str, Any]
     catalog_preferences: dict[str, Any] | None = None
+    three_d_configuration: dict[str, Any] | None = None
+    three_d_field_provenance: dict[str, str] | None = None
+    three_d_confirmed_components: dict[str, Any] | None = None
+    three_d_approved_mappings: dict[str, Any] | None = None
 
 
 class CatalogValidationRequest(BaseModel):
     """Phase 2 catalog preferences using current database attribute names."""
 
     catalog_preferences: dict[str, Any]
+
+
+class ValidationDecisionRequest(BaseModel):
+    """A unified result and caller-owned routing state for the decision node."""
+
+    unified_validation_result: dict[str, Any]
+    configuration: Any = None
+    state: DecisionState | None = None
+
+
+@router.post("/validation/compatibility")
+def compatibility_validation(request: dict[str, Any]):
+    """Validate the raw 3D generator configuration without applying defaults."""
+    result = validate_3d_configuration(request)
+    if not result["valid"]:
+        return JSONResponse(status_code=422, content=result)
+    return result
 
 
 @router.post("/validation/inventory")
@@ -107,23 +131,44 @@ def catalog_validation(request: CatalogValidationRequest):
 
 @router.post("/validation/run")
 def run_validation(request: ValidationRunRequest):
-    if request.catalog_preferences is None:
-        result = orchestrate_validation(
-            inventory_request=request.inventory_request,
-            price_request=request.price_request,
-        )
-    else:
-        result = orchestrate_validation(
-            inventory_request=request.inventory_request,
-            price_request=request.price_request,
-            catalog_preferences=request.catalog_preferences,
-        )
+    if request.three_d_configuration is None and any((
+        request.three_d_field_provenance is not None,
+        request.three_d_confirmed_components is not None,
+        request.three_d_approved_mappings is not None,
+    )):
+        return JSONResponse(status_code=422, content={
+            "valid": False,
+            "errors": [{
+                "code": "3d_metadata_without_configuration",
+                "message": "3D provenance, component selections, and approved mappings require three_d_configuration.",
+            }],
+            "warnings": [],
+            "clarifications": [],
+        })
+    optional_inputs: dict[str, Any] = {}
+    if request.catalog_preferences is not None:
+        optional_inputs["catalog_preferences"] = request.catalog_preferences
+    if request.three_d_configuration is not None:
+        optional_inputs["three_d_configuration"] = request.three_d_configuration
+        if request.three_d_field_provenance is not None:
+            optional_inputs["three_d_field_provenance"] = request.three_d_field_provenance
+        if request.three_d_confirmed_components is not None:
+            optional_inputs["three_d_confirmed_components"] = request.three_d_confirmed_components
+        if request.three_d_approved_mappings is not None:
+            optional_inputs["three_d_approved_mappings"] = request.three_d_approved_mappings
+    result = orchestrate_validation(
+        inventory_request=request.inventory_request,
+        price_request=request.price_request,
+        **optional_inputs,
+    )
 
     # Mirror the existing component routes: client/design errors use 422,
     # backend connection failures use 503, and backend HTTP/response failures
     # use 502. Other orchestration failures remain server errors (500).
     price_result = result.get("checks", {}).get("price", {}).get("result")
     catalog_result = result.get("checks", {}).get("catalog", {}).get("result")
+    if result.get("checks", {}).get("compatibility", {}).get("status") == "failed":
+        return JSONResponse(status_code=422, content=result)
     if isinstance(catalog_result, dict) and catalog_result.get("request_error"):
         return JSONResponse(status_code=422, content=result)
     if isinstance(price_result, dict) and price_result.get("backend_error") == "design":
@@ -142,3 +187,20 @@ def run_validation(request: ValidationRunRequest):
     if result.get("status") == "error":
         return JSONResponse(status_code=500, content=result)
     return result
+
+
+@router.post("/validation/decision", response_model=ValidationDecision)
+def validation_decision(request: ValidationDecisionRequest):
+    """Route a unified result without rerunning any validation checks."""
+    decision = decide_validation_route(
+        request.unified_validation_result,
+        configuration=request.configuration,
+        state=request.state,
+    )
+    return decision
+
+
+@router.post("/validation/agent", response_model=ValidationAgentState)
+def validation_agent(request: ValidationAgentRequest):
+    """Run a session-scoped LangGraph validation workflow."""
+    return run_validation_agent(request)

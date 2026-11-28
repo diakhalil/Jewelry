@@ -8,10 +8,13 @@ from typing import Any
 from .inventory import validate_inventory
 from .pricing import validate_price
 from .catalog import resolve_catalog_preferences
+from .compatibility import validate_3d_configuration
+from .adapter import adapt_three_d_configuration
 
 
 Validator = Callable[..., Mapping[str, Any]]
 CatalogResolver = Callable[..., Mapping[str, Any]]
+CompatibilityValidator = Callable[[Any], Mapping[str, Any]]
 
 
 def _run_check(
@@ -101,9 +104,14 @@ def orchestrate_validation(
     inventory_request: Mapping[str, Any],
     price_request: Mapping[str, Any],
     catalog_preferences: Mapping[str, Any] | None = None,
+    three_d_configuration: Any | None = None,
     inventory_validator: Validator = validate_inventory,
     price_validator: Validator = validate_price,
     catalog_resolver: CatalogResolver = resolve_catalog_preferences,
+    compatibility_validator: CompatibilityValidator = validate_3d_configuration,
+    three_d_field_provenance: Mapping[str, str] | None = None,
+    three_d_confirmed_components: Mapping[str, Any] | None = None,
+    three_d_approved_mappings: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Run inventory and price checks and return their combined validation.
 
@@ -115,6 +123,126 @@ def orchestrate_validation(
     """
     inventory_input = dict(inventory_request)
     price_input = dict(price_request)
+    if three_d_configuration is not None:
+        adapted = adapt_three_d_configuration(
+            three_d_configuration,
+            field_provenance=three_d_field_provenance,
+            confirmed_components=three_d_confirmed_components,
+            approved_mappings=three_d_approved_mappings,
+            inventory_request=inventory_input,
+            price_request=price_input,
+            catalog_preferences=catalog_preferences,
+            catalog_resolver=catalog_resolver,
+            compatibility_validator=compatibility_validator,
+        )
+        compatibility_result = adapted.get("compatibility", {})
+        compatibility_status = "passed" if compatibility_result.get("valid") is True else "failed"
+        checks: dict[str, Any] = {
+            "compatibility": {"status": compatibility_status, "result": compatibility_result},
+            "adapter": {
+                "status": (
+                    "conflict" if adapted.get("conflicts")
+                    else "clarification_required" if adapted.get("clarifications") or adapted.get("unresolved_mappings")
+                    else "passed"
+                ),
+                "result": adapted,
+            },
+        }
+        catalog_result = adapted.get("catalog_result")
+        if isinstance(catalog_result, Mapping):
+            if catalog_result.get("backend_error"):
+                catalog_status = "error"
+            elif adapted.get("catalog_resolved"):
+                catalog_status = "passed"
+            elif catalog_result.get("status") in {"ambiguous", "not_found"}:
+                catalog_status = "clarification_required"
+            else:
+                catalog_status = "passed" if catalog_result.get("status") == "matched" else "failed"
+            checks["catalog"] = {"status": catalog_status, "result": dict(catalog_result)}
+        else:
+            checks["catalog"] = {"status": "skipped", "result": None}
+
+        inventory_check: dict[str, Any] = {"status": "skipped", "result": None}
+        price_check: dict[str, Any] = {"status": "skipped", "result": None}
+        inventory_technical: list[dict[str, str]] = []
+        inventory_errors: list[Any] = []
+        inventory_warnings: list[Any] = []
+        price_technical: list[dict[str, str]] = []
+        price_errors: list[Any] = []
+        price_warnings: list[Any] = []
+        canonical = adapted.get("canonical_design")
+        if compatibility_status == "passed" and adapted.get("catalog_resolved") and canonical:
+            if adapted.get("ready_for_inventory"):
+                inventory_check, inventory_technical, inventory_errors, inventory_warnings = _run_check(
+                    "inventory", inventory_validator, canonical["inventory_request"]
+                )
+            if adapted.get("ready_for_price"):
+                price_call = canonical["price_request"]
+                price_check, price_technical, price_errors, price_warnings = _run_check(
+                    "price", price_validator,
+                    {"design": price_call["design"], "budget": price_call.get("budget")},
+                )
+        elif compatibility_status != "passed":
+            checks["adapter"] = {"status": "skipped", "result": adapted}
+
+        checks.update({"inventory": inventory_check, "price": price_check})
+        clarifications = adapted.get("clarifications", [])
+        conflicts = adapted.get("conflicts", [])
+        adapter_errors = adapted.get("errors", [])
+        compatibility_errors = compatibility_result.get("errors", [])
+        errors = [
+            *({"check": "compatibility", **item} for item in compatibility_errors),
+            *({"check": "adapter", **item} for item in adapter_errors),
+            *({"check": "adapter", **item} for item in conflicts),
+            *inventory_errors,
+            *price_errors,
+        ]
+        warnings = [
+            *({"check": "adapter", **item} for item in adapted.get("warnings", [])),
+            *inventory_warnings,
+            *price_warnings,
+        ]
+        technical_errors = [*inventory_technical, *price_technical]
+        if isinstance(catalog_result, Mapping) and catalog_result.get("backend_error"):
+            technical_errors.append({
+                "check": "catalog",
+                "message": next((str(item) for item in catalog_result.get("errors", []) if item), "Catalog resolution failed."),
+            })
+        checks_valid = all(
+            checks[name]["status"] == "passed"
+            for name in ("compatibility", "catalog", "inventory", "price")
+        )
+        complete = (
+            checks_valid and not clarifications and not conflicts and not adapted.get("unresolved_mappings")
+        )
+        if technical_errors:
+            status = "error"
+        elif conflicts:
+            status = "conflict"
+        elif any(check["status"] == "failed" for check in checks.values()):
+            status = "failed"
+        elif clarifications or adapted.get("unresolved_mappings"):
+            status = "clarification_required"
+        elif not checks_valid:
+            status = "failed"
+        else:
+            status = "passed"
+        return {
+            "valid": complete,
+            "status": status,
+            "checks": checks,
+            "checks_valid": checks_valid,
+            "complete_validation": complete,
+            "canonical_design": canonical,
+            "clarification_required": bool(clarifications or conflicts or adapted.get("unresolved_mappings")),
+            "clarifications": clarifications,
+            "conflicts": conflicts,
+            "unresolved_mappings": adapted.get("unresolved_mappings", []),
+            "errors": errors,
+            "warnings": warnings,
+            "technical_errors": technical_errors,
+        }
+
     catalog_check: dict[str, Any] | None = None
     catalog_errors: list[Any] = []
     catalog_warnings: list[Any] = []
@@ -203,7 +331,7 @@ def orchestrate_validation(
                 "inventory": {"status": "skipped", "result": None},
                 "price": {"status": "skipped", "result": None},
             }
-            return {
+            result = {
                 "valid": False,
                 "status": "error" if technical else "clarification_required",
                 "checks": checks,
@@ -213,6 +341,7 @@ def orchestrate_validation(
                 "clarification_required": clarification_required,
                 "revision_required": clarification_required,
             }
+            return result
 
     inventory_args = {
         "material_id": inventory_input.get("material_id"),
