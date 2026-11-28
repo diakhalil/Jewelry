@@ -22,6 +22,10 @@ AI_SERVICE_ROOT = Path(__file__).resolve().parents[3]
 RAG_ROOT = AI_SERVICE_ROOT / "src" / "rag"
 if str(RAG_ROOT) not in sys.path:
     sys.path.insert(0, str(RAG_ROOT))
+if str(RAG_ROOT.parent) not in sys.path:
+    sys.path.insert(0, str(RAG_ROOT.parent))
+
+from agents.api import create_router
 
 indexing = importlib.import_module("scripts.6_indexing")
 embedding_utils = importlib.import_module("scripts.5_embeddings")
@@ -282,3 +286,6 @@ def _safe_score(value):
         return round(float(value), 4)
     except (TypeError, ValueError):
         return None
+
+
+app.include_router(create_router(lambda question: chat(ChatRequest(message=question))))

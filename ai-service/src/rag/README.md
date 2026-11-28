@@ -66,3 +66,83 @@ The API uses Gemini Embedding 2 for query vectors, retrieves from the text and
 image Qdrant collections, then calls the configured Gemini generation model.
 Gemini and Qdrant credentials remain in the backend `.env`; they are never
 sent to the browser. This local development service binds to `127.0.0.1`.
+
+## Customer requirements and supervisor
+
+Install the updated `requirements.txt` in the same virtual environment and
+start the same Uvicorn app. The React **Ask SheCraft** widget uses
+`POST /api/assistant/chat` with a UUID `conversation_id` and a `message`.
+The response streams newline-delimited JSON progress events followed by a
+result containing the answer, structured design brief and guide sources, or
+an error. The original `POST /api/chat` endpoint remains available for RAG.
+
+The supervisor delegates design requests to Customer Requirements and factual
+questions to the existing knowledge service. Requirements chooses among
+required-field, consistency and supported-option tools. Its Gemini structured
+output updates only the changed preferences. The graph publishes the brief at
+the end of a successful turn. A ready brief is available for a future Design
+Agent. The current graph does not submit orders or run final validation.
+
+Use a Gemini Developer API project on the free tier. The supervisor and
+requirements agent share `REQUIREMENTS_MODEL` (default `gemini-3.5-flash-lite`).
+Material and stone lookups use `SHECRAFT_BACKEND_URL` (default
+`http://localhost:5000`). Guide questions use the existing RAG configuration.
+Start one Uvicorn worker for the course demo. LangGraph's in-memory checkpointer
+keeps each conversation during the process lifetime. Closing and reopening the
+widget keeps the conversation; refreshing the page starts a new one.
+
+For a demo, set `SHECRAFT_AGENT_TRACE=true` in `ai-service/.env` and restart
+Uvicorn. Use fictional inputs. The server prints LangChain message types,
+public message content, model-selected tool arguments, tool results and the
+structured state update. The widget shows live activity and an expandable brief.
+Try “I want a silver necklace under USD 150” followed by “Actually, USD 100,
+and you can choose the chain.” Then ask a standalone jewelry-care question.
+
+Run the offline regression tests from `ai-service`:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -p test_requirements_agent.py
+```
+
+### Connecting a teammate’s agent
+
+The handoff is the Pydantic `Brief` in [brief.py](../agents/brief.py). Within a
+turn, read `state.draft` to see edits already applied by Customer Requirements.
+At the end of a successful turn, `finish` publishes that draft as `state.brief`.
+The HTTP client receives the same object under `brief` in the final result event.
+For example, after selecting a Celeste Solitaire, part of the result can look like this:
+
+```json
+{
+  "status": "collecting",
+  "preferences": [
+    {"field": "style", "value": "Celeste Solitaire", "intent": "preferred"}
+  ],
+  "option_field": "stone_count",
+  "options": ["0", "1", "2"]
+}
+```
+
+Each preference carries its intent (`required`, `preferred`, `delegated`, or
+`excluded`). Budget and measurement preferences can also carry a numeric
+`amount` and a `unit`. Keep the preference list intact so exclusions and
+multiple values survive the handoff. Use `missing`, `conflicts`, and
+`next_question` to continue intake. A `ready` brief can inform design.
+For `needs_review`, inspect `review_reasons` before proceeding.
+
+1. In [graph.py](../agents/graph.py), define a Pydantic delegation tool with a
+   clear description and add it to the supervisor’s `bind_tools` list. Describe
+   the specialist’s remit and handoff conditions in [prompts.py](../agents/prompts.py).
+2. Register the agent as a graph node. Extend `route`, including its return
+   annotation, to map the model-selected tool name to that node. Read the
+   current draft and check the inputs your agent needs before acting.
+3. End the node with `observation(state, ...)` and route back through `route`
+   to consume the next queued delegation or finish. If your agent produces a
+   design or a validation report, declare a typed state field for it and
+   update `finish` and the [API result](../agents/api.py) to expose it as needed.
+
+The supervisor currently delegates to Requirements and Knowledge. Completing
+a brief ends the intake turn, including when a menu click supplies the final
+choice. A later request such as “design this ring” can be routed to a newly
+registered specialist using the same conversation ID. An automatic same-turn
+handoff would require changing the completion edges in the graph.

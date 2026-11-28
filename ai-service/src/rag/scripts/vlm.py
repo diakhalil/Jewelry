@@ -28,6 +28,7 @@ DESCRIBE_PROMPT = (
 
 # Current Gemini multimodal flash model. Can be overridden in ai-service/.env.
 GEMINI_VLM_MODEL = os.getenv("GEMINI_VLM_MODEL", "gemini-3.5-flash-lite")
+GEMINI_MIN_REQUEST_INTERVAL = 5.0  # At most 12 image requests per minute.
 
 # OpenRouter Qwen2.5-VL model with live endpoints.
 OPENROUTER_API_MODEL = "qwen/qwen2.5-vl-72b-instruct"
@@ -156,6 +157,7 @@ class GeminiVLM:
 
         self.api_model = api_model
         self.max_retries = max_retries
+        self.next_request_at = 0.0
 
         key = api_key or os.getenv("GEMINI_API_KEY")
         if not key:
@@ -184,6 +186,10 @@ class GeminiVLM:
         last_error = None
 
         for attempt in range(1, self.max_retries + 1):
+            remaining = self.next_request_at - time.monotonic()
+            if remaining > 0:
+                time.sleep(remaining)
+            self.next_request_at = time.monotonic() + GEMINI_MIN_REQUEST_INTERVAL
             try:
                 response = self.client.models.generate_content(
                     model=self.api_model,
@@ -206,46 +212,51 @@ class GeminiVLM:
             except Exception as error:
                 last_error = error
                 message = str(error).casefold()
-                permanent = any(
-                    marker in message
-                    for marker in (
-                        "404",
-                        "not_found",
-                        "no longer available",
-                        "invalid_argument",
-                        "api key",
-                        "permission_denied",
-                        "401",
-                        "403",
-                    )
-                )
-                retryable = (not permanent) and any(
-                    marker in message
-                    for marker in (
-                        "429",
-                        "resource_exhausted",
-                        "rate limit",
-                        "quota exceeded",
-                        "503",
-                        "500",
-                        "timeout",
-                        "temporarily",
-                    )
-                )
-                if "no longer available" in message:
-                    retryable = False
+                code = getattr(error, "code", None)
+                rate_limited = code == 429
+                retryable = rate_limited or code in (500, 503)
+                if code is None:
+                    if any(marker in message for marker in (
+                        "401", "403", "404", "api key", "permission_denied",
+                        "not_found", "no longer available", "invalid_argument",
+                    )):
+                        raise
+                    rate_limited = any(marker in message for marker in (
+                        "429", "resource_exhausted", "rate limit", "quota exceeded",
+                    ))
+                    retryable = rate_limited or any(marker in message for marker in (
+                        "500", "503", "timeout", "temporarily",
+                    ))
                 if not retryable or attempt == self.max_retries:
                     raise
-                sleep_seconds = min(2 ** attempt, 8)
+                sleep_seconds = (
+                    _quota_retry_delay(error) if rate_limited else min(2 ** attempt, 8)
+                )
+                now = time.monotonic()
+                self.next_request_at = max(self.next_request_at, now + sleep_seconds)
                 print(
                     f"Gemini temporary error on attempt {attempt}/"
-                    f"{self.max_retries}; retrying in {sleep_seconds}s...\n"
+                    f"{self.max_retries}; retrying in {self.next_request_at - now:.1f}s...\n"
                     f"  detail: {error}",
                     flush=True,
                 )
-                time.sleep(sleep_seconds)
 
         raise RuntimeError(f"Gemini VLM failed: {last_error}")
+
+
+def _quota_retry_delay(error: Exception) -> float:
+    """Respect Gemini's RetryInfo, or wait a full minute for the quota window."""
+    payload = getattr(error, "details", None)
+    if isinstance(payload, dict):
+        for detail in payload.get("error", {}).get("details", []):
+            if detail.get("@type") == "type.googleapis.com/google.rpc.RetryInfo":
+                delay = str(detail.get("retryDelay", ""))
+                if delay.endswith("s"):
+                    try:
+                        return max(0.0, float(delay[:-1])) + 2.0
+                    except ValueError:
+                        pass
+    return 60.0
 
 
 def describe_image_file(image_path: str | Path) -> str:

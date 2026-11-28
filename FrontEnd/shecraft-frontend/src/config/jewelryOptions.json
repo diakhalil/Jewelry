@@ -1,0 +1,38 @@
+{
+  "ring": {
+    "styles": ["Aurora Band", "Celeste Solitaire", "Tennis Horizon"],
+    "metals": ["Silver", "Gold", "Rose Gold", "14K Gold", "14K Silver"],
+    "diameters_mm": [14, 14.4, 14.8, 15.2, 15.6, 16, 16.45, 16.9, 17.3, 17.7, 18.2, 18.6, 19, 19.4, 19.8, 20.2, 20.6, 21, 21.4, 21.8, 22.2, 22.6],
+    "cuts": ["Round", "Princess", "Oval", "Pear"],
+    "natural_stones": ["Diamond", "Ruby", "Emerald", "Sapphire"],
+    "stone_counts": {"Aurora Band": [0, 1, 2, 3], "Celeste Solitaire": [0, 1, 2], "Tennis Horizon": [1]},
+    "lab_colors": ["White", "Yellow", "Pink", "Lavender", "Ice", "Blue Green", "Green", "Orange", "Peach", "Black"],
+    "customization": ["lab-grown stone color", "engraving"]
+  },
+  "necklace": {
+    "lettering_styles": ["Bubble", "Cursive", "Letter Spark"],
+    "charm_colors": ["Multicolor", "Silver", "Gold", "Rose Gold"],
+    "styles": ["name", "charm", "birthstone"],
+    "lengths_inches": [14, 16, 18, 20],
+    "chains": ["Cable", "Rope", "Box", "Thin"],
+    "metals": ["Silver", "Gold", "Rose Gold"],
+    "cuts_for_birthstones": ["Round", "Princess", "Oval", "Pear"]
+  },
+  "bracelet": {
+    "lettering_styles": ["Bubble", "Cursive", "Letter Spark"],
+    "charm_colors": ["Multicolor", "Silver", "Gold", "Rose Gold"],
+    "styles": ["name", "charm", "birthstone"],
+    "lengths_inches": [6, 6.5, 7, 7.5],
+    "chains": ["Cable", "Rope", "Box", "Thin"],
+    "metals": ["Silver", "Gold", "Rose Gold"],
+    "cuts_for_birthstones": ["Round", "Princess", "Oval", "Pear"]
+  },
+  "earrings": {
+    "charm_colors": ["Multicolor", "Silver", "Gold", "Rose Gold"],
+    "styles": ["charm", "birthstone"],
+    "metals": ["Silver", "Gold", "Rose Gold"],
+    "charm_shapes": ["Hoop Round", "Hoop Square", "Dangling"],
+    "birthstone_backings": ["Screw Back", "Clasp Back"],
+    "cuts_for_birthstones": ["Round", "Princess", "Oval", "Pear"]
+  }
+}

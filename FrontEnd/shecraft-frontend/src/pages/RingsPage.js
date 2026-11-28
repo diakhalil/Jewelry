@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 import React, { useEffect, useMemo, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
@@ -61,12 +62,7 @@ const LAB_COLORS = [
 ];
 
 
-const DIAMETERS_MM = [
-  14.0, 14.4, 14.8, 15.2, 15.6,
-  16.0, 16.45, 16.9, 17.3, 17.7, 18.2,
-  18.6, 19.0, 19.4, 19.8, 20.2, 20.6,
-  21.0, 21.4, 21.8, 22.2, 22.6,
-];
+const DIAMETERS_MM = jewelryOptions.ring.diameters_mm;
 
 function maxDiamondsFor(ringType) {
   if (ringType === "ring1") return 2;

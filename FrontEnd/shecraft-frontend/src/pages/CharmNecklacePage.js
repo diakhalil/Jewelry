@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/necklace.css";
@@ -36,7 +37,7 @@ const CHAINS = [
   { name: "Thin", img: Thin },
 ];
 
-const LENGTHS = [14, 16, 18, 20];
+const LENGTHS = jewelryOptions.necklace.lengths_inches;
 const CHARM_COLORS = ["Multicolor", "Silver", "Gold", "RoseGold"];
 
 function safeNum(n) {

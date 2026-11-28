@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 // import React, { useMemo, useState, useEffect } from "react";
 
 // import { useNavigate } from "react-router-dom";
@@ -421,7 +422,7 @@ const CHAINS = [
   { name: "Thin", img: Thin },
 ];
 
-const LENGTHS = [14, 16, 18, 20];
+const LENGTHS = jewelryOptions.necklace.lengths_inches;
 
 const CUTS = [
   { key: "Round", img: CutRound },

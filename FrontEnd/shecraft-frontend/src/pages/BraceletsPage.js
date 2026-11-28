@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -39,7 +40,7 @@ const ORDER_PAGE_ROUTE = "/orderpage";
 const BASE_PRICE_NAME_BRACELET = 35; 
 const NAME_BRACELET_DB_STYLE = "name";
 const CHAIN_DB_MAP = { Cable: "cable", Rope: "rope", Box: "box", Thin: "thin" };
-const LENGTHS = [6, 6.5, 7, 7.5];
+const LENGTHS = jewelryOptions.bracelet.lengths_inches;
 
 
 export default function BraceletsPage() {

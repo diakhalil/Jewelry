@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -41,7 +42,7 @@ const CHAINS = [
   { name: "Thin", img: Thin },
 ];
 
-const LENGTHS = [6, 6.5, 7, 7.5];
+const LENGTHS = jewelryOptions.bracelet.lengths_inches;
 
 const CUTS = [
   { key: "Round", img: CutRound },

@@ -1,3 +1,4 @@
+import jewelryOptions from "../config/jewelryOptions.json";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +43,7 @@ const CHAINS = [
   { name: "Thin", img: Thin },
 ];
 
-const LENGTHS = [6, 6.5, 7, 7.5];
+const LENGTHS = jewelryOptions.bracelet.lengths_inches;
 const CHARM_COLORS = ["Multicolor", "Silver", "Gold", "RoseGold"];
 
 /* ---------------- HELPERS ---------------- */
