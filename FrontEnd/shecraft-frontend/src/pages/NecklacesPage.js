@@ -190,7 +190,7 @@ export default function NecklacesPage() {
               marginBottom: 12,
               padding: 10,
               borderRadius: 10,
-              background: "#ffe7e7",
+              background: "var(--sc-error-surface)",
               fontWeight: 700,
             }}
           >
@@ -435,14 +435,15 @@ export default function NecklacesPage() {
 
       {/* BOTTOM BAR: show base price, single Add to Cart button */}
       <div
+        className="sc-configurator-actions"
         style={{
           position: "sticky",
           bottom: 0,
           width: "100%",
           marginTop: 16,
           padding: "12px 16px",
-          background: "#fff",
-          borderTop: "1px solid rgba(0,0,0,0.08)",
+          background: "var(--sc-bg)",
+          borderTop: "1px solid var(--sc-border)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -462,7 +463,7 @@ export default function NecklacesPage() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           {addedMsg ? (
-            <span style={{ fontWeight: 800, color: "#1a7f37" }}>{addedMsg}</span>
+            <span style={{ fontWeight: 800, color: "var(--sc-success)" }}>{addedMsg}</span>
           ) : null}
 
           <button
@@ -471,8 +472,8 @@ export default function NecklacesPage() {
             style={{
               padding: "10px 14px",
               borderRadius: 12,
-              border: "1px solid rgba(0,0,0,0.2)",
-              background: "#fff",
+              border: "1px solid var(--sc-control-border)",
+              background: "var(--sc-bg)",
               cursor: "pointer",
               fontWeight: 800,
             }}
@@ -488,8 +489,8 @@ export default function NecklacesPage() {
               padding: "10px 14px",
               borderRadius: 12,
               border: "none",
-              background: "#111",
-              color: "#fff",
+              background: "var(--sc-purple)",
+              color: "var(--sc-bg)",
               cursor: "pointer",
               fontWeight: 900,
               opacity: isAdding ? 0.7 : 1,

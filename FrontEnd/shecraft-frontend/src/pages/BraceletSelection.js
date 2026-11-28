@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/BraceletSelection.css";
 
 import nameBraceletImg from "../assets/Bracelet/names.jpg";
@@ -31,23 +31,6 @@ const bracelets = [
 ];
 
 export default function BraceletSelection() {
-  const navigate = useNavigate();
-
-  const handleSelectBracelet = (braceletType) => {
-  if (braceletType === "charm") {
-    navigate("/bracelet/charm");
-    return;
-  }
-
-  if (braceletType === "birthstone") {
-    navigate("/bracelet/birthstone");
-    return;
-  }
-
-  navigate("/braceletspage", { state: { braceletType } });
-};
-
-
   return (
     <div className="page-wrapper">
       <div className="bracelet-selection-page">
@@ -58,16 +41,17 @@ export default function BraceletSelection() {
 
         <div className="bracelets-grid">
           {bracelets.map((bracelet) => (
-            <div
+            <Link
               key={bracelet.id}
               className={`bracelet-card ${bracelet.theme}`}
-              onClick={() => handleSelectBracelet(bracelet.type)}
+              to={bracelet.type === "name" ? "/braceletspage" : `/bracelet/${bracelet.type}`}
+              state={bracelet.type === "name" ? { braceletType: bracelet.type } : undefined}
             >
               <div className="bracelet-image-container">
-                <img src={bracelet.image} alt={bracelet.label} />
+                <img src={bracelet.image} alt="" />
               </div>
               <p className="bracelet-label">{bracelet.label}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

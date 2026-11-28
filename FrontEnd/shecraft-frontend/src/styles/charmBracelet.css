@@ -2,28 +2,12 @@
    Charm Bracelet — Pandora-style luxury (MATCH NECKLACE)
    =============================== */
 
-:root{
-  --bg:#f6f4f7;
-  --text:#2d1336;
-  --muted:#6f5a76;
-
-  --card:#ffffff;
-  --soft:#fbfafc;
-  --border:#e6ddea;
-
-  --purple:#6b1b7c;
-  --purpleDark:#4f0a57;
-
-  --shadow: 0 10px 30px rgba(18,8,22,.10);
-  --shadow2: 0 12px 24px rgba(107,27,124,.14);
-}
-
 /* -------- PAGE -------- */
 .br-page{
   min-height:100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family:"Poppins",sans-serif;
+  background: var(--sc-bg-neutral);
+  color: var(--sc-text-deep);
+  font-family: var(--sc-font-body);
   padding:22px;
 }
 
@@ -46,7 +30,7 @@
 
 .br-subtitle{
   margin-top:8px;
-  color:var(--muted);
+  color:var(--sc-text-subtle);
   font-weight:600;
 }
 
@@ -65,9 +49,9 @@
 }
 
 .br-preview-card{
-  background:var(--card);
+  background:var(--sc-bg);
   border-radius:22px;
-  box-shadow:var(--shadow);
+  box-shadow:var(--sc-shadow-card);
   border:1px solid rgba(0,0,0,.04);
   padding:18px;
 }
@@ -82,7 +66,7 @@
 .br-pill{
   font-weight:900;
   font-size:12px;
-  color:var(--purpleDark);
+  color:var(--sc-purple-dark);
   background:rgba(79,10,87,.08);
   padding:6px 10px;
   border-radius:999px;
@@ -119,7 +103,7 @@
 .br-metaRow span{
   font-size:13px;
   font-weight:700;
-  color:var(--muted);
+  color:var(--sc-text-subtle);
 }
 
 .br-metaRow strong{
@@ -153,9 +137,9 @@
 .br-form{
   flex:0.9;
   min-width:360px;
-  background:var(--card);
+  background:var(--sc-bg);
   border-radius:22px;
-  box-shadow:var(--shadow);
+  box-shadow:var(--sc-shadow-card);
   padding:18px;
   display:flex;
   flex-direction:column;
@@ -164,8 +148,8 @@
 
 /* open rows */
 .br-section{
-  border:1px solid var(--border);
-  background:var(--soft);
+  border:1px solid var(--sc-border-neutral);
+  background:var(--sc-bg-inset);
   border-radius:16px;
   padding:12px;
   cursor:pointer;
@@ -188,7 +172,7 @@
 .br-muted{
   font-size:12.5px;
   font-weight:700;
-  color:var(--muted);
+  color:var(--sc-text-subtle);
 }
 
 .br-arrow{
@@ -200,14 +184,14 @@
 .br-next-btn{
   margin-top:6px;
   width:100%;
-  background:var(--purple);
-  color:#fff;
+  background:var(--sc-purple);
+  color:var(--sc-bg);
   border:none;
   border-radius:16px;
   padding:14px;
   font-weight:950;
   cursor:pointer;
-  box-shadow:var(--shadow2);
+  box-shadow:var(--sc-shadow-action);
 }
 
 .br-next-btn:hover{
@@ -221,7 +205,7 @@
   right:-460px;
   width:430px;
   height:100dvh;
-  background:#fff;
+  background:var(--sc-bg);
   box-shadow:-8px 0 30px rgba(0,0,0,.12);
   z-index:100;
   display:grid;
@@ -261,16 +245,16 @@
 }
 
 .br-card{
-  border:1px solid var(--border);
-  background:var(--soft);
+  border:1px solid var(--sc-border-neutral);
+  background:var(--sc-bg-inset);
   border-radius:16px;
   padding:10px;
   cursor:pointer;
 }
 
 .br-card.selected{
-  border-color:var(--purple);
-  box-shadow:var(--shadow2);
+  border-color:var(--sc-purple);
+  box-shadow:var(--sc-shadow-action);
 }
 
 .br-card img{
@@ -287,8 +271,8 @@
 }
 
 .br-chip{
-  border:1px solid var(--border);
-  background:var(--soft);
+  border:1px solid var(--sc-border-neutral);
+  background:var(--sc-bg-inset);
   border-radius:14px;
   padding:10px 12px;
   font-weight:900;
@@ -296,8 +280,8 @@
 }
 
 .br-chip.selected{
-  background:var(--purpleDark);
-  color:#fff;
+  background:var(--sc-purple-dark);
+  color:var(--sc-bg);
 }
 
 /* -------- CONFIRM -------- */
@@ -307,8 +291,8 @@
   border-radius:16px;
   padding:14px;
   font-weight:950;
-  background:var(--purple);
-  color:#fff;
+  background:var(--sc-purple);
+  color:var(--sc-bg);
   box-shadow:0 14px 30px rgba(107,27,124,.22);
 }
 

@@ -1,25 +1,15 @@
 /* ---------- COLOR PALETTE ---------- */
-:root {
-  --sc-bg: #ffffff;
-  --sc-bg-soft: #f6e9ff;
-  --sc-bg-blush: #fdeef7;
-  --sc-text-main: #5a3d7a;
-  --sc-text-muted: #7a6b85;
-  --sc-accent: #bfadd7;
-  --sc-border: #efdef8;
-  --gold: #e4c67b;
-}
-
 /* ---------- PAGE LAYOUT ---------- */
 .cart-page,
 .designer-page {
   min-height: 100vh;
   padding: 60px 40px;
   background: var(--sc-bg);
-  font-family: "Playfair Display", serif;
+  font-family: var(--sc-font-body);
 }
 
 .cart-title {
+  font-family: var(--sc-font-display);
   font-size: 2.6rem;
   text-align: center;
   color: var(--sc-text-main);
@@ -45,7 +35,7 @@
 /* ---------- ORDER CARD ---------- */
 .cart-card {
   padding: 26px 30px;
-  background: #ffffff;
+  background: var(--sc-bg);
   border-radius: 18px;
   border: 1px solid var(--sc-border);
   box-shadow: 0 10px 28px rgba(180, 123, 255, 0.22);
@@ -74,44 +64,48 @@
   padding: 5px 14px;
   border-radius: 10px;
   font-size: 0.85rem;
-  color: #ffffff;
+  color: var(--sc-bg);
   margin-left: 8px;
   display: inline-block;
 }
 
 .status.pending {
-  background: #e4b24c;
+  background: var(--sc-warning-surface);
+  color: var(--sc-warning);
 }
 
 .status.in-progress {
-  background: var(--sc-accent);
+  background: var(--sc-bg-soft);
+  color: var(--sc-purple-dark);
 }
 
 .status.completed {
-  background: #6bbf73;
+  background: var(--sc-success-surface);
+  color: var(--sc-success);
 }
 
 /* ---------- COMPLETE ORDER BUTTON ---------- */
-.complete-btn {
+:is(.cart-page, .designer-page) .complete-btn {
   margin-top: 16px;
   padding: 12px 22px;
   border: none;
   border-radius: 10px;
-  background: var(--sc-accent);
-  color: white;
+  background: var(--sc-purple);
+  color: var(--sc-bg);
   font-size: 1rem;
   cursor: pointer;
   letter-spacing: 0.5px;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.complete-btn:hover {
-  background: #9d8cb7;
+:is(.cart-page, .designer-page) .complete-btn:hover:not(:disabled) {
+  background: var(--sc-purple-dark);
   transform: translateY(-2px);
 }
 
-.complete-btn:disabled {
-  background: #cccccc;
+:is(.cart-page, .designer-page) .complete-btn:disabled {
+  background: var(--sc-border-neutral);
+  color: var(--sc-text-subtle);
   cursor: not-allowed;
 }
 

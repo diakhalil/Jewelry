@@ -28,8 +28,6 @@ const METALS = [
 
 const CHARM_COLORS = ["Multicolor", "Silver", "Gold", "RoseGold"];
 
-const NECKLACE_DB_STYLE = "free charm"; 
-
 function safeNum(n) {
   const x = Number(n);
   return Number.isFinite(x) ? x : 0;
@@ -239,7 +237,7 @@ export default function EarringCharmPage() {
 
   /* ---------------- UI ---------------- */
   return (
-    <div className="nk-page nk-charmPage">
+    <div className="nk-page nk-charmPage nk-earring-charm">
       <div className="nk-container">
         <header className="nk-header">
           <h2>Customize Your Charm Earrings</h2>
@@ -248,7 +246,7 @@ export default function EarringCharmPage() {
 
         {uiError && <div className="nk-error">{uiError}</div>}
 
-        <div className="nk-customizer" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 32 }}>
+        <div className="nk-customizer">
           {/* LEFT: PREVIEW */}
           <section className="nk-preview">
             <div className="nk-previewCard">

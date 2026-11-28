@@ -1,5 +1,3 @@
-/* ---------- FOOTER (purple background, white text) ---------- */
-
 .footer {
   margin-top: auto;
 
@@ -7,17 +5,17 @@
   width: 100%;
   box-sizing: border-box;
 
-  padding: 40px 80px 35px;          /* same side padding vibe as header */
-  background: rgba(167, 114, 193, 0.35);
-  border-top: 1px solid #421889;
+  padding: 2rem var(--sc-gutter) 5.5rem;
+  background: var(--sc-wash);
+  border-top: 1px solid var(--sc-border);
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--sc-space-5);
 
-  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: #ffffff;
+  font-family: var(--sc-font-body);
+  color: var(--sc-text-deep);
 }
 
 .footer-about,
@@ -27,21 +25,21 @@
 
 .footer h3 {
   margin-bottom: 10px;
-  color: #ffffff;
+  color: var(--sc-text-main);
   font-size: 1.05rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .footer p {
-  color: #f5f3ff;
+  color: var(--sc-text-subtle);
   font-size: 0.96rem;
 }
 
 .footer a {
-  color: #f5f3ff;
-  text-decoration: none;
-  font-weight: 500;
+  color: var(--sc-purple);
+  text-underline-offset: 0.2em;
+  font-weight: 700;
 }
 
 .footer a:hover {
@@ -52,7 +50,7 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 32px 24px;
+    padding: 2rem var(--sc-gutter) 5rem;
     text-align: center;
     justify-content: center;
   }

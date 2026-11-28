@@ -1,30 +1,12 @@
 /* ---------- COLOR PALETTE (from WelcomePage) ---------- */
-:root {
-  --sc-bg: #ffffff;
-  --sc-bg-soft: #f6e9ff;
-  --sc-bg-blush: #fdeef7;
-  --sc-text-main: #5a3d7a;
-  --sc-text-muted: #7a6b85;
-  --sc-accent: #bfadd7;
-  --sc-border: #efdef8; /* soft lilac border */
-}
-
 /* ---------------- GLOBAL ACCOUNT PAGE ---------------- */
 
 .account-container {
   min-height: 100vh;
   background-color: var(--sc-bg-soft); /* pastel lilac — NO WHITE SCROLL */
   color: var(--sc-text-main);
-  font-family: "Nunito", sans-serif;
+  font-family: var(--sc-font-body);
   padding-top: 90px;
-  border: none !important;
-}
-
-/* REMOVE ALL UNWANTED LINES */
-.account-container,
-.account-banner,
-header,
-footer {
   border: none !important;
 }
 
@@ -41,7 +23,7 @@ footer {
 
 .no-user-title {
   font-size: 2.2rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   color: var(--sc-text-main);
   margin-bottom: 10px;
 }
@@ -55,7 +37,7 @@ footer {
 .no-user-button {
   padding: 12px 26px;
   background-color: var(--sc-accent);
-  color: white;
+  color: var(--sc-purple-dark);
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
@@ -64,7 +46,7 @@ footer {
 }
 
 .no-user-button:hover {
-  background-color: #9d8cb7;
+  background-color: var(--sc-accent-hover);
 }
 
 /* ---------------- ACCOUNT HEADER BANNER ---------------- */
@@ -81,7 +63,7 @@ footer {
 
 .banner-title {
   font-size: 2.8rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
   color: var(--sc-text-main);
   letter-spacing: 0.05em;
 }
@@ -110,13 +92,13 @@ footer {
   box-shadow: 0 10px 25px rgba(180, 123, 255, 0.18);
 }
 
-.section-title {
+.account-card .section-title {
   font-size: 1.7rem;
   color: var(--sc-text-main);
   margin-bottom: 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--sc-border);
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--sc-font-display);
 }
 
 /* ---------------- INFO ROWS ---------------- */
@@ -146,7 +128,7 @@ footer {
   padding: 12px;
   font-size: 1rem;
   background-color: var(--sc-accent);
-  color: white;
+  color: var(--sc-purple-dark);
   border: none;
   border-radius: 40px;
   cursor: pointer;
@@ -156,13 +138,13 @@ footer {
 }
 
 .edit-btn:hover {
-  background-color: #9d8cb7;
+  background-color: var(--sc-accent-hover);
 }
 
 /* ---------------- INPUT FIELDS ---------------- */
 
 .edit-input {
-  background: #ffffff;
+  background: var(--sc-bg);
   border: 1px solid var(--sc-border);
   padding: 10px;
   color: var(--sc-text-main);
@@ -186,7 +168,7 @@ footer {
 }
 
 .toggle-btn {
-  background: white;
+  background: var(--sc-bg);
   border: 1px solid var(--sc-border);
   padding: 8px 12px;
   color: var(--sc-text-main);

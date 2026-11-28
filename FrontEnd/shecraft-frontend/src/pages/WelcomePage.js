@@ -136,8 +136,7 @@
 // }
 
 // src/pages/WelcomePage.jsx (adjust path if needed)
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/WelcomePage.css";
 
 import bannerImg from "../assets/welcomeBanner.png";
@@ -148,9 +147,6 @@ import earringsImg from "../assets/earrings.jpg";
 //import LoginPage from "./LoginPage"; 
 
 export default function WelcomePage() {
-  const navigate = useNavigate();
-  //const [showLogin, setShowLogin] = useState(false);
-
   const categories = [
     { name: "Rings", route: "/rings", image: ringsImg },
     { name: "Necklaces", route: "/necklaces", image: necklacesImg },
@@ -158,20 +154,8 @@ export default function WelcomePage() {
     { name: "Earrings", route: "/earrings", image: earringsImg },
   ];
 
- return (
-    <div className="page-container">
-      <main className="main-content">
-        <div className="welcome-page">
-          {/* ---------- QUOTE SECTION ---------- */}
-          <section className="quote-section">
-  <p className="quote-text">
-    “Jewelry is how you whisper your story without saying a word.”
-  </p>
-  <p className="quote-sub">
-    Log in to start crafting pieces that are as unique as you are.
-  </p>
-</section>
-
+  return (
+    <div className="welcome-page">
           {/* ---------- HERO BANNER ---------- */}
           <section
             className="hero"
@@ -197,12 +181,9 @@ export default function WelcomePage() {
                 key={cat.name}
                 className={`collection-row ${index % 2 === 1 ? "reverse" : ""}`}
               >
-                <div
-                  className="collection-image-wrapper"
-                  onClick={() => navigate(cat.route)}
-                >
+                <Link to={cat.route} className="collection-image-wrapper" aria-label={`Browse ${cat.name}`}>
                   <img src={cat.image} alt={cat.name} className="collection-image" />
-                </div>
+                </Link>
 
                 <div className="collection-info">
                   <h3 className="collection-name">{cat.name}</h3>
@@ -210,15 +191,13 @@ export default function WelcomePage() {
                     Discover {cat.name.toLowerCase()} designed to stack, mix,
                     and match with every mood.
                   </p>
-                  <button className="collection-cta" onClick={() => navigate(cat.route)}>
+                  <Link className="sc-button collection-cta" to={cat.route}>
                     Explore {cat.name}
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
           </section>
-        </div>
-      </main>
     </div>
   );
 }

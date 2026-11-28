@@ -2,9 +2,10 @@
 
 import React, { useRef, useEffect, useState, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import JewelryLighting from "../components/JewelryLighting";
 import "../styles/ringselection.css";
 import { RING_MESHES } from "./RingModel";
 
@@ -112,12 +113,6 @@ function RingThumbnail({ ringType, modelPath, metalColor }) {
 }
 
 export default function RingSelection() {
-  const navigate = useNavigate();
-
-  const handleSelectRing = (ringType) => {
-    navigate("/ringspage", { state: { ringType } });
-  };
-
   return (
     <div className="page-wrapper">
       <div className="ring-selection-page full-page">
@@ -128,15 +123,16 @@ export default function RingSelection() {
 
         <div className="rings-grid">
           {rings.map((ring) => (
-            <div
+            <Link
               key={ring.id}
               className="ring-card"
-              onClick={() => handleSelectRing(ring.type)}
+              to="/ringspage"
+              state={{ ringType: ring.type }}
             >
               <div className="ring-canvas-container">
                 <Canvas camera={{ position: [0, 1.5, 4], fov: 50 }}>
                   {/* Environment fixes “black metal” */}
-                  <Environment preset="studio" />
+                  <JewelryLighting />
 
                   {/* Stronger lights for thumbnails */}
                   <ambientLight intensity={1.0} />
@@ -154,9 +150,12 @@ export default function RingSelection() {
               </div>
 
               <p className="ring-label">{ring.label}</p>
-            </div>
+            </Link>
           ))}
         </div>
+        <Link to="/rings/sapphire-preview" className="sc-button ring-preview-link">
+          View the gold &amp; sapphire ring in 3D
+        </Link>
       </div>
     </div>
   );

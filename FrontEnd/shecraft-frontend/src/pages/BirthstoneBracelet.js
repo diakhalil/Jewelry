@@ -325,7 +325,7 @@ export default function BirthstoneBracelet() {
               marginBottom: 12,
               padding: 10,
               borderRadius: 10,
-              background: "#ffe7e7",
+              background: "var(--sc-error-surface)",
               fontWeight: 700,
             }}
           >
@@ -398,7 +398,7 @@ export default function BirthstoneBracelet() {
                 {addedMsg ? (
                   <div className="nk-metaRow">
                     <span>Status</span>
-                    <strong style={{ color: "#1a7f37" }}>
+                    <strong style={{ color: "var(--sc-success)" }}>
                       {addedMsg}
                       {addedAccessoryID ? ` • ID: ${addedAccessoryID}` : ""}
                     </strong>
@@ -571,7 +571,7 @@ export default function BirthstoneBracelet() {
             </button>
 
             {!canProceed && (
-              <p className="nk-help" style={{ color: "#b00020" }}>
+              <p className="nk-help" style={{ color: "var(--sc-error)" }}>
                 Required: Month, Color, Cut, Metal, Chain, Length.
               </p>
             )}
@@ -584,8 +584,8 @@ export default function BirthstoneBracelet() {
                 marginTop: 10,
                 padding: "10px 14px",
                 borderRadius: 12,
-                border: "1px solid rgba(0,0,0,0.2)",
-                background: "#fff",
+                border: "1px solid var(--sc-control-border)",
+                background: "var(--sc-bg)",
                 cursor: "pointer",
                 fontWeight: 800,
               }}

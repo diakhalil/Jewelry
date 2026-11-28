@@ -9,8 +9,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  font-family: "Poppins", "Arial", sans-serif;
-  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  font-family: var(--sc-font-body);
+  background: var(--sc-page-wash);
   padding: 60px 20px;
   box-sizing: border-box;
 }
@@ -19,16 +19,17 @@
    TITLE
 ========================= */
 .bracelet-title {
+  font-family: var(--sc-font-display);
   font-size: 48px;
   font-weight: 700;
-  color: #0b5932;
+  color: var(--sc-purple-deep);
   margin-bottom: 12px;
   text-align: center;
 }
 
 .bracelet-subtitle {
   font-size: 20px;
-  color: #555;
+  color: var(--sc-text-subtle);
   margin-bottom: 60px;
   text-align: center;
   max-width: 800px;
@@ -50,9 +51,11 @@
    CARD
 ========================= */
 .bracelet-card {
+  box-sizing: border-box;
+  max-width: 100%;
   width: 320px;
   height: 420px;
-  background: linear-gradient(to bottom, #ffffff, #f6f6f6);
+  background: linear-gradient(to bottom, var(--sc-bg), var(--sc-bg-neutral));
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -74,15 +77,15 @@
    COLOR ACCENTS
 ========================= */
 .name-theme {
-  border-top: 6px solid #c9a227;
+  border-top: 6px solid var(--sc-gold);
 }
 
 .charm-theme {
-  border-top: 6px solid #d63384;
+  border-top: 6px solid var(--sc-pink);
 }
 
 .birthstone-theme {
-  border-top: 6px solid #0d6efd;
+  border-top: 6px solid var(--sc-purple-orchid);
 }
 
 /* =========================
@@ -93,12 +96,12 @@
   height: 300px;
   border-radius: 20px;
   overflow: hidden;
-  background: radial-gradient(circle at top, #e6e6e6, #cfcfcf);
+  background: var(--sc-preview-wash);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--sc-border-neutral);
 }
 
 .bracelet-image-container img {
@@ -116,7 +119,7 @@
 .bracelet-label {
   font-size: 22px;
   font-weight: 700;
-  color: #033d22;
+  color: var(--sc-purple-dark);
   text-align: center;
   margin-top: 8px;
   text-transform: uppercase;

@@ -2,10 +2,10 @@
    PAGE WRAPPER
 ================================ */
 .sc-page {
-  background: linear-gradient(180deg, #f6effa 0%, #ffffff 60%);
+  background: linear-gradient(180deg, var(--sc-bg-soft) 0%, var(--sc-bg) 60%);
   min-height: 100vh;
   padding: 48px 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--sc-font-body);
 }
 
 .sc-container {
@@ -17,7 +17,7 @@
 .sc-title {
   font-size: 36px;
   font-weight: 600;
-  color: #4b2b6f;
+  color: var(--sc-text-main);
   margin-bottom: 32px;
 }
 
@@ -35,7 +35,7 @@
    LEFT — LIVE PREVIEW
 ================================ */
 .sc-preview-card {
-  background: #ffffff;
+  background: var(--sc-bg);
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 12px 40px rgba(120, 60, 160, 0.12);
@@ -45,8 +45,8 @@
 
 .sc-pill {
   display: inline-block;
-  background: #f1e7fa;
-  color: #6b3fa0;
+  background: var(--sc-bg-soft);
+  color: var(--sc-purple);
   font-size: 13px;
   padding: 6px 14px;
   border-radius: 999px;
@@ -63,13 +63,13 @@
 /* Selected charms */
 .sc-selected-charms h3 {
   font-size: 18px;
-  color: #4b2b6f;
+  color: var(--sc-text-main);
   margin-bottom: 12px;
 }
 
 .sc-empty {
   font-size: 14px;
-  color: #999;
+  color: var(--sc-control-border);
 }
 
 .sc-selected-grid {
@@ -83,7 +83,7 @@
   width: 72px;
   height: 72px;
   border-radius: 14px;
-  background: #faf7fd;
+  background: var(--sc-bg-inset);
   display: grid;
   place-items: center;
 }
@@ -96,8 +96,8 @@
   position: absolute;
   top: -6px;
   right: -6px;
-  background: #6b3fa0;
-  color: white;
+  background: var(--sc-purple);
+  color: var(--sc-bg);
   border: none;
   width: 20px;
   height: 20px;
@@ -109,7 +109,7 @@
    RIGHT — FORM
 ================================ */
 .sc-form {
-  background: #ffffff;
+  background: var(--sc-bg);
   border-radius: 24px;
   padding: 28px;
   box-shadow: 0 12px 40px rgba(120, 60, 160, 0.12);
@@ -123,7 +123,7 @@
 .sc-section-title {
   font-size: 18px;
   font-weight: 600;
-  color: #4b2b6f;
+  color: var(--sc-text-main);
   margin-bottom: 16px;
 }
 
@@ -138,13 +138,13 @@
 }
 
 .sc-card {
-  border: 2px solid #eee;
+  border: 2px solid var(--sc-border);
   border-radius: 20px;
   padding: 16px;
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease;
-  background: #fff;
+  background: var(--sc-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,12 +161,12 @@
 .sc-card span {
   font-size: 14px;
   font-weight: 500;
-  color: #4b2b6f;
+  color: var(--sc-text-main);
 }
 
 .sc-card.selected {
-  border-color: #6b3fa0;
-  background: #f7f0fd;
+  border-color: var(--sc-purple);
+  background: var(--sc-bg-soft);
   box-shadow: 0 8px 20px rgba(107, 63, 160, 0.2);
   transform: translateY(-2px);
 }
@@ -185,8 +185,8 @@
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  border: 2px solid #ddd;
-  background: #fff;
+  border: 2px solid var(--sc-border-neutral);
+  background: var(--sc-bg);
   cursor: pointer;
   transition: 0.25s;
 }
@@ -200,8 +200,8 @@
 }
 
 .sc-chip.selected {
-  border-color: #6b3fa0;
-  background: #f4ecfb;
+  border-color: var(--sc-purple);
+  background: var(--sc-bg-soft);
 }
 
 /* ===============================
@@ -216,7 +216,7 @@
 .sc-charm {
   border-radius: 16px;
   padding: 12px;
-  background: #faf7fd;
+  background: var(--sc-bg-inset);
   text-align: center;
   cursor: pointer;
   transition: 0.25s;
@@ -245,8 +245,8 @@
   width: 100%;
   padding: 14px;
   border-radius: 999px;
-  background: #6b3fa0;
-  color: #fff;
+  background: var(--sc-purple);
+  color: var(--sc-bg);
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -254,7 +254,7 @@
 }
 
 .sc-next-btn:hover:not(:disabled) {
-  background: #5a2c96;
+  background: var(--sc-purple-dark);
 }
 
 .sc-next-btn:disabled {
